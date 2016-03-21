@@ -8,7 +8,7 @@
  *
  * @author Seb
  */
-public class PionJoueur {
+public class PionJoueur extends Pions {
     
    
     //Attributs
@@ -64,6 +64,10 @@ public class PionJoueur {
         //Méthode permettant de faire mourir un pion d'un joueur
         public void mourir(boolean b){
             this.setMort(b);
+        }
+        
+        public void changerNum(){
+            
         }
     
 }

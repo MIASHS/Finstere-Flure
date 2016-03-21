@@ -66,8 +66,15 @@ public class PionJoueur extends Pions {
             this.setMort(b);
         }
         
+        //Méthode permettant de changer le numéro d'un pion d'un joueur
         public void changerNum(){
+            if (this.numActuelle == tabNumDispo[0])
+                this.numActuelle = tabNumDispo[1];
+            else
+                this.numActuelle = tabNumDispo[0];
+        }
+        
+        public void deplacement(int num){
             
         }
-    
 }

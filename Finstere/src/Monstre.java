@@ -8,6 +8,8 @@
  *
  * @author Gabriel
  */
-public class Monstre {
+public class Monstre extends Pions{
+    
+    
     
 }

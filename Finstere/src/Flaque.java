@@ -8,8 +8,6 @@
  *
  * @author Gabriel
  */
-public abstract class Pions {
-    private int abscisse ;
-    private int ordonnee;
+public class Flaque {
     
 }

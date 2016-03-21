@@ -8,6 +8,6 @@
  *
  * @author Gabriel
  */
-public class Obstacle {
+public class Obstacle extends Pions {
     
 }

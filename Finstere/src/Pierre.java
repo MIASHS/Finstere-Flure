@@ -8,6 +8,6 @@
  *
  * @author Gabriel
  */
-public class Pierre {
+public class Pierre extends Obstacle {
     
 }

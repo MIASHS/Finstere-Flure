@@ -8,6 +8,6 @@
  *
  * @author Gabriel
  */
-public class Flaque {
+public class Flaque extends Obstacle {
     
 }

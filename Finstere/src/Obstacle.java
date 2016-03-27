@@ -9,5 +9,22 @@
  * @author Gabriel
  */
 public class Obstacle extends Pions {
+    private int positionX;
+    private int positionY;
+
+    public Obstacle(int positionX, int positionY) {
+        this.positionX = positionX;
+        this.positionY = positionY;
+    }
+
+    public void setPositionX(int positionX) {
+        this.positionX = positionX;
+    }
+
+    public void setPositionY(int positionY) {
+        this.positionY = positionY;
+    }
+    
+    
     
 }

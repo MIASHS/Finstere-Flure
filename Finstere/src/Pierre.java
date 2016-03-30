@@ -10,4 +10,8 @@
  */
 public class Pierre extends Obstacle {
     
+    public Pierre(int positionX, int positionY) {
+        super(positionX, positionY);
+    }
+    
 }

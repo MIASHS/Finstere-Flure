@@ -1,4 +1,6 @@
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /*
@@ -12,8 +14,8 @@ import java.util.Random;
  * @author oneiroi
  */
 public class Paquet {
-     private Cartes[] sabot = new Cartes[52];
-    private int nbCarte = 52;
+     private Cartes[] sabot = new Cartes[8];
+    private int nbCarte = 8;
     private int numeroSerie = 0;
     private boolean present = false;
 
@@ -65,21 +67,45 @@ public class Paquet {
     }
 
     private void init() {
-        int compteur = 0;
         Random ra = new Random();
+        Map valeur=new HashMap();
+        valeur.put(1, 5);
+        valeur.put(2, 7);
+        valeur.put(3, 7);
+        valeur.put(4, 8);
+        valeur.put(5, 8);
+        valeur.put(6, 10);
+        valeur.put(7, 11);
+        valeur.put(8, 12);
         this.setNumeroSerie(ra.nextInt(2000));
-        for (int i = 0; i < 4; i++) {
-            for (int j = 1; j < 14; j++) {
-                this.setCarte(new Cartes(j, i, this.getNumeroSerie()), compteur);
-                compteur++;
-            }
+        for (int i = 0; i < 8; i++) {
+            int k=ra.nextInt(8);
+           while((int)valeur.get(k)==0){
+               k=ra.nextInt(8);
+           }
+            this.setCarte(new Cartes((int) valeur.get(k),this.getNumeroSerie()), i);
+            valeur.put(k, 0);
         }
+        
     }
 
     public void melanger(int n) {
         if (n > 0) {
             for (int i = 0; i < n; i++) {
                 this.echanger();
+            }
+            if((sabot[0].getNumeroCarte()==11)||(sabot[0].getNumeroCarte()==12)){
+                if((sabot[1].getNumeroCarte()!=11)&&(sabot[1].getNumeroCarte()!=12)){
+                    Cartes carteMemoire;
+                    carteMemoire = this.getCarte(0);
+                    this.setCarte(this.getCarte(1), 0);
+                    this.setCarte(carteMemoire, 1);
+                }else{
+                    Cartes carteMemoire;
+                    carteMemoire = this.getCarte(0);
+                    this.setCarte(this.getCarte(2), 0);
+                    this.setCarte(carteMemoire, 2);
+                }
             }
         } else {
             System.out.println("Erreur dans l'appel de la méthode melanger()");
@@ -88,8 +114,8 @@ public class Paquet {
 
     private void echanger() {
         Random ra = new Random();
-        int carte1 = ra.nextInt(51);
-        int carte2 = ra.nextInt(51);
+        int carte1 = ra.nextInt(8);
+        int carte2 = ra.nextInt(8);
         Cartes carteMemoire;
         carteMemoire = this.getCarte(carte1);
         this.setCarte(this.getCarte(carte2), carte1);
@@ -104,7 +130,7 @@ public class Paquet {
         } else {
             this.setNbCarte(this.getNbCarte() - 1);
             c = this.getCarte(0);
-            for (int i = 1; i < 52; i++) {
+            for (int i = 1; i < this.getNbCarte(); i++) {
                 this.setCarte(this.getCarte(i), i - 1);
             }
             //this.mettreCarteEnDessous(c);
@@ -121,26 +147,11 @@ public class Paquet {
                 }
             }
             if (!this.getPresent()) {
-                this.setCarte(c, 51);
+                this.setCarte(c, this.getNbCarte());
                 this.setNbCarte(this.getNbCarte() + 1);
+            }else{
+                this.setPresent(false);
             }
         }
-    }
-
-    public int comparer(Cartes carte1, Cartes carte2) {
-        int resultat;
-        
-            if (carte1.getNumeroCarte() == carte2.getNumeroCarte()) {
-                resultat = 0;
-            } else if (carte2.getNumeroCarte() == 1) {
-                resultat = -1;
-            } else if(carte1.getNumeroCarte() == 1) {
-                resultat = 1;
-            } else if (carte1.getNumeroCarte() < carte2.getNumeroCarte()) {
-                resultat = -1;
-            } else {
-                resultat = 1;
-            }
-            return resultat;
     }
 }

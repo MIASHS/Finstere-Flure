@@ -12,9 +12,7 @@ public class PionJoueur extends Pions {
     
    
     //Attributs
-    public void setNumActuelle(int numActuelle) {
-        this.numActuelle = numActuelle;
-    }
+
         private boolean mort; //booléen indiquant si un pion d'un joueur est mort
         private boolean utilise;
         private int[] tabNumDispo;
@@ -49,6 +47,10 @@ public class PionJoueur extends Pions {
         public int getNumActuelle() {
             return numActuelle;
         }
+        
+        public void setNumActuelle(int numActuelle) {
+            this.numActuelle = numActuelle;
+    }
         
     //Constructeur
 

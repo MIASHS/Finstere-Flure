@@ -54,6 +54,21 @@ public class Jeu {
        this.blocsPierre.add(p4);
        this.blocsPierre.add(p5);
        
+       Joueurs joueur1 = new Joueurs("Gab");
+       
+       joueur1.ajouterPion(new PionJoueur(12,0));
+       joueur1.ajouterPion(new PionJoueur(15,0));
+       joueur1.ajouterPion(new PionJoueur(14,0));
+       
+       j_list.add(joueur1);
+       
+        Joueurs joueur2 = new Joueurs("Valére");
+       
+       joueur2.ajouterPion(new PionJoueur(12,1));
+       joueur2.ajouterPion(new PionJoueur(15,1));
+       joueur2.ajouterPion(new PionJoueur(14,1));
+       
+       j_list.add(joueur2);
    }
    
     

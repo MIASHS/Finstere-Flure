@@ -17,7 +17,7 @@ public class Joueurs {
     private boolean gagner ;
     private int pionUtilisé;
 
-    public Joueurs(String pseudo, ArrayList<Pions> tabPion, boolean gagner, int pionUtilisé) {
+    public Joueurs(String pseudo) {
         this.pseudo = pseudo;
         this.tabPion = tabPion;
         this.gagner = gagner;

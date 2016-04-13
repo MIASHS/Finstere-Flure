@@ -9,7 +9,7 @@
  * @author Gabriel
  */
 public abstract class Pions {
-    private int abscisse ; // 
-    private int ordonnee; //
-    
+    protected int abscisse ; // 
+    protected int ordonnee; //
+
 }

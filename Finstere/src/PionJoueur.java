@@ -13,10 +13,17 @@ public class PionJoueur extends Pions {
    
     //Attributs
 
+        public PionJoueur(int abscisse , int ordonnee){
+            this.abscisse=abscisse;
+            this.ordonnee=ordonnee;
+        }
+    
         private boolean mort; //booléen indiquant si un pion d'un joueur est mort
         private boolean utilise;
         private int[] tabNumDispo;
         private int numActuelle;
+        
+        
         
     //Getters Setters
         

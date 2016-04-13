@@ -11,5 +11,11 @@
 public abstract class Pions {
     protected int abscisse ; // 
     protected int ordonnee; //
-
+    
+    public void deplacer(int o){
+    
+    }
+    public void deplacerPion(Pions p){
+    
+    }
 }

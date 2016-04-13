@@ -20,6 +20,11 @@ public class Cases {
         this.occupee = occupee;
         this.pioncase = pioncase;
     }
+    public Cases(int abscisse, int ordonnee, boolean occupee){
+        this.abscisse = abscisse;
+        this.ordonnee = ordonnee;
+        this.occupee = occupee;
+    }
 
     public int getAbscisse() {
         return abscisse;
@@ -51,6 +56,10 @@ public class Cases {
 
     public void setPioncase(Pions pioncase) {
         this.pioncase = pioncase;
+    }
+    // à corriger
+    public boolean isPionHere(){
+        return false;
     }
     
     

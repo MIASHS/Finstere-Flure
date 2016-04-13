@@ -9,5 +9,8 @@
  * @author oneiroi
  */
 public class Outils {
-    
+    public static char convertCoorToChar(int a,int o){
+        char c=' ';
+        return c;
+    }
 }

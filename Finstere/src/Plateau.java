@@ -10,4 +10,8 @@
  */
 public class Plateau {
     
+    //à compléter
+    public Cases getCase(int o,int a){
+        return new Cases(o,a,false);
+    }
 }

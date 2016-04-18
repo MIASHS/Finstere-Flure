@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,31 +29,25 @@ public class Jeu {
    // pseudo du joueur en train de jouer
    private String pseudoJoueurCourant;
    
-   public void init() {
-     
-       
+   
+   public void init(Plateau monPlateau) {
+       // mise en place des bloques de pierres 
+       int i;
+        for(i = 0; i < 5; i++ ){
+            this.placementBlocPierre(monPlateau);
+       }
        
        // mise en place des flaques
        this.flaque = new ArrayList<Flaque>();
-       Flaque flaque1 = new Flaque(100,90);
-       Flaque flaque2 = new Flaque (60,80);
+       Flaque flaque1 = new Flaque(8,10);
+       Flaque flaque2 = new Flaque (7,6);
        // ajout dans la liste
        this.flaque.add(flaque1);
        this.flaque.add(flaque2);
        
-       // mise en place des bloques de pierres
-       this.blocsPierre = new ArrayList<Pierre>();
-       Pierre p1 = new Pierre(108,100);
-       Pierre p2 = new Pierre(10,11);
-       Pierre p3 = new Pierre(30,55);
-       Pierre p4 = new Pierre(80,66);
-       Pierre p5 = new Pierre(120,100);
-       // ajout dans la liste
-       this.blocsPierre.add(p1);
-       this.blocsPierre.add(p2);
-       this.blocsPierre.add(p3);
-       this.blocsPierre.add(p4);
-       this.blocsPierre.add(p5);
+       
+       
+
        
        Joueurs joueur1 = new Joueurs("Gab");
        
@@ -62,7 +57,7 @@ public class Jeu {
        
        j_list.add(joueur1);
        
-        Joueurs joueur2 = new Joueurs("Valére");
+        Joueurs joueur2 = new Joueurs("Valère");
        
        joueur2.ajouterPion(new PionJoueur(12,1));
        joueur2.ajouterPion(new PionJoueur(15,1));
@@ -71,5 +66,32 @@ public class Jeu {
        j_list.add(joueur2);
    }
    
+    public void placementFlaque(){
+        Random ra = new Random();
+        int placementX = ra.nextInt(15);
+        int placementY = ra.nextInt(11);
+        
+        
+    }
     
-}
+    public void placementBlocPierre(Plateau monPlateau){
+        Random ra = new Random();
+        int placementX = ra.nextInt(15);
+        int placementY = ra.nextInt(11);
+        Cases c = monplateau.obtenirCase(placementX,placementY);
+        while (c.isOccupee() || (placementX == 0 && placementY==1) || (placementX == 1 && placementY==1)|| (placementX == 0 && placementY==0) || (placementX == 1 && placementY==0)|| (placementX == 11 && placementY==15)|| (placementX == 11 && placementY==14)|| (placementX == 10 && placementY==14)|| (placementX == 10 && placementY==15)){
+                placementY = ra.nextInt(11);
+                placementX = ra.nextInt(15);
+                c = monplateau.obtenirCase(placementX,placementY);
+        }
+       Pierre p = new Pierre(placementX,placementY);
+       // ajout dans la liste
+       this.blocsPierre.add(p);
+    }
+
+    
+
+}   
+        
+
+    

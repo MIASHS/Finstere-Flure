@@ -30,11 +30,11 @@ public class Jeu {
    private String pseudoJoueurCourant;
    
    
-   public void init() {
+   public void init(Plateau monPlateau) {
+       // mise en place des bloques de pierres 
        int i;
-       // mise en place des bloques de pierres
-       for(i = 0; i < 5; i++ ){
-       this.placementBlocPierreHaut();
+        for(i = 0; i < 5; i++ ){
+            this.placementBlocPierre(monPlateau);
        }
        
        // mise en place des flaques
@@ -66,14 +66,23 @@ public class Jeu {
        j_list.add(joueur2);
    }
    
-    public void placementBlocPierreHaut(){
+    public void placementFlaque(){
         Random ra = new Random();
         int placementX = ra.nextInt(15);
         int placementY = ra.nextInt(11);
         
-        while ((placementX == 0 && placementY==1) || (placementX == 1 && placementY==1)|| (placementX == 0 && placementY==0) || (placementX == 1 && placementY==0)|| (placementX == 11 && placementY==15)|| (placementX == 11 && placementY==14)|| (placementX == 10 && placementY==14)|| (placementX == 10 && placementY==15)){
+        
+    }
+    
+    public void placementBlocPierre(Plateau monPlateau){
+        Random ra = new Random();
+        int placementX = ra.nextInt(15);
+        int placementY = ra.nextInt(11);
+        Cases c = monplateau.obtenirCase(placementX,placementY);
+        while (c.isOccupee() || (placementX == 0 && placementY==1) || (placementX == 1 && placementY==1)|| (placementX == 0 && placementY==0) || (placementX == 1 && placementY==0)|| (placementX == 11 && placementY==15)|| (placementX == 11 && placementY==14)|| (placementX == 10 && placementY==14)|| (placementX == 10 && placementY==15)){
                 placementY = ra.nextInt(11);
                 placementX = ra.nextInt(15);
+                c = monplateau.obtenirCase(placementX,placementY);
         }
        Pierre p = new Pierre(placementX,placementY);
        // ajout dans la liste

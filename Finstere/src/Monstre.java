@@ -204,8 +204,8 @@ public class Monstre extends Pions{
     public void seTeleporter(char c){
         Outils.convertChartoCoor(c,this);
     }
-    public void tuer(Pions p){
-        //p.mourrir();
+    public void tuer(PionJoueur p){
+        p.mourir(true);
     }
     
     public void verifierCase(int o){
@@ -218,7 +218,9 @@ public class Monstre extends Pions{
                         monPlateau.getCase(this.abscisse,this.ordonnee).getPioncase().deplacerPion(this);
                     break;
                 case "PionJoueur":
-                        this.tuer(monPlateau.getCase(this.abscisse,this.ordonnee).getPioncase());
+                    if( monPlateau.getCase(this.abscisse,this.ordonnee).getPioncase() instanceof PionJoueur) {
+                        this.tuer((PionJoueur)monPlateau.getCase(this.abscisse,this.ordonnee).getPioncase());
+                    }
                     break;
                 default: this.seTeleporter(Outils.convertCoorToChar(this.abscisse,this.ordonnee,this.orientation));
                     break;

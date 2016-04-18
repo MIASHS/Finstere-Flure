@@ -78,11 +78,11 @@ public class Jeu {
         Random ra = new Random();
         int placementX = ra.nextInt(15);
         int placementY = ra.nextInt(11);
-        Cases c = monplateau.obtenirCase(placementX,placementY);
+        Cases c = monPlateau.getCase(placementX,placementY);
         while (c.isOccupee() || (placementX == 0 && placementY==1) || (placementX == 1 && placementY==1)|| (placementX == 0 && placementY==0) || (placementX == 1 && placementY==0)|| (placementX == 11 && placementY==15)|| (placementX == 11 && placementY==14)|| (placementX == 10 && placementY==14)|| (placementX == 10 && placementY==15)){
                 placementY = ra.nextInt(11);
                 placementX = ra.nextInt(15);
-                c = monplateau.obtenirCase(placementX,placementY);
+                c = monPlateau.getCase(placementX,placementY);
         }
        Pierre p = new Pierre(placementX,placementY);
        // ajout dans la liste

@@ -18,4 +18,19 @@ public abstract class Pions {
     public void deplacerPion(Pions p){
     
     }
+    
+    public int getX(){
+        return abscisse;
+    }
+    public int getY(){
+        return ordonnee;
+    }
+    public void setX(int x){
+        abscisse = x;
+    }
+    public void setY(int y){
+        ordonnee = y;
+    }
+            
+    
 }

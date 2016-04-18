@@ -1,3 +1,7 @@
+
+import java.util.HashMap;
+import java.util.Map;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,8 +13,6 @@
  * @author Gabriel
  */
 public class Monstre extends Pions{
-    private int x;
-    private int y;
     private int orientation; // 1=haut 3=droite 4=bas 2=gauche
     private boolean chgmtOrientation=false;
     private Paquet listeCarte = new Paquet();
@@ -19,26 +21,12 @@ public class Monstre extends Pions{
     
 
     public Monstre(int x, int y, int orientation) {
-        this.x = x;
-        this.y = y;
+        this.setX(x);
+        this.setY(y);
         this.orientation = orientation;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
+    
 
     public int getOrientation() {
         return orientation;
@@ -59,7 +47,7 @@ public class Monstre extends Pions{
     
     // méthode
     
-    public void deplacement(Cartes c){
+    public void deplacer(Cartes c){
         if(c.getNumeroCarte()!=11&&c.getNumeroCarte()!=12){
             int nbCasesRestantes = c.getNumeroCarte();
             while(nbCasesRestantes!=0){
@@ -214,10 +202,10 @@ public class Monstre extends Pions{
         return false;
     }
     public void seTeleporter(char c){
-    
+        Outils.convertChartoCoor(c,this);
     }
     public void tuer(Pions p){
-    
+        //p.mourrir();
     }
     
     public void verifierCase(int o){
@@ -232,7 +220,7 @@ public class Monstre extends Pions{
                 case "PionJoueur":
                         this.tuer(monPlateau.getCase(this.abscisse,this.ordonnee).getPioncase());
                     break;
-                default: this.seTeleporter(Outils.convertCoorToChar(this.abscisse,this.ordonnee));
+                default: this.seTeleporter(Outils.convertCoorToChar(this.abscisse,this.ordonnee,this.orientation));
                     break;
             }
         }

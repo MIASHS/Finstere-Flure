@@ -8,6 +8,6 @@
  *
  * @author Gabriel
  */
-public class Déplacements {
+public interface Deplacements {
     
 }

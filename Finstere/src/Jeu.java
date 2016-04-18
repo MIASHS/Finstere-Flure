@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,9 +29,13 @@ public class Jeu {
    // pseudo du joueur en train de jouer
    private String pseudoJoueurCourant;
    
+   
    public void init() {
-     
-       
+       int i;
+       // mise en place des bloques de pierres
+       for(i = 0; i < 5; i++ ){
+       this.placementBlocPierreHaut();
+       }
        
        // mise en place des flaques
        this.flaque = new ArrayList<Flaque>();
@@ -40,19 +45,9 @@ public class Jeu {
        this.flaque.add(flaque1);
        this.flaque.add(flaque2);
        
-       // mise en place des bloques de pierres
-       this.blocsPierre = new ArrayList<Pierre>();
-       Pierre p1 = new Pierre(2,14);
-       Pierre p2 = new Pierre(1,6);
-       Pierre p3 = new Pierre(1,2);
-       Pierre p4 = new Pierre(9,7);
-       Pierre p5 = new Pierre(5,8);
-       // ajout dans la liste
-       this.blocsPierre.add(p1);
-       this.blocsPierre.add(p2);
-       this.blocsPierre.add(p3);
-       this.blocsPierre.add(p4);
-       this.blocsPierre.add(p5);
+       
+       
+
        
        Joueurs joueur1 = new Joueurs("Gab");
        
@@ -71,5 +66,23 @@ public class Jeu {
        j_list.add(joueur2);
    }
    
+    public void placementBlocPierreHaut(){
+        Random ra = new Random();
+        int placementX = ra.nextInt(15);
+        int placementY = ra.nextInt(11);
+        
+        while ((placementX == 0 && placementY==1) || (placementX == 1 && placementY==1)|| (placementX == 0 && placementY==0) || (placementX == 1 && placementY==0)|| (placementX == 11 && placementY==15)|| (placementX == 11 && placementY==14)|| (placementX == 10 && placementY==14)|| (placementX == 10 && placementY==15)){
+                placementY = ra.nextInt(11);
+                placementX = ra.nextInt(15);
+        }
+       Pierre p = new Pierre(placementX,placementY);
+       // ajout dans la liste
+       this.blocsPierre.add(p);
+    }
+
     
-}
+
+}   
+        
+
+    

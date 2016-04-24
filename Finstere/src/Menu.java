@@ -29,8 +29,10 @@ public class Menu {
     
      /**************Fonctions du menu de démarrage********************/
     
-    public void demarrer(Jeu partie) {
+    public void demarrer() {
        //A compléter
+        partieActuelle= new Jeu();
+        partieActuelle.init(new Plateau(partieActuelle));
     }
   
     // Méthode qui permet de quitter le jeu
@@ -50,7 +52,7 @@ public class Menu {
             case 'Q':   this.quitter();
                         break;
             case 'D':   //this.getPartieActuelle().lancerJeu();
-                        this.demarrer(this.getPartieActuelle());
+                        this.demarrer();
                         break;
         }           
     }

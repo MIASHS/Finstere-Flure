@@ -17,11 +17,26 @@ public class PionJoueur extends Pions {
             this.abscisse=abscisse;
             this.ordonnee=ordonnee;
         }
+        
+        private boolean mort=false; //booléen indiquant si un pion d'un joueur est mort
+        private boolean utilise=false;
+        private int[] tabNumDispo= new int[2];
+        private int numActuel=0;
+        
+        public PionJoueur(int coupFace){
+            tabNumDispo[0]=coupFace;
+            tabNumDispo[1]=7- coupFace;
+        }
+        
+        public void setNumActuel(){
+            if(numActuel==0){
+                numActuel+=1;
+            }else{
+                numActuel=0;
+            }
+        }
     
-        private boolean mort; //booléen indiquant si un pion d'un joueur est mort
-        private boolean utilise;
-        private int[] tabNumDispo;
-        private int numActuelle;
+       
         
         
         
@@ -51,13 +66,14 @@ public class PionJoueur extends Pions {
             this.tabNumDispo = tabNumDispo;
         }
 
-        public int getNumActuelle() {
-            return numActuelle;
+        public int getNumActuel() {
+            return numActuel;
         }
-        
-        public void setNumActuelle(int numActuelle) {
-            this.numActuelle = numActuelle;
-    }
+        public void setNumActuel(int i){
+            if(i==0||i==1){
+                numActuel=i;
+            }
+        }
         
     //Constructeur
 
@@ -65,7 +81,7 @@ public class PionJoueur extends Pions {
             this.mort = mort;
             this.utilise = utilise;
             this.tabNumDispo =  tabNumDispo;
-            this.numActuelle = numActuelle;
+            this.numActuel = numActuelle;
         }
 
     //Méthodes
@@ -73,14 +89,6 @@ public class PionJoueur extends Pions {
         //Méthode permettant de faire mourir un pion d'un joueur
         public void mourir(boolean b){
             this.setMort(b);
-        }
-        
-        //Méthode permettant de changer le numéro d'un pion d'un joueur
-        public void changerNum(){
-            if (this.numActuelle == tabNumDispo[0])
-                this.numActuelle = tabNumDispo[1];
-            else
-                this.numActuelle = tabNumDispo[0];
         }
         
         public void deplacement(int num){

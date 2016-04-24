@@ -19,9 +19,9 @@ public class Joueurs {
 
     public Joueurs(String pseudo) {
         this.pseudo = pseudo;
-        this.tabPion = tabPion;
-        this.gagner = gagner;
-        this.pionUtilisé = pionUtilisé;
+        this.tabPion = new ArrayList<>();
+        
+        
     }
 
     public void ajouterPion(Pions p){

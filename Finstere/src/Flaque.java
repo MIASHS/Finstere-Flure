@@ -10,8 +10,28 @@
  */
 public class Flaque extends Obstacle {
     
-    public Flaque(int positionX, int positionY) {
+    private int type;
+    private boolean premiereC=true;
+    
+    public Flaque(int positionX, int positionY, int i) {
         super(positionX, positionY);
+        type= i;
+    }
+    public Flaque(int positionX, int positionY, int i,boolean pC) {
+        super(positionX, positionY);
+        type= i;
+        premiereC=pC;
+    }
+    
+    public void modifmorpho(int i){
+    
+    }
+    
+    public int getType(){
+        return type;
+    }
+    public boolean getPremiereC(){
+    return premiereC;
     }
     
 }

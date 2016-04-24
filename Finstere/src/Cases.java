@@ -25,35 +25,27 @@ public class Cases {
         this.ordonnee = ordonnee;
         this.occupee = occupee;
     }
-
     public int getAbscisse() {
         return abscisse;
     }
-
     public void setAbscisse(int abscisse) {
         this.abscisse = abscisse;
     }
-
     public int getOrdonnee() {
         return ordonnee;
     }
-
     public void setOrdonnee(int ordonnee) {
         this.ordonnee = ordonnee;
     }
-
     public boolean isOccupee() {
         return occupee;
     }
-
     public void setOccupee(boolean occupee) {
         this.occupee = occupee;
     }
-
     public Pions getPioncase() {
         return pioncase;
     }
-
     public void setPioncase(Pions pioncase) {
         this.pioncase = pioncase;
     }
@@ -61,6 +53,4 @@ public class Cases {
     public boolean isPionHere(){
         return false;
     }
-    
-    
 }

@@ -85,7 +85,6 @@ public class Monstre extends Pions{
                 for(int j=1;j<4;j++){
                    this.regarder(j, monPlateau);
                 }
-
                 switch(this.getOrientation()){
                     case 1:
                             this.setX(this.getX()+1);
@@ -115,7 +114,6 @@ public class Monstre extends Pions{
         boolean trouve=false;
         boolean chg=false;
         switch(o){
-            
             case 1: 
                     for(int i= this.ordonnee;i>-1;i--){
                         if(monPlateau.getCase(this.abscisse,i).isPionHere()&&!trouve){
@@ -134,7 +132,6 @@ public class Monstre extends Pions{
                             trouve=true;
                         }
                     }
-                    
                     break;
             case 2:
                     for(int i= this.abscisse;i>-1;i--){
@@ -154,7 +151,6 @@ public class Monstre extends Pions{
                             trouve=true;
                         }
                     }
-
                     break;
             case 3:
                     for(int i= this.abscisse;i<16;i++){
@@ -174,7 +170,6 @@ public class Monstre extends Pions{
                             trouve=true;
                         }
                     }
-
                     break;
             case 4:
                     for(int i= this.ordonnee;i<11;i++){
@@ -194,8 +189,6 @@ public class Monstre extends Pions{
                             trouve=true;
                         }
                     }
-
-                
                     break;
         }
         

@@ -9,8 +9,7 @@
  * @author Seb
  */
 public class PionJoueur extends Pions {
-    
-   
+
     //Attributs
 
         public PionJoueur(int x , int y){
@@ -35,11 +34,7 @@ public class PionJoueur extends Pions {
                 numActuel=0;
             }
         }
-    
-       
-        
-        
-        
+            
     //Getters Setters
         
         public boolean isMort() {
@@ -91,8 +86,12 @@ public class PionJoueur extends Pions {
             this.setMort(b);
         }
         
-        public void deplacement(int num){
-            
+        public void deplacer(int num){
+            //On retire la case du tableau en plaçant le booleen occupe à faux
+            //On estime les coups possibles depuis la position du joueur en 
+            //fonction de num et des barrières du plateau de jeu
+            //On sort la liste des coups possibles.
+            //En fonction de la case choisie, on place la case choisie dans le tableau
         }
 
     @Override

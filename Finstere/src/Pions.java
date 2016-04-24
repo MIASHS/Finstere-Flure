@@ -8,7 +8,7 @@
  *
  * @author Gabriel
  */
-public abstract class Pions {
+public abstract class Pions implements Deplacements {
     protected int abscisse ; // 
     protected int ordonnee; //
     

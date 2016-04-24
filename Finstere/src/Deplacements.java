@@ -9,5 +9,5 @@
  * @author Gabriel
  */
 public interface Deplacements {
-    
+    public void deplacer();
 }

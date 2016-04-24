@@ -13,12 +13,12 @@ public class Flaque extends Obstacle {
     private int type;
     private boolean premiereC=true;
     
-    public Flaque(int positionX, int positionY, int i) {
-        super(positionX, positionY);
+    public Flaque(int x, int y, int i) {
+        super(x, y);
         type= i;
     }
-    public Flaque(int positionX, int positionY, int i,boolean pC) {
-        super(positionX, positionY);
+    public Flaque(int x, int y, int i,boolean pC) {
+        super(x, y);
         type= i;
         premiereC=pC;
     }

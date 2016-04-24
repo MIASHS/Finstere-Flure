@@ -13,9 +13,9 @@ public class PionJoueur extends Pions {
    
     //Attributs
 
-        public PionJoueur(int abscisse , int ordonnee){
-            this.abscisse=abscisse;
-            this.ordonnee=ordonnee;
+        public PionJoueur(int x , int y){
+            this.abscisse=x;
+            this.ordonnee=y;
         }
         
         private boolean mort=false; //booléen indiquant si un pion d'un joueur est mort
@@ -94,4 +94,9 @@ public class PionJoueur extends Pions {
         public void deplacement(int num){
             
         }
+
+    @Override
+    public void deplacer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

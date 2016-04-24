@@ -16,6 +16,7 @@ public class Plateau {
     //à compléter
     private ArrayList<Cases> monPlateau;
     private ArrayList<Pions> tabPionsAPlacer;
+    
     public Plateau(Jeu partie){
         monPlateau=new ArrayList<>();
         tabPionsAPlacer=new ArrayList<>();

@@ -8,23 +8,16 @@
  *
  * @author Gabriel
  */
-public class Obstacle extends Pions {
-    private int positionX;
-    private int positionY;
-
-    public Obstacle(int positionX, int positionY) {
-        this.positionX = positionX;
-        this.positionY = positionY;
+public class Obstacle extends Pions  {
+    public Obstacle(int x,int y){
+        this.abscisse=x;
+        this.ordonnee=y;
     }
 
-    public void setPositionX(int positionX) {
-        this.positionX = positionX;
+    @Override
+    public void deplacer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    public void setPositionY(int positionY) {
-        this.positionY = positionY;
-    }
-    
     
     
 }

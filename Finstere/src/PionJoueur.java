@@ -86,10 +86,28 @@ public class PionJoueur extends Pions {
             this.setMort(b);
         }
         
-        public void deplacer(int num){
+        public void deplacer(int num,Plateau monPlateau){
             //On retire la case du tableau en plaçant le booleen occupe à faux
+            
+            
+            Cases c =monPlateau.getCase(this.getX(),this.getY());
+            if(!c.isFlaque()){
+                
+                c.setOccupee(false);
+                c.setPioncase(null);
+                monPlateau.getPlateau().remove(c);
+                
+            }else{
+                c.setPioncase(c.getFlaque());
+            }
+            
+            
+            
             //On estime les coups possibles depuis la position du joueur en 
             //fonction de num et des barrières du plateau de jeu
+            
+            
+            
             //On sort la liste des coups possibles.
             //En fonction de la case choisie, on place la case choisie dans le tableau
         }

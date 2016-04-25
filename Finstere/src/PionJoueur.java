@@ -129,11 +129,12 @@ public class PionJoueur extends Pions {
                 
             while(!listProvisoire.isEmpty()){
                 if(((listProvisoire.get(0).getAbscisse()>=0&&listProvisoire.get(0).getOrdonnee()<=0&&listProvisoire.get(0).getAbscisse()<=10&&listProvisoire.get(0).getOrdonnee()>=-6)||(listProvisoire.get(0).getAbscisse()<=15&&listProvisoire.get(0).getOrdonnee()>=-10&&listProvisoire.get(0).getAbscisse()>=4&&listProvisoire.get(0).getOrdonnee()<=-4)||(listProvisoire.get(0).getAbscisse()<=14&&listProvisoire.get(0).getOrdonnee()>=-9&&listProvisoire.get(0).getAbscisse()>=3&&listProvisoire.get(0).getOrdonnee()<=-3)||(listProvisoire.get(0).getAbscisse()<=13&&listProvisoire.get(0).getOrdonnee()>=-8&&listProvisoire.get(0).getAbscisse()>=2&&listProvisoire.get(0).getOrdonnee()<=-2)||(listProvisoire.get(0).getAbscisse()<=12&&listProvisoire.get(0).getOrdonnee()>=-7&&listProvisoire.get(0).getAbscisse()>=1&&listProvisoire.get(0).getOrdonnee()<=-1))&&!(listProvisoire.get(0).getPioncase() instanceof Monstre)&&!(listProvisoire.get(0).getPioncase() instanceof PionJoueur)){
-                    coupPossible.add(listProvisoire.get(0));
+                        this.verifierCase(listProvisoire.get(0));
+                       coupPossible.add(listProvisoire.get(0));
+                    
                 }
                 listProvisoire.remove(0);
             }
-            
         }
         
         public void deplacer(Plateau monPlateau,Cases cas){
@@ -170,7 +171,17 @@ public class PionJoueur extends Pions {
 
     public void verifierCase(Cases c){
         // verifier la case precedente switch en fonction de l'orientation
+        // 
         // verifier si la case ne contient pas déjà objet :
+        
+            if((c.getPioncase() instanceof Flaque)&&(c.getPioncase() instanceof Pierre)){
+                       switch(c.getPioncase().getClass().getName()){
+                           case "Flaque":
+                               break;
+                           case "Pierre":
+                               break;
+                       }
+                   }
         //      - type monstre, PionJoueur cases interdite
         //      - type obstacle switch en fonction du type
         //          - deplacer PionJoueur ou obstacle

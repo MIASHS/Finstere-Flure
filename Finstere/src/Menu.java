@@ -30,9 +30,9 @@ public class Menu {
      /**************Fonctions du menu de démarrage********************/
     
     public void demarrer() {
-       //A compléter
         partieActuelle= new Jeu();
         partieActuelle.init(new Plateau(partieActuelle));
+        this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0,partieActuelle)));
     }
   
     // Méthode qui permet de quitter le jeu

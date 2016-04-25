@@ -12,6 +12,8 @@ public class Cases {
     private int abscisse ;
     private int ordonnee;
     boolean occupee;
+    boolean cflaque=false;
+    Flaque laFlaque=null;
     Pions pioncase;
 
     public Cases(int abscisse, int ordonnee, boolean occupee, Pions pioncase) {
@@ -19,6 +21,14 @@ public class Cases {
         this.ordonnee = ordonnee;
         this.occupee = occupee;
         this.pioncase = pioncase;
+    }
+    public Cases(int abscisse, int ordonnee, boolean occupee, Pions pioncase,boolean isf,Flaque f) {
+        this.abscisse = abscisse;
+        this.ordonnee = ordonnee;
+        this.occupee = occupee;
+        this.pioncase = pioncase;
+        this.cflaque=isf;
+        this.laFlaque=f;
     }
     public Cases(int abscisse, int ordonnee, boolean occupee){
         this.abscisse = abscisse;
@@ -53,4 +63,18 @@ public class Cases {
     public boolean isPionHere(){
         return false;
     }
+    
+    public boolean isFlaque(){
+        return this.cflaque;
+    }
+    
+    public Flaque getFlaque(){
+        return this.laFlaque;
+    }
+    
+    public void setFlaque(boolean b){
+        this.cflaque=b;
+    }
+    
+    
 }

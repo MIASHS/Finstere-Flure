@@ -35,6 +35,7 @@ public class Cases {
         this.ordonnee = ordonnee;
         this.occupee = occupee;
     }
+    
     public int getAbscisse() {
         return abscisse;
     }
@@ -61,7 +62,7 @@ public class Cases {
     }
     // à corriger
     public boolean isPionHere(){
-        return false;
+        if(this.pioncase instanceof PionJoueur){return true;}else{return false;}
     }
     
     public boolean isFlaque(){

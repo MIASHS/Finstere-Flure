@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -434,4 +437,45 @@ public class Outils {
                 
         }
     }
+    
+     public static char conversionCaractere(char lettre){
+        return Character.toUpperCase(lettre);
+    }
+    
+     
+        public static char verification(String str, int choix){
+        str = str.toUpperCase();
+        Scanner sc=new Scanner(System.in);
+        char[] lettres = str.toCharArray();
+        if(choix==1) {
+                    // tant que le joueur ne saisit pas une chaîne valide
+                    while((str!="Y")||(str!="O")||(str!="YES")||(str!="OUI")||(str!="N")||(str!="NON")||(str!="NO")){
+                        System.out.println("\nLa saisie est erronée veuillez réessayer. \n Entrez une réponse (O/N):");
+                        Outils.verification(sc.next(),1);
+                    }
+                    return lettres[0];
+                    
+        }else{
+                  //si les caractères entrés ne sont pas entre A et Z
+                  while(lettres[0]<'A' && lettres[0]>'Z'){
+                      System.out.println("\nLa saisie est erronée veuillez réessayer. \n Entrez votre choix:");    
+                      Outils.verification(sc.next(),0);
+                  }
+                  return lettres[0];
+                  
+        }     
+    }
+    
+     //Méthode qui affiche les différents menu et confirmations de choix.
+    public static char afficher(int niveau, Jeu partieActuelle){
+        Scanner sc=new Scanner(System.in);
+        switch (niveau) {
+            case 0:     System.out.println("\nDemarrer(D)\nQuitter(Q)\nMenu(S)");
+                        System.out.println("\nQuel est votre choix ?\n");
+                
+                        return Outils.verification(sc.next(),0);
+        }
+        return 'e';
+    }
+    
 }

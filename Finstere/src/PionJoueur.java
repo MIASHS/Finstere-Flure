@@ -177,8 +177,38 @@ public class PionJoueur extends Pions {
             if((c.getPioncase() instanceof Flaque)&&(c.getPioncase() instanceof Pierre)){
                        switch(c.getPioncase().getClass().getName()){
                            case "Flaque":
+                               if(this.casePrecedente.getAbscisse()-this.getX()==0){
+                                   if(this.casePrecedente.getOrdonnee()-this.getY()<0){
+                               
+                                    }else{
+                               
+                                    }
+                                   
+                               }else {
+                                   if(this.casePrecedente.getAbscisse()-this.getX()<0){
+                               
+                                    }else{
+                               
+                                    }
+                                   
+                               }
                                break;
                            case "Pierre":
+                               if(this.casePrecedente.getAbscisse()-this.getX()==0){
+                                   if(this.casePrecedente.getOrdonnee()-this.getY()<0){
+                                       
+                                    }else{
+                                       
+                                    }
+                                   
+                               }else {
+                                   if(this.casePrecedente.getAbscisse()-this.getX()<0){
+                                       
+                                    }else{
+                                       
+                                    }
+                                   
+                               }
                                break;
                        }
                    }

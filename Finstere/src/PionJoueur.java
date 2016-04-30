@@ -235,7 +235,7 @@ public class PionJoueur extends Pions {
                                        }
                                        
                                     }
-                                   
+                                  
                                }
                                break;
                        }

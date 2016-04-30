@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ public class Monstre extends Pions{
     private Paquet listeCarte = new Paquet();
     private Plateau monPlateau;
     int nbPionsTues=0;
+    private ArrayList<Cases> chemin=new ArrayList<>();
     
 
     public Monstre(int x, int y, int orientation) {
@@ -26,6 +28,9 @@ public class Monstre extends Pions{
         this.orientation = orientation;
     }
 
+    public void makeChemin(Cases c){
+        chemin.add(c);
+    }
     
 
     public int getOrientation() {
@@ -71,7 +76,8 @@ public class Monstre extends Pions{
                             break;
                 }
                 this.verifierCase(this.getOrientation());
-                nbCasesRestantes-=0;
+                this.makeChemin(monPlateau.getCase(this.getX(), this.getY()));
+                nbCasesRestantes-=1;
             }
         }else{
             int i;

@@ -15,13 +15,15 @@ public class Joueurs {
     private String pseudo ;
     private ArrayList <Pions> tabPion  ;
     private boolean gagner ;
+    private int pionTotal;
     private int pionUtilisé;
 
-    public Joueurs(String pseudo) {
+    public Joueurs(String pseudo, ArrayList<Pions> tabPion, boolean gagner, int pionTotal, int pionUtilisé) {
         this.pseudo = pseudo;
-        this.tabPion = new ArrayList<>();
-        
-        
+        this.tabPion = tabPion;
+        this.gagner = gagner;
+        this.pionTotal = pionTotal;
+        this.pionUtilisé = pionUtilisé;
     }
 
     public void ajouterPion(Pions p){
@@ -29,8 +31,7 @@ public class Joueurs {
     }
     
    // ***** GETTERS & SETTERS   ***** /*
-        
-    
+
     public String getPseudo() {
         return pseudo;
     }
@@ -54,12 +55,23 @@ public class Joueurs {
     public void setGagner(boolean gagner) {
         this.gagner = gagner;
     }
-    
-    public int getpionUtilisé(){
+
+    public int getPionTotal() {
+        return pionTotal;
+    }
+
+    public void setPionTotal(int pionTotal) {
+        this.pionTotal = pionTotal;
+    }
+
+    public int getPionUtilisé() {
         return pionUtilisé;
     }
-    
-    public void setpionUtilisé(int pionUtilisé){
-        this.pionUtilisé= pionUtilisé;
+
+    public void setPionUtilisé(int pionUtilisé) {
+        this.pionUtilisé = pionUtilisé;
     }
+        
+    
+
 }

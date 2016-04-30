@@ -12,37 +12,17 @@ import java.util.ArrayList;
  * @author Gaby
  */
 public class IA {
+    
+    private Jeu game;
+
+    public IA(Jeu g) {
+       game = g ;
+    }
 
     
     
-    public void CoupPossibleIA(Plateau monPlateau, Jeu game, int num){
-        
-        ArrayList<Cases> listProvisoireIA = new ArrayList<>();
-        
-            for(int j=0;j<num;j++){
-                        for(int i=1;i<(num-j);i++){
-                           listProvisoireIA.add(new Cases(game.getMonstre().getX()+i,game.getMonstre().getY()+j,false));
-                        }
-                }
-                
-                for(int j=0;j<num;j++){
-                        for(int i=-1;i<(j-num);i--){
-                           listProvisoireIA.add(new Cases(game.getMonstre().getX()+i,game.getMonstre().getY()+j,false));
-                        }
-                }
-                
-                for(int j=0;j<-num;j--){
-                        for(int i=-1;i<(j-num);i--){
-                           listProvisoireIA.add(new Cases(game.getMonstre().getX()+i,game.getMonstre().getY()+j,false));
-                        }
-                }
-                
-                for(int j=0;j<-num;j--){
-                        for(int i=1;i<(num-j);i++){
-                           listProvisoireIA.add(new Cases(game.getMonstre().getX()+i,game.getMonstre().getY()+j,false));
-                        }
-                }
-    
+    public void CoupPossibleIA(Plateau monPlateau, Joueurs j ){
+        game.getJ_list().get(1).getTabPion().get(0);
     
     }
     

@@ -13,12 +13,12 @@ import java.util.ArrayList;
  */
 public class Joueurs {
     private String pseudo ;
-    private ArrayList <Pions> tabPion=new ArrayList<>()  ;
+    private ArrayList <PionJoueur> tabPion=new ArrayList<>()  ;
     private boolean gagner ;
     private int pionTotal;
     private int pionUtilisé;
 
-    public Joueurs(String pseudo, ArrayList<Pions> tabPion, boolean gagner, int pionTotal, int pionUtilisé) {
+    public Joueurs(String pseudo, ArrayList<PionJoueur> tabPion, boolean gagner, int pionTotal, int pionUtilisé) {
         this.pseudo = pseudo;
         this.tabPion = tabPion;
         this.gagner = gagner;
@@ -29,7 +29,7 @@ public class Joueurs {
         this.pseudo = pseudo;
     }
 
-    public void ajouterPion(Pions p){
+    public void ajouterPion(PionJoueur p){
         this.tabPion.add(p);
     }
     
@@ -43,11 +43,11 @@ public class Joueurs {
         this.pseudo = pseudo;
     }
 
-    public ArrayList<Pions> getTabPion() {
+    public ArrayList<PionJoueur> getTabPion() {
         return tabPion;
     }
 
-    public void setTabPion(ArrayList<Pions> tabPion) {
+    public void setTabPion(ArrayList<PionJoueur> tabPion) {
         this.tabPion = tabPion;
     }
 

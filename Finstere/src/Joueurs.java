@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Joueurs {
     private String pseudo ;
-    private ArrayList <Pions> tabPion  ;
+    private ArrayList <Pions> tabPion=new ArrayList<>()  ;
     private boolean gagner ;
     private int pionTotal;
     private int pionUtilisé;

@@ -17,19 +17,19 @@ public class Plateau {
     private ArrayList<Cases> monPlateau;
     private ArrayList<Pions> tabPionsAPlacer;
     
-    public Plateau(Jeu partie){
+    public Plateau(){
         monPlateau=new ArrayList<>();
         tabPionsAPlacer=new ArrayList<>();
-        this.init(partie);
+        //this.init(partie);
     }
     
     public void ajouterList(Pions p){
         tabPionsAPlacer.add(p);
     }
     
-    public void init(Jeu partie){
+    /*public void init(Jeu partie){
         
-    }
+    }*/
     
     public ArrayList<Cases> getPlateau(){
         return monPlateau;

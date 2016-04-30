@@ -95,7 +95,7 @@ public class PionJoueur extends Pions {
             this.setMort(b);
         }
         
-        public void searchCoupPossible(int num){
+        public void searchCoupPossible(Plateau monPlateau, int num){
         
             
             ArrayList<Cases> listProvisoire=new ArrayList<>();
@@ -129,7 +129,7 @@ public class PionJoueur extends Pions {
                 
             while(!listProvisoire.isEmpty()){
                 if(((listProvisoire.get(0).getAbscisse()>=0&&listProvisoire.get(0).getOrdonnee()<=0&&listProvisoire.get(0).getAbscisse()<=10&&listProvisoire.get(0).getOrdonnee()>=-6)||(listProvisoire.get(0).getAbscisse()<=15&&listProvisoire.get(0).getOrdonnee()>=-10&&listProvisoire.get(0).getAbscisse()>=4&&listProvisoire.get(0).getOrdonnee()<=-4)||(listProvisoire.get(0).getAbscisse()<=14&&listProvisoire.get(0).getOrdonnee()>=-9&&listProvisoire.get(0).getAbscisse()>=3&&listProvisoire.get(0).getOrdonnee()<=-3)||(listProvisoire.get(0).getAbscisse()<=13&&listProvisoire.get(0).getOrdonnee()>=-8&&listProvisoire.get(0).getAbscisse()>=2&&listProvisoire.get(0).getOrdonnee()<=-2)||(listProvisoire.get(0).getAbscisse()<=12&&listProvisoire.get(0).getOrdonnee()>=-7&&listProvisoire.get(0).getAbscisse()>=1&&listProvisoire.get(0).getOrdonnee()<=-1))&&!(listProvisoire.get(0).getPioncase() instanceof Monstre)&&!(listProvisoire.get(0).getPioncase() instanceof PionJoueur)){
-                        this.verifierCase(listProvisoire.get(0));
+                        this.verifierCase(monPlateau, listProvisoire.get(0));
                        coupPossible.add(listProvisoire.get(0));
                     
                 }
@@ -166,10 +166,10 @@ public class PionJoueur extends Pions {
             cas.setOccupee(true);
             cas.setPioncase(this);
             monPlateau.ajouterCase(cas);
-            this.verifierCase(cas);
+            this.verifierCase(monPlateau, cas);
         }
 
-    public void verifierCase(Cases c){
+    public void verifierCase(Plateau monPlateau, Cases c){
         // verifier la case precedente switch en fonction de l'orientation
         // 
         // verifier si la case ne contient pas déjà objet :
@@ -179,16 +179,20 @@ public class PionJoueur extends Pions {
                            case "Flaque":
                                if(this.casePrecedente.getAbscisse()-this.getX()==0){
                                    if(this.casePrecedente.getOrdonnee()-this.getY()<0){
-                               
+                                       this.setY(this.getY()+1);
+                                       this.deplacer(monPlateau,monPlateau.getCase(this.getX(), this.getY()));
                                     }else{
-                               
+                                       this.setY(this.getY()-1);
+                                       this.deplacer(monPlateau,monPlateau.getCase(this.getX(), this.getY()));
                                     }
                                    
                                }else {
                                    if(this.casePrecedente.getAbscisse()-this.getX()<0){
-                               
+                                       this.setX(this.getX()+1);
+                                       this.deplacer(monPlateau,monPlateau.getCase(this.getX(), this.getY()));
                                     }else{
-                               
+                                       this.setX(this.getX()+1);
+                                       this.deplacer(monPlateau,monPlateau.getCase(this.getX(), this.getY()));
                                     }
                                    
                                }

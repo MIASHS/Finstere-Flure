@@ -36,11 +36,12 @@ public class Jeu {
        pions_perdu = new ArrayList<>();
        blocsPierre = new ArrayList <>();
        flaque = new ArrayList <>();
+       
    }
    
    public void init(Plateau plateauVide) {
        // mise en place des bloques de pierres 
-       
+       monPlateau=plateauVide;
         for(int i = 0; i < 5; i++ ){
             this.placementBlocPierre(plateauVide);
        }

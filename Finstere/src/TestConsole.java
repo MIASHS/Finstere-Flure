@@ -6,16 +6,15 @@
 
 /**
  *
- * @author Gabriel
+ * @author Seb
  */
-public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        TestConsole.test();
-        
-    }
+public class TestConsole {
     
+      public static void test(){
+          
+            Menu m = new Menu();
+            m.demarrer();
+    
+    }
+
 }

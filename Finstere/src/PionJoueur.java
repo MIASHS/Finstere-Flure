@@ -94,6 +94,7 @@ public class PionJoueur extends Pions {
         public void mourir(boolean b){
             this.setMort(b);
         }
+        // num = numéro actuel sur le pion joueur 
         
         public void searchCoupPossible(Plateau monPlateau, int num){
         

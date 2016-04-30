@@ -34,6 +34,10 @@ public abstract class Pions implements Deplacements {
         ordonnee = y;
         return true;
     }
+    
+    public boolean verifier(Cases c){
+        return false;
+    }
             
     
 }

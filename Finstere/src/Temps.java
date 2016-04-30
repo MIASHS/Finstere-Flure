@@ -21,12 +21,13 @@ public class Temps {
         this.finirTour = finirTour;
     }
     
-    
+    // méthode de debut de jeu
     public void debutGame(){
         this.nbTours =0;
         this.nbToursJoueur = 0;
     }
     
+    // méthode de gestion des tours
     public void gestionTour(Monstre m){
         
         while(debuterTour = true){
@@ -34,10 +35,10 @@ public class Temps {
             this.nbToursJoueur +=1;
             
         }if(this.debuterTour=false){
-            this.finirTour= false;
-            m.deplacer();
-            
+            this.finirTour= true;
+            m.deplacer();   
         }
+        this.nbTours +=1;
     }
     
     

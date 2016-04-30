@@ -31,7 +31,7 @@ public class Menu {
     
     public void demarrer() {
         partieActuelle= new Jeu();
-        partieActuelle.init(new Plateau(partieActuelle));
+        partieActuelle.init(new Plateau());
         this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0,partieActuelle)));
     }
   

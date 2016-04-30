@@ -479,7 +479,7 @@ public class Outils {
     }
     
       public static void afficherTexte(String s){
-           System.out.println(""+s+"");
+           System.out.print(""+s+"");
     }
     
     

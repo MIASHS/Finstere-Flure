@@ -201,14 +201,34 @@ public class PionJoueur extends Pions {
                                if(this.casePrecedente.getAbscisse()-this.getX()==0){
                                    if(this.casePrecedente.getOrdonnee()-this.getY()<0){
                                        
+                                       if(c.getPioncase().setY(c.getPioncase().getY()+1)){
+                                           this.setY(this.getY()+1);
+                                           this.deplacer(monPlateau,monPlateau.getCase(this.getX(), this.getY()));
+                                       }
+                                       
                                     }else{
+                                       
+                                       if(c.getPioncase().setY(c.getPioncase().getY()-1)){
+                                           this.setY(this.getY()-1);
+                                           this.deplacer(monPlateau,monPlateau.getCase(this.getX(), this.getY()));
+                                       }
                                        
                                     }
                                    
                                }else {
                                    if(this.casePrecedente.getAbscisse()-this.getX()<0){
                                        
+                                       if(c.getPioncase().setX(c.getPioncase().getX()+1)){
+                                           this.setX(this.getX()+1);
+                                           this.deplacer(monPlateau,monPlateau.getCase(this.getX(), this.getY()));
+                                       }
+                                       
                                     }else{
+                                       
+                                       if(c.getPioncase().setX(c.getPioncase().getX()-1)){
+                                           this.setX(this.getX()-1);
+                                           this.deplacer(monPlateau,monPlateau.getCase(this.getX(), this.getY()));
+                                       }
                                        
                                     }
                                    

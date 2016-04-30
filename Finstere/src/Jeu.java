@@ -125,6 +125,70 @@ public class Jeu {
        
     }
 
+    public ArrayList<Joueurs> getJ_list() {
+        return j_list;
+    }
+
+    public void setJ_list(ArrayList<Joueurs> j_list) {
+        this.j_list = j_list;
+    }
+
+    public ArrayList<Pions> getPions_perdu() {
+        return pions_perdu;
+    }
+
+    public void setPions_perdu(ArrayList<Pions> pions_perdu) {
+        this.pions_perdu = pions_perdu;
+    }
+
+    public ArrayList<Pierre> getBlocsPierre() {
+        return blocsPierre;
+    }
+
+    public void setBlocsPierre(ArrayList<Pierre> blocsPierre) {
+        this.blocsPierre = blocsPierre;
+    }
+
+    public ArrayList<Flaque> getFlaque() {
+        return flaque;
+    }
+
+    public void setFlaque(ArrayList<Flaque> flaque) {
+        this.flaque = flaque;
+    }
+
+    public Plateau getMonPlateau() {
+        return monPlateau;
+    }
+
+    public void setMonPlateau(Plateau monPlateau) {
+        this.monPlateau = monPlateau;
+    }
+
+    public int getTour() {
+        return tour;
+    }
+
+    public void setTour(int tour) {
+        this.tour = tour;
+    }
+
+    public int getCoupRestantJoueur() {
+        return coupRestantJoueur;
+    }
+
+    public void setCoupRestantJoueur(int coupRestantJoueur) {
+        this.coupRestantJoueur = coupRestantJoueur;
+    }
+
+    public String getPseudoJoueurCourant() {
+        return pseudoJoueurCourant;
+    }
+
+    public void setPseudoJoueurCourant(String pseudoJoueurCourant) {
+        this.pseudoJoueurCourant = pseudoJoueurCourant;
+    }
+
     
 
 }   

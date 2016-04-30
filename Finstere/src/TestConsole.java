@@ -11,10 +11,23 @@
 public class TestConsole {
     
       public static void test(){
-          
-            Menu m = new Menu();
-            m.demarrer();
-    
+            testInit();
+            testPlateau();
     }
+      
+      //Test initialisation du jeu
+      public static void testInit(){
+          Menu m = new Menu();
+          m.demarrer();
+          m.getPartieActuelle();
+          
+      }
+      
+      public static void testPlateau(){
+          
+          
+      }
+      
+      
 
 }

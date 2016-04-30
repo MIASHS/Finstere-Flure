@@ -31,6 +31,14 @@ public class Monstre extends Pions{
     public void makeChemin(Cases c){
         chemin.add(c);
     }
+
+    public ArrayList<Cases> getChemin() {
+        return chemin;
+    }
+
+    public void setChemin(ArrayList<Cases> chemin) {
+        this.chemin = chemin;
+    }
     
 
     public int getOrientation() {

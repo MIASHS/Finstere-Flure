@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -28,7 +31,7 @@ public class Temps {
     }
     
     // méthode de gestion des tours
-    public void gestionTourGros(Monstre m, Joueurs j, Jeu g){
+    public ArrayList<Cases> gestionTourGros(Monstre m, Joueurs j, Jeu g){
         
         while(debuterTour = true){
             while(g.getJ_list().get(0).getPionUtilisé()== g.getJ_list().get(0).getPionTotal()&& g.getJ_list().get(1).getPionUtilisé()== g.getJ_list().get(1).getPionTotal()){
@@ -46,6 +49,7 @@ public class Temps {
     }
     }
         m.deplacer();
+        return m.getChemin();
     }
     
     public void gestionTourPetit(Joueurs j){

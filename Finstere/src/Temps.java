@@ -11,15 +11,37 @@
 public class Temps {
     private int nbTours;
     private int nbToursJoueur;
-    private boolean debuterTout;
+    private boolean debuterTour;
     private boolean finirTour;
 
-    public Temps(int nbTours, int nbToursJoueur, boolean debuterTout, boolean finirTour) {
+    public Temps(int nbTours, int nbToursJoueur, boolean debuterTour, boolean finirTour) {
         this.nbTours = nbTours;
         this.nbToursJoueur = nbToursJoueur;
-        this.debuterTout = debuterTout;
+        this.debuterTour = debuterTour;
         this.finirTour = finirTour;
     }
+    
+    // méthode de debut de jeu
+    public void debutGame(){
+        this.nbTours =0;
+        this.nbToursJoueur = 0;
+    }
+    
+    // méthode de gestion des tours
+    public void gestionTour(Monstre m){
+        
+        while(debuterTour = true){
+            this.finirTour = false;
+            this.nbToursJoueur +=1;
+            
+        }if(this.debuterTour=false){
+            this.finirTour= true;
+            m.deplacer();   
+        }
+        this.nbTours +=1;
+    }
+    
+    
 
     public int getNbTours() {
         return nbTours;
@@ -38,11 +60,11 @@ public class Temps {
     }
 
     public boolean isDebuterTout() {
-        return debuterTout;
+        return debuterTour;
     }
 
-    public void setDebuterTout(boolean debuterTout) {
-        this.debuterTout = debuterTout;
+    public void setDebuterTout(boolean debuterTour) {
+        this.debuterTour = debuterTour;
     }
 
     public boolean isFinirTour() {

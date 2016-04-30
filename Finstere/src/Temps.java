@@ -23,24 +23,37 @@ public class Temps {
     
     // méthode de debut de jeu
     public void debutGame(){
-        this.nbTours =0;
+        this.nbTours = 0;
         this.nbToursJoueur = 0;
     }
     
     // méthode de gestion des tours
-    public void gestionTour(Monstre m){
+    public void gestionTourGros(Monstre m, Joueurs j){
         
         while(debuterTour = true){
             this.finirTour = false;
             this.nbToursJoueur +=1;
+            j.setPionUtilisé(j.getPionUtilisé()+1);
             
-        }if(this.debuterTour=false){
+        }if(this.debuterTour=false && j.getPionUtilisé()== j.getPionTotal()){
             this.finirTour= true;
             m.deplacer();   
         }
         this.nbTours +=1;
     }
     
+    public void gestionTourPetit(Joueurs j, Monstre m){
+        
+        while(debuterTour = true){
+            this.finirTour=false;
+            this.nbToursJoueur +=1;
+        }if (debuterTour = false && j.getPionUtilisé()!= j.getPionTotal()){
+            this.finirTour=true;
+            m.deplacer();
+                 
+        }
+        this.nbTours+=1;
+    }
     
 
     public int getNbTours() {

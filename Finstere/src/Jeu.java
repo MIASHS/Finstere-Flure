@@ -42,7 +42,7 @@ public class Jeu {
    public void init(Plateau plateauVide) {
        // mise en place des bloques de pierres 
        monPlateau=plateauVide;
-        for(int i = 0; i < 5; i++ ){
+        for(int i = 0; i < 10; i++ ){
             this.placementBlocPierre(monPlateau);
        }
         for(int i = 0; i < 2; i++ ){
@@ -91,7 +91,7 @@ public class Jeu {
             c1 = plateauVide.getCase(X+1,Y);
             c2 = plateauVide.getCase(X,Y-1);
             c3 = plateauVide.getCase(X+1,Y-1);
-        while (c.isOccupee()||c1.isOccupee()||c2.isOccupee()||c3.isOccupee() || (X > 8 && Y==0) || (X > 9 && Y==-1) || (X > 10 && Y==-2)|| (X > 11 && Y==-3)|| (X > 12 && Y>=-4) || (X == 0 && Y==0) || (Y<-8) || (X == 0 && Y<-5) || (X == 1 && Y<-6) || (X == 2 && Y<-7) ){
+        while (c.isOccupee()||c1.isOccupee()||c2.isOccupee()||c3.isOccupee() || (X > 8 && Y==0) || (X > 9 && Y==-1) || (X > 10 && Y==-2)|| (X > 11 && Y==-3)|| (X > 12 && Y>=-4) || (X == 0 && Y==0) || (X==3 && Y<-8) || (X == 0 && Y<-5) || (X == 1 && Y<-6) || (X == 2 && Y<-7) || (X>3 &&Y<-8) ){
                 Y = (-1)*ra.nextInt(11);
                 X = ra.nextInt(15);
                 c = plateauVide.getCase(X,Y);
@@ -123,7 +123,7 @@ public class Jeu {
         int placementX = ra.nextInt(15);
         int placementY = (-1)*ra.nextInt(11);
         Cases c = plateauVide.getCase(placementX,placementY);
-        while (c.isOccupee() || (placementX == 0 && placementY==1) || (placementX == 1 && placementY==1)|| (placementX == 0 && placementY==0) || (placementX == 1 && placementY==0)|| (placementX == 11 && placementY==15)|| (placementX == 11 && placementY==14)|| (placementX == 10 && placementY==14)|| (placementX == 10 && placementY==15)){
+        while (c.isOccupee() || (placementX == 0 && placementY==-1) || (placementX == 1 && placementY==-1)|| (placementX == 0 && placementY==0) || (placementX == 1 && placementY==0)|| (placementX == 15 && placementY==-10)|| (placementX == 14 && placementY==-10)|| (placementX == 14 && placementY==-9)|| (placementX == 15 && placementY==-9)|| (placementX > 11 && placementY==0)|| (placementX > 12 && placementY==-1)|| (placementX > 13 && placementY==-2)|| (placementX > 14 && placementY==-3)|| (placementX == 0 && placementY<-6)|| (placementX == 1 && placementY<-7)|| (placementX == 2 && placementY<-8)|| (placementX == 3 && placementY==-9)){
                 placementY = (-1)*ra.nextInt(11);
                 placementX = ra.nextInt(15);
                 c = plateauVide.getCase(placementX,placementY);

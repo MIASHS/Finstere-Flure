@@ -44,14 +44,14 @@ public class Plateau {
                     case 0:
                         this.ajouterCase(new Cases(tabPionsAPlacer.get(0).getX(),tabPionsAPlacer.get(0).getY(),true,tabPionsAPlacer.get(0),true,(Flaque)tabPionsAPlacer.get(0)));
                         this.ajouterCase(new Cases(tabPionsAPlacer.get(0).getX()+1,tabPionsAPlacer.get(0).getY(),true,new Flaque(tabPionsAPlacer.get(0).getX()+1,tabPionsAPlacer.get(0).getY(),0,false),true,new Flaque(tabPionsAPlacer.get(0).getX()+1,tabPionsAPlacer.get(0).getY(),0,false)));
-                        this.ajouterCase(new Cases(tabPionsAPlacer.get(0).getX(),tabPionsAPlacer.get(0).getY(),true,new Flaque(tabPionsAPlacer.get(0).getX(),tabPionsAPlacer.get(0).getY()-1,0,false),true,new Flaque(tabPionsAPlacer.get(0).getX(),tabPionsAPlacer.get(0).getY()-1,0,false)));
-                        this.ajouterCase(new Cases(tabPionsAPlacer.get(0).getX(),tabPionsAPlacer.get(0).getY(),true,new Flaque(tabPionsAPlacer.get(0).getX()+1,tabPionsAPlacer.get(0).getY()-1,0,false),true,new Flaque(tabPionsAPlacer.get(0).getX()+1,tabPionsAPlacer.get(0).getY()-1,0,false)));
+                        this.ajouterCase(new Cases(tabPionsAPlacer.get(0).getX(),tabPionsAPlacer.get(0).getY()-1,true,new Flaque(tabPionsAPlacer.get(0).getX(),tabPionsAPlacer.get(0).getY()-1,0,false),true,new Flaque(tabPionsAPlacer.get(0).getX(),tabPionsAPlacer.get(0).getY()-1,0,false)));
+                        this.ajouterCase(new Cases(tabPionsAPlacer.get(0).getX()+1,tabPionsAPlacer.get(0).getY()-1,true,new Flaque(tabPionsAPlacer.get(0).getX()+1,tabPionsAPlacer.get(0).getY()-1,0,false),true,new Flaque(tabPionsAPlacer.get(0).getX()+1,tabPionsAPlacer.get(0).getY()-1,0,false)));
                         break;
                     case 1:
                         this.ajouterCase(new Cases(tabPionsAPlacer.get(0).getX(),tabPionsAPlacer.get(0).getY(),true,tabPionsAPlacer.get(0),true,(Flaque)tabPionsAPlacer.get(0)));
                         this.ajouterCase(new Cases(tabPionsAPlacer.get(0).getX()+1,tabPionsAPlacer.get(0).getY(),true,new Flaque(tabPionsAPlacer.get(0).getX()+1,tabPionsAPlacer.get(0).getY(),1,false),true,new Flaque(tabPionsAPlacer.get(0).getX()+1,tabPionsAPlacer.get(0).getY(),1,false)));
-                        this.ajouterCase(new Cases(tabPionsAPlacer.get(0).getX(),tabPionsAPlacer.get(0).getY(),true,new Flaque(tabPionsAPlacer.get(0).getX()+2,tabPionsAPlacer.get(0).getY(),1,false),true,new Flaque(tabPionsAPlacer.get(0).getX()+2,tabPionsAPlacer.get(0).getY(),1,false)));
-                        this.ajouterCase(new Cases(tabPionsAPlacer.get(0).getX(),tabPionsAPlacer.get(0).getY(),true,new Flaque(tabPionsAPlacer.get(0).getX()+3,tabPionsAPlacer.get(0).getY(),1,false),true,new Flaque(tabPionsAPlacer.get(0).getX()+3,tabPionsAPlacer.get(0).getY(),1,false)));
+                        this.ajouterCase(new Cases(tabPionsAPlacer.get(0).getX()+2,tabPionsAPlacer.get(0).getY(),true,new Flaque(tabPionsAPlacer.get(0).getX()+2,tabPionsAPlacer.get(0).getY(),1,false),true,new Flaque(tabPionsAPlacer.get(0).getX()+2,tabPionsAPlacer.get(0).getY(),1,false)));
+                        this.ajouterCase(new Cases(tabPionsAPlacer.get(0).getX()+3,tabPionsAPlacer.get(0).getY(),true,new Flaque(tabPionsAPlacer.get(0).getX()+3,tabPionsAPlacer.get(0).getY(),1,false),true,new Flaque(tabPionsAPlacer.get(0).getX()+3,tabPionsAPlacer.get(0).getY(),1,false)));
                         break;
                 }
                 

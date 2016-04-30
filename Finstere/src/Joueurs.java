@@ -25,6 +25,9 @@ public class Joueurs {
         this.pionTotal = pionTotal;
         this.pionUtilisé = pionUtilisé;
     }
+    public Joueurs(String pseudo){
+        this.pseudo = pseudo;
+    }
 
     public void ajouterPion(Pions p){
         this.tabPion.add(p);

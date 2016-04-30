@@ -10,19 +10,23 @@
  */
 public class TestConsole {
 
-    public static void test() {
-        testInit();
-
-    }
 
     //Test initialisation du jeu
     public static void testInit() {
         
         Menu m = new Menu();
-        m.demarrer();
+        
+        //Premier menu
+        m.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0,m.getPartieActuelle())));
+        
 
         //Test du plateau de jeu
+        
         testPlateau(m.getPartieActuelle().getMonPlateau());
+        
+            m.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0,m.getPartieActuelle())));
+       
+        
     }
 
     public static void testPlateau(Plateau p) {
@@ -78,7 +82,6 @@ public class TestConsole {
                          Outils.afficherTexte("[   ]");
                     }
                        
-                    
                     }
                 }
             

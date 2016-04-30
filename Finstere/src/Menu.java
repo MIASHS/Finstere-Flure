@@ -30,9 +30,16 @@ public class Menu {
      /**************Fonctions du menu de démarrage********************/
     
     public void demarrer() {
+        if(partieActuelle != null){
+            Outils.afficherTexte("Un jeu est déja lancé. Souhaitez vous recommencer ?");
+            this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0,partieActuelle)));
+        }
+        else{
         partieActuelle= new Jeu();
         partieActuelle.init(new Plateau());
         //this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0,partieActuelle)));
+        }
+        
     }
   
     // Méthode qui permet de quitter le jeu
@@ -54,6 +61,9 @@ public class Menu {
             case 'D':   //this.getPartieActuelle().lancerJeu();
                         this.demarrer();
                         break;
+            case 'S':   this.menuNiveauUn(Outils.conversionCaractere(Outils.afficher(1,partieActuelle)));
+                        break;
+                       
         }           
     }
     
@@ -61,7 +71,10 @@ public class Menu {
      public void menuNiveauUn(char choix){
         switch (choix) {
             case 'S':  // A compléter : permet de Sélectionner un pion
-                       
+            
+            case 'R':   this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0,partieActuelle)));
+                        break;           
+                
             case 'Q':   this.quitter();
                         break;
         }           

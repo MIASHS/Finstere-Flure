@@ -71,7 +71,7 @@ public class Plateau {
         boolean trouve=false;
         int i=0;
         Cases c=null;
-        while(!trouve&&i>monPlateau.size()){
+        while(!trouve&&i<monPlateau.size()){
             if(monPlateau.get(i).getOrdonnee()==o&&monPlateau.get(i).getAbscisse()==a){
                 trouve=true;
                 c=monPlateau.get(i);

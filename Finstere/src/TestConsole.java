@@ -27,10 +27,11 @@ public class TestConsole {
 
     public static void testPlateau(Plateau p) {
         for (int i = 0; i < 15; i++) {
-            for (int j = 0; j < 11; j++) {
+            for (int j = 0; j > -11; j--) {
                 if (p.getCase(i,j).getPioncase() == null) {
                     Outils.afficherTexte("[  ]");
                 } else {
+                    
                     switch (p.getCase(i, j).getPioncase().getClass().getName()) {
                         case "Pierre":
                             Outils.afficherTexte("[ P ]");
@@ -43,6 +44,9 @@ public class TestConsole {
                             break;
                         case "PionJoueur":
                             Outils.afficherTexte("[ J ]");
+                            break;
+                        default:
+                            Outils.afficherTexte("[ B ]");
                             break;
                     }
                 }

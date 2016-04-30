@@ -43,13 +43,13 @@ public class Jeu {
        // mise en place des bloques de pierres 
        monPlateau=plateauVide;
         for(int i = 0; i < 5; i++ ){
-            this.placementBlocPierre(plateauVide);
+            this.placementBlocPierre(monPlateau);
        }
         for(int i = 0; i < 2; i++ ){
-            this.placementFlaque(plateauVide,i);
+            this.placementFlaque(monPlateau,i);
         }
         
-        plateauVide.placerObstacle();
+        monPlateau.placerObstacle();
      
        Joueurs joueur1 = new Joueurs("Gab");
        
@@ -67,6 +67,7 @@ public class Jeu {
        joueur2.ajouterPion(new PionJoueur(2));
        
        j_list.add(joueur2);
+       
    }
    
     public void placementFlaque(Plateau plateauVide,int i){

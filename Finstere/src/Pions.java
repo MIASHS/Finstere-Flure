@@ -25,11 +25,14 @@ public abstract class Pions implements Deplacements {
     public int getY(){
         return ordonnee;
     }
-    public void setX(int x){
+    public boolean setX(int x){
         abscisse = x;
+        return true;
+        
     }
-    public void setY(int y){
+    public boolean setY(int y){
         ordonnee = y;
+        return true;
     }
             
     

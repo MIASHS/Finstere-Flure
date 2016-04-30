@@ -33,6 +33,7 @@ public class Temps {
         while(debuterTour = true){
             this.finirTour = false;
             this.nbToursJoueur +=1;
+            j.setPionUtilisé(j.getPionUtilisé()+1);
             
         }if(this.debuterTour=false && j.getPionUtilisé()== j.getPionTotal()){
             this.finirTour= true;

@@ -475,7 +475,7 @@ public class Outils {
                 
                         return Outils.verification(sc.next(),0);
                 
-             case 1:    System.out.println("\nMenu 1(D)\nRetour(R)\nQuitter(Q)");
+             case 1:    System.out.println("\nDéplacer un pion(D)\nRetour(R)\nQuitter(Q)");
                         System.out.println("\nQuel est votre choix ?\n");
                 
                         return Outils.verification(sc.next(),0);

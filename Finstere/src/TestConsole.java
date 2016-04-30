@@ -12,20 +12,17 @@ public class TestConsole {
 
 
     //Test initialisation du jeu
-    public static void testInit() {
-        
+    public static void testInit() {      
         Menu m = new Menu();
         
         //Premier menu
         m.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0,m.getPartieActuelle())));
-        
-
-        //Test du plateau de jeu
-        
-        testPlateau(m.getPartieActuelle().getMonPlateau());
-        
-            m.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0,m.getPartieActuelle())));
        
+        //Test du plateau de jeu
+        testPlateau(m.getPartieActuelle().getMonPlateau()); 
+       
+        testTour(m.getPartieActuelle(),m);
+        
         
     }
 
@@ -38,8 +35,7 @@ public class TestConsole {
                 Outils.afficherTexte("  "+k+"  ");
             }
         }
-            
-        
+  
         Outils.afficherTexte("\n");
         for (int j = 0; j > -11; j--) {
             if(j==0){
@@ -50,10 +46,9 @@ public class TestConsole {
                 }else{
                     System.out.print(j+" ");
                 }
-                
             }
             
-            
+ 
             for (int i = 0; i < 16; i++) {
                 
                 
@@ -87,5 +82,21 @@ public class TestConsole {
             
             Outils.afficherTexte("\n");
         }
+    }
+    
+    public static void testTour(Jeu p,Menu m){
+         
+        //On instancie un objet temps
+         Temps t = new Temps(0,0,false,false);
+         
+         
+         t.debutGame();
+         
+         //on appelle la méthode qui gère les tours
+         Outils.afficherTexte("\nDébut du tour...\n");
+         t.gestionTourGros(p.getMonstre(),p);
+      
+        Outils.afficherTexte("test");
+       
     }
 }

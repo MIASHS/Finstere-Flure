@@ -31,7 +31,7 @@ public class Temps {
     }
     
     // méthode de gestion des tours
-    public ArrayList<Cases> gestionTourGros(Monstre m, Joueurs j, Jeu g){
+    public ArrayList<Cases> gestionTourGros(Monstre m,Jeu g){
         
         while(debuterTour = true){
             while(g.getJ_list().get(0).getPionUtilisé()== g.getJ_list().get(0).getPionTotal()&& g.getJ_list().get(1).getPionUtilisé()== g.getJ_list().get(1).getPionTotal()){

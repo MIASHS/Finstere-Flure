@@ -478,4 +478,9 @@ public class Outils {
         return 'e';
     }
     
+      public static void afficherTexte(String s){
+           System.out.println(""+s+"");
+    }
+    
+    
 }

@@ -79,10 +79,7 @@ public class Paquet {
         valeur.put(8, 12);
         this.setNumeroSerie(ra.nextInt(2000));
         for (int i = 0; i < 8; i++) {
-            int k=ra.nextInt(8);
-           while((int)valeur.get(k)==0){
-               k=ra.nextInt(8);
-           }
+            int k=1+ra.nextInt(7);
             this.setCarte(new Cartes((int) valeur.get(k),this.getNumeroSerie()), i);
             valeur.put(k, 0);
         }

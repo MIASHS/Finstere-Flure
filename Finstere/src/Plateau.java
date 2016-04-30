@@ -83,6 +83,9 @@ public class Plateau {
         }
         return c;
     }
+    public void placerMonstre(Monstre m){
+        this.ajouterCase(new Cases(0,0,true,m));
+    }
     
     
 }

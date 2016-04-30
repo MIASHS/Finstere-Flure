@@ -24,6 +24,8 @@ public class Jeu {
    private ArrayList<Flaque> flaque;
    // plateau de jeu
    private Plateau monPlateau;
+   // monstre
+   private Monstre m= new Monstre(0,0,3);
    //nombre de tours
    private int tour;
    // coups restant par joueur
@@ -32,10 +34,11 @@ public class Jeu {
    private String pseudoJoueurCourant;
    
    public Jeu(){
-       j_list = new ArrayList<>();
-       pions_perdu = new ArrayList<>();
-       blocsPierre = new ArrayList <>();
-       flaque = new ArrayList <>();
+       this.j_list = new ArrayList<>();
+       this.pions_perdu = new ArrayList<>();
+       this.blocsPierre = new ArrayList <>();
+       this.flaque = new ArrayList <>();
+       
        
    }
    
@@ -50,7 +53,7 @@ public class Jeu {
         }
         
         monPlateau.placerObstacle();
-     
+        monPlateau.placerMonstre(this.m);
        Joueurs joueur1 = new Joueurs("Gab");
        
        joueur1.ajouterPion(new PionJoueur(1));
@@ -67,16 +70,7 @@ public class Jeu {
        joueur2.ajouterPion(new PionJoueur(2));
        
        j_list.add(joueur2);
-       for(int i = 0;i<monPlateau.getPlateau().size();i++){
-           System.out.println(monPlateau.getPlateau().get(i).getPioncase().getClass().getName());
-           System.out.println("X:  "+monPlateau.getPlateau().get(i).getPioncase().getX());
-           System.out.println("Y:  "+monPlateau.getPlateau().get(i).getPioncase().getY());
-           System.out.println("Y:  "+monPlateau.getPlateau().get(i).isOccupee());
-       }
-       System.out.println(monPlateau.getCase(monPlateau.getPlateau().get(0).getAbscisse(), monPlateau.getPlateau().get(0).getOrdonnee()).getPioncase().getClass().getName());
-       System.out.println("X=   "+monPlateau.getCase(monPlateau.getPlateau().get(0).getAbscisse(), monPlateau.getPlateau().get(0).getOrdonnee()).getAbscisse());
-       System.out.println("Y=   "+monPlateau.getCase(monPlateau.getPlateau().get(0).getAbscisse(), monPlateau.getPlateau().get(0).getOrdonnee()).getOrdonnee());
-       System.out.println("Y:  "+monPlateau.getPlateau().get(0).isOccupee());
+       
    }
    
     public void placementFlaque(Plateau plateauVide,int i){
@@ -135,6 +129,9 @@ public class Jeu {
        
     }
 
+    public Monstre getMonstre(){
+        return this.m;
+    }
     public ArrayList<Joueurs> getJ_list() {
         return j_list;
     }

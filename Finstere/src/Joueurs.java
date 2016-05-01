@@ -13,11 +13,13 @@ import java.util.ArrayList;
  */
 public class Joueurs {
     private String pseudo ;
+
     private ArrayList<PionJoueur> tabPion=new ArrayList<>()  ;
     private boolean gagner=false ;
     private int pionTotal=4;
     private int pionUtilisé=0;
     private boolean finirTour=false;
+
 
     public Joueurs(String pseudo, ArrayList<PionJoueur> tabPion, boolean gagner, int pionTotal, int pionUtilisé) {
         this.pseudo = pseudo;
@@ -37,7 +39,7 @@ public class Joueurs {
     public void setFinirTour(boolean b){
         finirTour=b;
     }
-    
+
     public void ajouterPion(PionJoueur p){
         this.tabPion.add(p);
     }

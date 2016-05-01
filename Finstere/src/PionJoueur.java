@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,16 +16,14 @@ public class PionJoueur extends Pions {
 
     //Attributs
 
-        public PionJoueur(int x , int y){
-            this.abscisse=x;
-            this.ordonnee=y;
-        }
+        
         
         private boolean mort=false; //booléen indiquant si un pion d'un joueur est mort
         private boolean utilise=false;
+        private boolean onBoard=false;
         private int[] tabNumDispo= new int[2];
         private int numActuel=0;
-        private ArrayList<Cases> coupPossible=new ArrayList<>();
+        private HashSet<Cases> coupPossible=new HashSet<>();
         private Cases casePrecedente;
         
         public PionJoueur(int coupFace){
@@ -57,7 +56,9 @@ public class PionJoueur extends Pions {
         public void setUtilise(boolean utilise) {
             this.utilise = utilise;
         }
-
+        public int getNum(int i){
+        return tabNumDispo[i];
+        }
         public int[] getTabNumDispo() {
             return tabNumDispo;
         }
@@ -75,7 +76,7 @@ public class PionJoueur extends Pions {
             }
         }
         
-        public ArrayList<Cases> getCoupPossible(){
+        public HashSet<Cases> getCoupPossible(){
             return this.coupPossible;
         }
         
@@ -96,46 +97,70 @@ public class PionJoueur extends Pions {
         }
         // num = numéro actuel sur le pion joueur 
         
-        public void searchCoupPossible(Plateau monPlateau, int num){
+        public boolean isOnBoard(){
+            return onBoard;
+        }
+        
+        public ArrayList<Cases> searchCoupPossible(Plateau monPlateau, int num){
+            
         
             
             ArrayList<Cases> listProvisoire=new ArrayList<>();
+            if(!this.isOnBoard()){
+                num-=1;
+                this.setX(15);
+                this.setY(-10);
+                if(!monPlateau.getCase(15, -10).isOccupee()){
+                    listProvisoire.add(new Cases(this.getX(),this.getY(),false,null));
+                }
+                
+            }
+                for(int j=0;j<num;j++){
+                        int numcopie=num-j;
+                        for(int i=1;i<numcopie;i++){
+                           listProvisoire.add(new Cases(this.getX()+i,this.getY()+j,false));
+                        }
+                }
+                
+                for(int j=0;j<num;j++){
+                        int numcopie=j-num;
+                        for(int i=0;i>numcopie;i--){
+                           listProvisoire.add(new Cases(this.getX()+i,this.getY()+j,false));
+                        }
+                }
+                
+                for(int j=0;j>-num;j--){
+                        int numcopie=j-num;
+                        
+                        for(int i=-1;i>numcopie;i--){
+                            
+                           listProvisoire.add(new Cases(this.getX()+i,this.getY()+j,false));
+                        }
+                }
+                
+                for(int j=0;j>-num;j--){
+                        int numcopie=num-j;
+                        for(int i=0;i<numcopie;i++){
+                           listProvisoire.add(new Cases(this.getX()+i,this.getY()+j,false));
+                        }
+                }
+                
+                
+                
             
-                for(int j=0;j<num;j++){
-                        for(int i=1;i<(num-j);i++){
-                           listProvisoire.add(new Cases(this.getX()+i,this.getY()+j,false));
-                        }
-                }
-                
-                for(int j=0;j<num;j++){
-                        for(int i=-1;i<(j-num);i--){
-                           listProvisoire.add(new Cases(this.getX()+i,this.getY()+j,false));
-                        }
-                }
-                
-                for(int j=0;j<-num;j--){
-                        for(int i=-1;i<(j-num);i--){
-                           listProvisoire.add(new Cases(this.getX()+i,this.getY()+j,false));
-                        }
-                }
-                
-                for(int j=0;j<-num;j--){
-                        for(int i=1;i<(num-j);i++){
-                           listProvisoire.add(new Cases(this.getX()+i,this.getY()+j,false));
-                        }
-                }
-                
-                
-                
-                
             while(!listProvisoire.isEmpty()){
-                if(((listProvisoire.get(0).getAbscisse()>=0&&listProvisoire.get(0).getOrdonnee()<=0&&listProvisoire.get(0).getAbscisse()<=10&&listProvisoire.get(0).getOrdonnee()>=-6)||(listProvisoire.get(0).getAbscisse()<=15&&listProvisoire.get(0).getOrdonnee()>=-10&&listProvisoire.get(0).getAbscisse()>=4&&listProvisoire.get(0).getOrdonnee()<=-4)||(listProvisoire.get(0).getAbscisse()<=14&&listProvisoire.get(0).getOrdonnee()>=-9&&listProvisoire.get(0).getAbscisse()>=3&&listProvisoire.get(0).getOrdonnee()<=-3)||(listProvisoire.get(0).getAbscisse()<=13&&listProvisoire.get(0).getOrdonnee()>=-8&&listProvisoire.get(0).getAbscisse()>=2&&listProvisoire.get(0).getOrdonnee()<=-2)||(listProvisoire.get(0).getAbscisse()<=12&&listProvisoire.get(0).getOrdonnee()>=-7&&listProvisoire.get(0).getAbscisse()>=1&&listProvisoire.get(0).getOrdonnee()<=-1))&&!(listProvisoire.get(0).getPioncase() instanceof Monstre)&&!(listProvisoire.get(0).getPioncase() instanceof PionJoueur)){
+                if(((listProvisoire.get(0).getAbscisse()>-1&&listProvisoire.get(0).getOrdonnee()<1&&listProvisoire.get(0).getAbscisse()<12&&listProvisoire.get(0).getOrdonnee()>-7)||(listProvisoire.get(0).getAbscisse()<16&&listProvisoire.get(0).getOrdonnee()>-11&&listProvisoire.get(0).getAbscisse()>5&&listProvisoire.get(0).getOrdonnee()<-5)||(listProvisoire.get(0).getAbscisse()<15&&listProvisoire.get(0).getOrdonnee()>-10&&listProvisoire.get(0).getAbscisse()>4&&listProvisoire.get(0).getOrdonnee()<-4)||(listProvisoire.get(0).getAbscisse()<14&&listProvisoire.get(0).getOrdonnee()>-9&&listProvisoire.get(0).getAbscisse()>3&&listProvisoire.get(0).getOrdonnee()<-3)||(listProvisoire.get(0).getAbscisse()<13&&listProvisoire.get(0).getOrdonnee()>-8&&listProvisoire.get(0).getAbscisse()>2&&listProvisoire.get(0).getOrdonnee()<-2))&&!(listProvisoire.get(0).getPioncase() instanceof Monstre)&&!(listProvisoire.get(0).getPioncase() instanceof PionJoueur)){
                         this.verifierCase(monPlateau, listProvisoire.get(0));
                        coupPossible.add(listProvisoire.get(0));
-                    
+                       
                 }
                 listProvisoire.remove(0);
             }
+            ArrayList<Cases> listFinal=new ArrayList<>();
+            listFinal.addAll(coupPossible);
+            
+        
+            return listFinal;
         }
         
         public void deplacer(Plateau monPlateau,Cases cas){
@@ -166,8 +191,9 @@ public class PionJoueur extends Pions {
             //En fonction de la case choisie, on place la case choisie dans le tableau
             cas.setOccupee(true);
             cas.setPioncase(this);
-            monPlateau.ajouterCase(cas);
             this.verifierCase(monPlateau, cas);
+            monPlateau.ajouterCase(cas);
+            
         }
 
     public void verifierCase(Plateau monPlateau, Cases c){

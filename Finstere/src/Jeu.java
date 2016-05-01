@@ -25,7 +25,7 @@ public class Jeu {
    // plateau de jeu
    private Plateau monPlateau;
    // monstre
-   private Monstre m= new Monstre(0,0,3);
+   private Monstre m;
    //nombre de tours
    private int tour;
    // coups restant par joueur
@@ -53,10 +53,10 @@ public class Jeu {
         }
         
         monPlateau.placerObstacle();
+        m= new Monstre(0,0,3,this);
         monPlateau.placerMonstre(this.m);
        Joueurs joueur1 = new Joueurs("Gab");
-       
-       joueur1.ajouterPion(new PionJoueur(1));
+       joueur1.ajouterPion(new PionJoueur(1));       
        joueur1.ajouterPion(new PionJoueur(4));
        joueur1.ajouterPion(new PionJoueur(3));
        joueur1.ajouterPion(new PionJoueur(2));
@@ -64,10 +64,10 @@ public class Jeu {
        
         Joueurs joueur2 = new Joueurs("Valère");
        
-       joueur2.ajouterPion(new PionJoueur(1));
-       joueur2.ajouterPion(new PionJoueur(4));
+       joueur2.ajouterPion(new PionJoueur(6));
        joueur2.ajouterPion(new PionJoueur(3));
-       joueur2.ajouterPion(new PionJoueur(2));
+       joueur2.ajouterPion(new PionJoueur(4));
+       joueur2.ajouterPion(new PionJoueur(5));
        
        j_list.add(joueur2);
        
@@ -97,7 +97,7 @@ public class Jeu {
             c1 = plateauVide.getCase(X+1,Y);
             c2 = plateauVide.getCase(X+2,Y);
             c3 = plateauVide.getCase(X+3,Y);
-        while (c.isOccupee() || c1.isOccupee()||c2.isOccupee()||c3.isOccupee() || ( Y==10) || (Y==9)|| (X == 0 && Y==0) || (X == 10 && Y==0)|| (X == 11 && Y==-1)|| (X == 12 && Y==-2)|| (X == 13 && Y==-3)|| (X == 14 && Y>=-4)|| (X == 15 && Y==-10)|| (X == 0 && Y==-6)|| (X == 1 && Y==-7)|| (X == 2 && Y==-8)){
+        while (c.isOccupee() || c1.isOccupee()||c2.isOccupee()||c3.isOccupee() || ( Y==-10) || (Y==-9)|| (X == 0 && Y==0) || (X == 10 && Y==0)|| (X == 11 && Y==-1)|| (X == 12 && Y==-2)|| (X == 13 && Y==-3)|| (X == 14 && Y>=-4)|| (X == 15 && Y==-10)|| (X == 0 && Y==-6)|| (X == 1 && Y==-7)|| (X == 2 && Y==-8)){
                 Y = (-1)*ra.nextInt(11);
                 X = ra.nextInt(15);
                 c = plateauVide.getCase(X,Y);

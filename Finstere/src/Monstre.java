@@ -22,10 +22,11 @@ public class Monstre extends Pions{
     private ArrayList<Cases> chemin=new ArrayList<>();
     
 
-    public Monstre(int x, int y, int orientation) {
+    public Monstre(int x, int y, int orientation,Jeu partie) {
         this.setX(x);
         this.setY(y);
         this.orientation = orientation;
+        this.monPlateau=partie.getMonPlateau();
     }
 
     public void makeChemin(Cases c){

@@ -11,10 +11,10 @@
 public class Cases {
     private int abscisse ;
     private int ordonnee;
-    boolean occupee;
+    boolean occupee=false;
     boolean cflaque=false;
     Flaque laFlaque=null;
-    Pions pioncase;
+    Pions pioncase=null;
 
     public Cases(int abscisse, int ordonnee, boolean occupee, Pions pioncase) {
         this.abscisse = abscisse;

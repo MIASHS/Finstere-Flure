@@ -162,7 +162,9 @@ public class PionJoueur extends Pions {
         
             return listFinal;
         }
-        
+        public Cases getCasePrecedente(){
+            return this.casePrecedente;
+        }
         public void deplacer(Plateau monPlateau,Cases cas){
             //On retire la case du tableau en plaçant le booleen occupe à faux
             
@@ -266,7 +268,10 @@ public class PionJoueur extends Pions {
                                }
                                break;
                        }
-                   }
+                    }else{
+                        this.setX(c.getAbscisse());
+                        this.setY(c.getOrdonnee());
+                    }
         //      - type monstre, PionJoueur cases interdite
         //      - type obstacle switch en fonction du type
         //          - deplacer PionJoueur ou obstacle

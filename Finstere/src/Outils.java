@@ -447,9 +447,10 @@ public class Outils {
         str = str.toUpperCase();
         Scanner sc=new Scanner(System.in);
         char[] lettres = str.toCharArray();
+            System.out.println(lettres[0]);
         if(choix==1) {
                     // tant que le joueur ne saisit pas une chaîne valide
-                    while((str!="Y")||(str!="O")||(str!="YES")||(str!="OUI")||(str!="N")||(str!="NON")||(str!="NO")){
+                    while(!((lettres[0]=='Y')||(lettres[0]=='O')||(lettres[0]=='N'))){
                         System.out.println("\nLa saisie est erronée veuillez réessayer. \n Entrez une réponse (O/N):");
                         Outils.verification(sc.next(),1);
                     }
@@ -464,6 +465,20 @@ public class Outils {
                   return lettres[0];
                   
         }     
+    }
+        
+    public static boolean conversionBoolean(char c){
+        
+        if(conversionCaractere(c)=='Y'||conversionCaractere(c)=='O'){
+            return true;
+        }else{ 
+            if(conversionCaractere(c)=='N'){
+                return false;
+            }else{
+                Outils.afficherTexte("Release the kraken !");
+                return false;
+            }
+        }
     }
     
      //Méthode qui affiche les différents menu et confirmations de choix.
@@ -486,6 +501,6 @@ public class Outils {
       public static void afficherTexte(String s){
            System.out.print(""+s+"");
     }
-    
+      
     
 }

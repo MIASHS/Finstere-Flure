@@ -13,10 +13,10 @@ import java.util.Scanner;
  * @author Seb
  */
 public class Temps {
-    private int nbTours;
-    private int nbToursJoueur;
-    private boolean debuterTour;
-    private boolean finirTour;
+    private int nbTours; // indique le nombre de tour
+    private int nbToursJoueur; // indique ? ce serait bien de sans servir pour le nombre de coup joué par pions 
+    private boolean debuterTour; // variable pour bloquer la bloquer de deplacement des pionjoueur
+    private boolean finirTour; // variable pour sortir en temps que joueur de la petite boucle
 
     public Temps(int nbTours, int nbToursJoueur, boolean debuterTour, boolean finirTour) {
         this.nbTours = nbTours;
@@ -25,13 +25,15 @@ public class Temps {
         this.finirTour = finirTour;
     }
     
-    // méthode de debut de jeu
+    // méthode de debut de jeu, initialisation non nécessaire
     public void debutGame(){
         this.nbTours = 0;
         this.nbToursJoueur = 0;
     }
     
-    // méthode de gestion des tours
+    // méthode de gestion des tours, il s'agit là d'un seul tour 
+    // les joueurs bougent leurs pions chacun leur tour puis le monstre bouge
+    // le chemin emprunté par le monstre est retourné
     public ArrayList<Cases> gestionTourGros(Monstre m,Jeu g){
         debuterTour=true;
         
@@ -57,36 +59,88 @@ public class Temps {
         return m.getChemin();
     }
     
+    // méthode de gestion des joueurs, chacun leurs tours les joueurs bougent leurs pions
+    // ici on permet au joueur de bouger un pion
     public void gestionTourPetit(Joueurs j,Jeu p){
         boolean arret=false;// condition d'arret si le joueur veut s'arreter... hum où l'appliquée ?? 
-        boolean deplacement=false;
-        while(!deplacement&&(arret||j.getPionUtilisé()==j.getPionTotal())){
-            
-            
-            //Outils.afficherTexte((j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()))).toString());
-            Outils.afficherTexte("Sur quelle cases souhaitez vous vous déplacer ?(Vous pouvez vous déplacer sur "+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())+" cases  )");
-            Outils.afficherTexte("Abscisse ?");
-            Scanner sc=new Scanner(System.in);
-            int a=sc.nextInt();
-            Outils.afficherTexte("Ordonnée ?");
-            int o=sc.nextInt();
-            boolean b=false;
-            ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
-            for(int i=0; i<c.size();i++){
-                if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
-                    b=true;
+        boolean deplacement=false; // indique si le déplacement a été effectue
+        Scanner sc=new Scanner(System.in);
+        this.nbToursJoueur=0;
+        System.out.println(j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
+        while((!deplacement||!arret)&&this.nbToursJoueur!=j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())){
+            System.out.println(deplacement);
+            System.out.println(this.nbToursJoueur);
+            System.out.println(j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
+            if(this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())&&this.nbToursJoueur!=0){
+                Outils.afficherTexte("Souhaitez vous vous arrêter ici ?");
+                if(Outils.conversionBoolean(Outils.verification(sc.next(), 1))){
+                    arret=true;
+                }else{
+                    Outils.afficherTexte("Sur quelle cases souhaitez vous vous déplacer ?(Vous pouvez vous déplacer sur "+(j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())-this.nbToursJoueur)+" cases  )");
+                    Outils.afficherTexte("Abscisse ?");
+
+                    int a=sc.nextInt();
+                    Outils.afficherTexte("Ordonnée ?");
+                    int o=sc.nextInt();
+                    boolean b=false;
+                    ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
+                    for(int i=0; i<c.size();i++){
+                        if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
+                            b=true;
+                        }
+                    }
+                    if(b){
+                        j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
+                        int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
+                    if(k<0){
+                        this.nbToursJoueur=(-1)*k;
+                    }else{
+                        this.nbToursJoueur=k;
+                    }
+                        deplacement=true;
+                    }else{
+                        Outils.afficherTexte("Déplacement impossible");
+                    }
                 }
-            }
-            if(b){
-                j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
-                deplacement=true;
             }else{
-                Outils.afficherTexte("Déplacement impossible");
+                //Outils.afficherTexte((j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()))).toString());
+                Outils.afficherTexte("Sur quelle cases souhaitez vous vous déplacer ?(Vous pouvez vous déplacer sur "+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())+" cases  )");
+                Outils.afficherTexte("Abscisse ?");
+
+                int a=sc.nextInt();
+                Outils.afficherTexte("Ordonnée ?");
+                int o=sc.nextInt();
+                boolean b=false;
+                ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
+                for(int i=0; i<c.size();i++){
+                    if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
+                        b=true;
+                    }
+                }
+                System.out.println(b);
+                if(b){
+                    j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
+                    System.out.println((j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()));
+                    System.out.println(j.getTabPion().get(j.getPionUtilisé()).getX());
+                    int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
+                    System.out.println(k);
+                    if(k<0){
+                        this.nbToursJoueur=(-1)*k;
+                    }else if(k>0){
+                        this.nbToursJoueur=k;
+                    }else{
+                        this.nbToursJoueur=1;
+                    }
+                    System.out.println(this.nbToursJoueur);
+                    deplacement=true;
+                }else{
+                    Outils.afficherTexte("Déplacement impossible");
+                }
+            
             }
+            
         
         }
-        
-        
     }
     
 

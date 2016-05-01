@@ -66,11 +66,7 @@ public class Temps {
         boolean deplacement=false; // indique si le déplacement a été effectue
         Scanner sc=new Scanner(System.in);
         this.nbToursJoueur=0;
-        System.out.println(j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
         while((!deplacement||!arret)&&this.nbToursJoueur!=j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())){
-            System.out.println(deplacement);
-            System.out.println(this.nbToursJoueur);
-            System.out.println(j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
             if(this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())&&this.nbToursJoueur!=0){
                 Outils.afficherTexte("Souhaitez vous vous arrêter ici ?");
                 if(Outils.conversionBoolean(Outils.verification(sc.next(), 1))){
@@ -117,13 +113,10 @@ public class Temps {
                         b=true;
                     }
                 }
-                System.out.println(b);
+                
                 if(b){
                     j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
-                    System.out.println((j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()));
-                    System.out.println(j.getTabPion().get(j.getPionUtilisé()).getX());
                     int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
-                    System.out.println(k);
                     if(k<0){
                         this.nbToursJoueur=(-1)*k;
                     }else if(k>0){
@@ -131,7 +124,6 @@ public class Temps {
                     }else{
                         this.nbToursJoueur=1;
                     }
-                    System.out.println(this.nbToursJoueur);
                     deplacement=true;
                 }else{
                     Outils.afficherTexte("Déplacement impossible");

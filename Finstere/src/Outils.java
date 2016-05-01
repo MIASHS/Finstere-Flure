@@ -447,7 +447,6 @@ public class Outils {
         str = str.toUpperCase();
         Scanner sc=new Scanner(System.in);
         char[] lettres = str.toCharArray();
-            System.out.println(lettres[0]);
         if(choix==1) {
                     // tant que le joueur ne saisit pas une chaîne valide
                     while(!((lettres[0]=='Y')||(lettres[0]=='O')||(lettres[0]=='N'))){

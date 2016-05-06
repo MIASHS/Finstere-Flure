@@ -79,8 +79,15 @@ public class Temps {
                     Outils.afficherTexte("Ordonnée ?");
                     int o=sc.nextInt();
                     boolean b=false;
+                    for(Cases c1 :p.getMonPlateau().getPlateau()){
+                        if(c1.isOccupee()){
+                            System.out.println(c1.getPioncase().getClass().getName()+": ("+c1.getAbscisse()+":"+c1.getOrdonnee()+")");
+                        }
+                        
+                    }
                     ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                     for(int i=0; i<c.size();i++){
+                        System.out.println(""+i+" :("+c.get(i).getAbscisse()+";"+c.get(i).getOrdonnee()+")");
                         if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
                             b=true;
                         }
@@ -88,12 +95,12 @@ public class Temps {
                     if(b){
                         j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
                         int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
-                    if(k<0){
-                        this.nbToursJoueur=(-1)*k;
-                    }else{
-                        this.nbToursJoueur=k;
-                    }
-                        deplacement=true;
+                        if(k<0){
+                            this.nbToursJoueur=(-1)*k;
+                        }else{
+                            this.nbToursJoueur=k;
+                        }
+                            deplacement=true;
                     }else{
                         Outils.afficherTexte("Déplacement impossible");
                     }
@@ -107,8 +114,16 @@ public class Temps {
                 Outils.afficherTexte("Ordonnée ?");
                 int o=sc.nextInt();
                 boolean b=false;
+                for(Cases c1 :p.getMonPlateau().getPlateau()){
+                        if(c1.isOccupee()){
+                            System.out.println(c1.getPioncase().getClass().getName()+": ("+c1.getAbscisse()+":"+c1.getOrdonnee()+")");
+                        }
+                        
+                    }
                 ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                 for(int i=0; i<c.size();i++){
+                    System.out.println(""+i+" :("+c.get(i).getAbscisse()+";"+c.get(i).getOrdonnee()+")");
+                    
                     if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
                         b=true;
                     }
@@ -131,7 +146,6 @@ public class Temps {
             
             }
             
-        
         }
     }
     

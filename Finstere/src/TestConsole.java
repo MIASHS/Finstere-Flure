@@ -95,7 +95,7 @@ public class TestConsole {
          //on appelle la méthode qui gère les tours
          Outils.afficherTexte("\nDébut du tour...\n");
          t.gestionTourGros(p.getMonstre(),p);
-      
+        testPlateau(m.getPartieActuelle().getMonPlateau()); 
         Outils.afficherTexte("test");
        
     }

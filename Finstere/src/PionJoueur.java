@@ -186,14 +186,17 @@ public class PionJoueur extends Pions {
         //fonction de num et des barrières du plateau de jeu
         //cf searchCoupPossible()
             //On sort la liste des coups possibles.
-        //cf getCoupPossible()
-        //En fonction de la case choisie, on place la case choisie dans le tableau
-        cas.setOccupee(true);
-        cas.setPioncase(this);
-        this.verifierCase(monPlateau, cas);
-        monPlateau.ajouterCase(cas);
 
-    }
+        
+            //cf getCoupPossible()
+            //En fonction de la case choisie, on place la case choisie dans le tableau
+            cas.setOccupee(true);
+            cas.setPioncase(this);
+            this.verifierCase(monPlateau, cas);
+            monPlateau.ajouterCase(cas);
+            this.coupPossible = new HashSet<>();
+            
+        }
 
     public void verifierCase(Plateau monPlateau, Cases c) {
         // verifier la case precedente switch en fonction de l'orientation

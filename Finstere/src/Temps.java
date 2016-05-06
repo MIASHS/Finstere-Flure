@@ -67,12 +67,18 @@ public class Temps {
         boolean deplacement=false; // indique si le déplacement a été effectue
         Scanner sc=new Scanner(System.in);
         this.nbToursJoueur=0;
+        if(!j.getTabPion().get(j.getPionUtilisé()).isOnBoard()&&j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())!=1){
+            this.nbToursJoueur+=1;
+            }
         while((!deplacement||!arret)&&this.nbToursJoueur!=j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())){
-            if(this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())&&this.nbToursJoueur!=0){
-                Outils.afficherTexte("Souhaitez vous vous arrêter ici ?");
-                if(Outils.conversionBoolean(Outils.verification(sc.next(), 1))){
-                    arret=true;
-                }else{
+            System.out.println("nbTourJoueur :"+this.nbToursJoueur+" et n ="+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
+            
+                if(this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())&&this.nbToursJoueur>1){
+                    Outils.afficherTexte("Souhaitez vous vous arrêter ici ?");
+                    if(Outils.conversionBoolean(Outils.verification(sc.next(), 1))){
+                        arret=true;
+                    }else{
+                    p.getMonPlateau().getPlateau().remove(p.getMonPlateau().getCase(j.getTabPion().get(j.getPionUtilisé()).getX(),j.getTabPion().get(j.getPionUtilisé()).getY()));
                     Outils.afficherTexte("Sur quelle cases souhaitez vous vous déplacer ?(Vous pouvez vous déplacer sur "+(j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())-this.nbToursJoueur)+" cases  )");
                     Outils.afficherTexte("Abscisse ?");
 
@@ -80,17 +86,9 @@ public class Temps {
                     Outils.afficherTexte("Ordonnée ?");
                     int o=sc.nextInt();
                     boolean b=false;
-                    ///*********** test********///////
-                    for(Cases c1 :p.getMonPlateau().getPlateau()){
-                        if(c1.isOccupee()){
-                            System.out.println(c1.getPioncase().getClass().getName()+": ("+c1.getAbscisse()+":"+c1.getOrdonnee()+")");
-                        }
-                        
-                    }
+                    
                     ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                     for(int i=0; i<c.size();i++){
-                        ///*********** test********///////
-                        System.out.println(""+i+" :("+c.get(i).getAbscisse()+";"+c.get(i).getOrdonnee()+")");
                         if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
                             b=true;
                         }
@@ -98,38 +96,33 @@ public class Temps {
                     if(b){
                         j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
                         int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
+                        System.out.println(k);
                         if(k<0){
-                            this.nbToursJoueur=(-1)*k;
+                            this.nbToursJoueur+=(-1)*k+2;
+                        }else if(k>0){
+                            this.nbToursJoueur+=k+2;
                         }else{
-                            this.nbToursJoueur=k;
+                            this.nbToursJoueur+=1;
                         }
                             deplacement=true;
                            
                     }else{
-                        Outils.afficherTexte("Déplacement impossible");
+                        Outils.afficherTexte("Déplacement impossible\n");
                     }
                 }
             }else{
                 //Outils.afficherTexte((j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()))).toString());
-                Outils.afficherTexte("Sur quelle cases souhaitez vous vous déplacer ?(Vous pouvez vous déplacer sur "+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())+" cases  )");
+               p.getMonPlateau().getPlateau().remove(p.getMonPlateau().getCase(j.getTabPion().get(j.getPionUtilisé()).getX(),j.getTabPion().get(j.getPionUtilisé()).getY()));
+                Outils.afficherTexte("Sur quelle cases souhaitez vous vous déplacer ?(Vous pouvez vous déplacer sur "+(j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())-this.nbToursJoueur)+" cases )\n");
                 Outils.afficherTexte("Abscisse ?");
 
                 int a=sc.nextInt();
                 Outils.afficherTexte("Ordonnée ?");
                 int o=sc.nextInt();
                 boolean b=false;
-                ///*********** test********///////
-                for(Cases c1 :p.getMonPlateau().getPlateau()){
-                        if(c1.isOccupee()){
-                            System.out.println(c1.getPioncase().getClass().getName()+": ("+c1.getAbscisse()+":"+c1.getOrdonnee()+")");
-                        }
-                        
-                    }
+                
                 ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                 for(int i=0; i<c.size();i++){
-                    ///*********** test********///////
-                    System.out.println(""+i+" :("+c.get(i).getAbscisse()+";"+c.get(i).getOrdonnee()+")");
-                    
                     if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
                         b=true;
                     }
@@ -138,17 +131,18 @@ public class Temps {
                 if(b){
                     j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
                     int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
+                    System.out.println(k);
                     if(k<0){
-                        this.nbToursJoueur=(-1)*k;
+                        this.nbToursJoueur+=(-1)*k+2;
                     }else if(k>0){
-                        this.nbToursJoueur=k;
+                        this.nbToursJoueur+=k+2;
                     }else{
-                        this.nbToursJoueur=1;
+                        this.nbToursJoueur+=1;
                     }
                     deplacement=true;
                      TestConsole.testPlateau(p.getMonPlateau());
                 }else{
-                    Outils.afficherTexte("Déplacement impossible");
+                    Outils.afficherTexte("Déplacement impossible\n");
                 }
             }
             

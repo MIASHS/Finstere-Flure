@@ -192,6 +192,7 @@ public class PionJoueur extends Pions {
             cas.setPioncase(this);
             this.verifierCase(monPlateau, cas);
             monPlateau.ajouterCase(cas);
+            this.coupPossible = new HashSet<>();
             
         }
 

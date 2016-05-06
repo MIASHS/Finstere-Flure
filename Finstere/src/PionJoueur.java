@@ -15,9 +15,7 @@ import java.util.HashSet;
 public class PionJoueur extends Pions {
 
     //Attributs
-
-        
-        
+  
         private boolean mort=false; //booléen indiquant si un pion d'un joueur est mort
         private boolean utilise=false;
         private boolean onBoard=false;
@@ -97,6 +95,7 @@ public class PionJoueur extends Pions {
         }
         // num = numéro actuel sur le pion joueur 
         
+        // savoir si le pion est sur la plateau ou non
         public boolean isOnBoard(){
             return onBoard;
         }
@@ -104,7 +103,7 @@ public class PionJoueur extends Pions {
         public ArrayList<Cases> searchCoupPossible(Plateau monPlateau, int num){
             
         
-            
+ 
             ArrayList<Cases> listProvisoire=new ArrayList<>();
             if(!this.isOnBoard()){
                 num-=1;

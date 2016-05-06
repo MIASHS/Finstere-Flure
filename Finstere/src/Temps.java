@@ -40,8 +40,7 @@ public class Temps {
         while(debuterTour){
             while(g.getJ_list().get(0).getPionUtilisé()!= g.getJ_list().get(0).getPionTotal()||g.getJ_list().get(1).getPionUtilisé()!= g.getJ_list().get(1).getPionTotal()){
                 for(int i=0; i < g.getJ_list().size(); i++){
-                    System.out.println(g.getJ_list().get(0).getPionTotal());
-                          System.out.println(g.getJ_list().get(1).getPionTotal());
+           
                     this.gestionTourPetit(g.getJ_list().get(i),g);
                     if(!g.getJ_list().get(i).isFinirTour()){
                         g.getJ_list().get(i).setPionUtilisé(g.getJ_list().get(i).getPionUtilisé()+1);

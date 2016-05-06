@@ -484,7 +484,7 @@ public class Outils {
     public static char afficher(int niveau, Jeu partieActuelle){
         Scanner sc=new Scanner(System.in);
         switch (niveau) {
-            case 0:     System.out.println("\nDemarrer(D)\nQuitter(Q)\nMenu(S)");
+            case 0:     System.out.println("\nDemarrer(D)\nQuitter(Q)\nMenu(S) \nScores(C)");
                         System.out.println("\nQuel est votre choix ?\n");
                 
                         return Outils.verification(sc.next(),0);

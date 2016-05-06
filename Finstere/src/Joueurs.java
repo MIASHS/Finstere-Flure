@@ -16,7 +16,7 @@ public class Joueurs {
 
     private ArrayList<PionJoueur> tabPion=new ArrayList<>()  ;
     private boolean gagner=false ;
-    private int pionTotal=4;
+    private int pionTotal=1;
     private int pionUtilisé=0;
     private boolean finirTour=false;
 

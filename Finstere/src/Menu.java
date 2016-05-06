@@ -61,6 +61,12 @@ public class Menu {
             case 'D':   //this.getPartieActuelle().lancerJeu();
                         this.demarrer();
                         break;
+                
+            case 'C':   // méthode à appeller pour afficher les scores
+                        Outils.afficherTexte("pas encore implémenté !");
+                        this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0,partieActuelle)));
+                    
+                     break;
             case 'S':   this.menuNiveauUn(Outils.conversionCaractere(Outils.afficher(1,partieActuelle)));
                         break;
                        

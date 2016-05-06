@@ -64,7 +64,9 @@ public class TestConsole {
                             Outils.afficherTexte("[ M ]");
                             break;
                         case "PionJoueur":
-                            Outils.afficherTexte("[ J ]");
+                            PionJoueur pj=(PionJoueur)p.getCase(i,j).getPioncase();
+                            pj.getNumActuel();
+                            Outils.afficherTexte("[ J"+pj.getNumjoueur()+"P"+pj.getNumActuel()+" ]");
                             break;
                         default:
                             Outils.afficherTexte("[ B ]");
@@ -95,7 +97,7 @@ public class TestConsole {
          //on appelle la méthode qui gère les tours
          Outils.afficherTexte("\nDébut du tour...\n");
          t.gestionTourGros(p.getMonstre(),p);
-        testPlateau(m.getPartieActuelle().getMonPlateau()); 
+        testPlateau(m.getPartieActuelle().getMonPlateau());
         Outils.afficherTexte("test");
        
     }

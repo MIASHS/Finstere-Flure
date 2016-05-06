@@ -56,18 +56,18 @@ public class Jeu {
         m= new Monstre(0,0,3,this);
         monPlateau.placerMonstre(this.m);
        Joueurs joueur1 = new Joueurs("Gab");
-       joueur1.ajouterPion(new PionJoueur(1));       
-       joueur1.ajouterPion(new PionJoueur(4));
+       joueur1.ajouterPion(new PionJoueur(1,1));       
+       /*joueur1.ajouterPion(new PionJoueur(4));
        joueur1.ajouterPion(new PionJoueur(3));
-       joueur1.ajouterPion(new PionJoueur(2));
+       joueur1.ajouterPion(new PionJoueur(2));*/
        j_list.add(joueur1);
        
         Joueurs joueur2 = new Joueurs("Valère");
        
-       joueur2.ajouterPion(new PionJoueur(6));
-       joueur2.ajouterPion(new PionJoueur(3));
+       joueur2.ajouterPion(new PionJoueur(6,2));
+       /*joueur2.ajouterPion(new PionJoueur(3));
        joueur2.ajouterPion(new PionJoueur(4));
-       joueur2.ajouterPion(new PionJoueur(5));
+       joueur2.ajouterPion(new PionJoueur(5));*/
        
        j_list.add(joueur2);
        

@@ -21,7 +21,7 @@ public class Monstre extends Pions{
     int nbPionsTues=0;
     private ArrayList<Cases> chemin=new ArrayList<>();
     
-
+    // Constructeur
     public Monstre(int x, int y, int orientation,Jeu partie) {
         this.setX(x);
         this.setY(y);
@@ -59,7 +59,7 @@ public class Monstre extends Pions{
     }
 
     
-    // méthode
+    // méthodes
     
     public void deplacer(Cartes c){
         if(c.getNumeroCarte()!=11&&c.getNumeroCarte()!=12){

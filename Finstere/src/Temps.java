@@ -79,6 +79,7 @@ public class Temps {
                     Outils.afficherTexte("Ordonnée ?");
                     int o=sc.nextInt();
                     boolean b=false;
+                    ///*********** test********///////
                     for(Cases c1 :p.getMonPlateau().getPlateau()){
                         if(c1.isOccupee()){
                             System.out.println(c1.getPioncase().getClass().getName()+": ("+c1.getAbscisse()+":"+c1.getOrdonnee()+")");
@@ -87,6 +88,7 @@ public class Temps {
                     }
                     ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                     for(int i=0; i<c.size();i++){
+                        ///*********** test********///////
                         System.out.println(""+i+" :("+c.get(i).getAbscisse()+";"+c.get(i).getOrdonnee()+")");
                         if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
                             b=true;
@@ -114,6 +116,7 @@ public class Temps {
                 Outils.afficherTexte("Ordonnée ?");
                 int o=sc.nextInt();
                 boolean b=false;
+                ///*********** test********///////
                 for(Cases c1 :p.getMonPlateau().getPlateau()){
                         if(c1.isOccupee()){
                             System.out.println(c1.getPioncase().getClass().getName()+": ("+c1.getAbscisse()+":"+c1.getOrdonnee()+")");
@@ -122,6 +125,7 @@ public class Temps {
                     }
                 ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                 for(int i=0; i<c.size();i++){
+                    ///*********** test********///////
                     System.out.println(""+i+" :("+c.get(i).getAbscisse()+";"+c.get(i).getOrdonnee()+")");
                     
                     if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){

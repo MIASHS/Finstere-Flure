@@ -18,9 +18,7 @@ public class IA {
     public IA(Jeu g) {
        game = g ;
     }
-
-    
-    
+ 
     public void CoupPossibleIA(Plateau monPlateau, Joueurs j ){
         game.getJ_list().get(1).getTabPion().get(0);
     

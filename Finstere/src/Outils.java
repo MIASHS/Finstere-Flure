@@ -38,7 +38,65 @@ public class Outils {
                 case -6:
                     c = 'u';
                     break;
-                default:
+                default:switch(convertCoorToInt(a,o)){
+
+                case 12:
+                    if (k == 3) {
+                        c = 'm';
+                    } else if (k == 1) {
+                        c = 'n';
+                    }
+                    break;
+                case 29:
+                    if (k == 3) {
+                        c = 'o';
+                    } else if (k == 1) {
+                        c = 'p';
+                    }
+                    break;
+                case 46:
+                    if (k == 3) {
+                        c = 'q';
+                    } else if (k == 1) {
+                        c = 'r';
+                    }
+                    break;
+                case 63:
+                    if (k == 3) {
+                        c = 's';
+                    } else if (k == 1) {
+                        c = 't';
+                    }
+                    break;
+                case 112:
+                    if (k == 4) {
+                        c = 't';
+                    } else if (k == 2) {
+                        c = 's';
+                    }
+                    break;
+                case 129:
+                    if (k == 4) {
+                        c = 'r';
+                    } else if (k == 2) {
+                        c = 'q';
+                    }
+                    break;
+                case 146:
+                    if (k == 4) {
+                        c = 'p';
+                    } else if (k == 2) {
+                        c = 'o';
+                    }
+                    break;
+                case 163:
+                    if (k == 4) {
+                        c = 'n';
+                    } else if (k == 2) {
+                        c = 'm';
+                    }
+                    break;
+            }
                     break;
             }
 
@@ -66,7 +124,65 @@ public class Outils {
                 case -10:
                     c = '*';
                     break;
-                default: System.out.println("dahut");
+                default:switch(convertCoorToInt(a,o)){
+
+                case 12:
+                    if (k == 3) {
+                        c = 'm';
+                    } else if (k == 1) {
+                        c = 'n';
+                    }
+                    break;
+                case 29:
+                    if (k == 3) {
+                        c = 'o';
+                    } else if (k == 1) {
+                        c = 'p';
+                    }
+                    break;
+                case 46:
+                    if (k == 3) {
+                        c = 'q';
+                    } else if (k == 1) {
+                        c = 'r';
+                    }
+                    break;
+                case 63:
+                    if (k == 3) {
+                        c = 's';
+                    } else if (k == 1) {
+                        c = 't';
+                    }
+                    break;
+                case 112:
+                    if (k == 4) {
+                        c = 't';
+                    } else if (k == 2) {
+                        c = 's';
+                    }
+                    break;
+                case 129:
+                    if (k == 4) {
+                        c = 'r';
+                    } else if (k == 2) {
+                        c = 'q';
+                    }
+                    break;
+                case 146:
+                    if (k == 4) {
+                        c = 'p';
+                    } else if (k == 2) {
+                        c = 'o';
+                    }
+                    break;
+                case 163:
+                    if (k == 4) {
+                        c = 'n';
+                    } else if (k == 2) {
+                        c = 'm';
+                    }
+                    break;
+            }
                     break;
 
             }
@@ -110,7 +226,65 @@ public class Outils {
                 case 11:
                     c = 'l';
                     break;
-                default: System.out.println("baisez");
+                default:switch(convertCoorToInt(a,o)){
+
+                case 12:
+                    if (k == 3) {
+                        c = 'm';
+                    } else if (k == 1) {
+                        c = 'n';
+                    }
+                    break;
+                case 29:
+                    if (k == 3) {
+                        c = 'o';
+                    } else if (k == 1) {
+                        c = 'p';
+                    }
+                    break;
+                case 46:
+                    if (k == 3) {
+                        c = 'q';
+                    } else if (k == 1) {
+                        c = 'r';
+                    }
+                    break;
+                case 63:
+                    if (k == 3) {
+                        c = 's';
+                    } else if (k == 1) {
+                        c = 't';
+                    }
+                    break;
+                case 112:
+                    if (k == 4) {
+                        c = 't';
+                    } else if (k == 2) {
+                        c = 's';
+                    }
+                    break;
+                case 129:
+                    if (k == 4) {
+                        c = 'r';
+                    } else if (k == 2) {
+                        c = 'q';
+                    }
+                    break;
+                case 146:
+                    if (k == 4) {
+                        c = 'p';
+                    } else if (k == 2) {
+                        c = 'o';
+                    }
+                    break;
+                case 163:
+                    if (k == 4) {
+                        c = 'n';
+                    } else if (k == 2) {
+                        c = 'm';
+                    }
+                    break;
+            }
                     break;
 
             }
@@ -153,66 +327,124 @@ public class Outils {
                 case 15:
                     c = 'a';
                     break;
-                default:
+                default:switch(convertCoorToInt(a,o)){
+
+                case 12:
+                    if (k == 3) {
+                        c = 'm';
+                    } else if (k == 1) {
+                        c = 'n';
+                    }
+                    break;
+                case 29:
+                    if (k == 3) {
+                        c = 'o';
+                    } else if (k == 1) {
+                        c = 'p';
+                    }
+                    break;
+                case 46:
+                    if (k == 3) {
+                        c = 'q';
+                    } else if (k == 1) {
+                        c = 'r';
+                    }
+                    break;
+                case 63:
+                    if (k == 3) {
+                        c = 's';
+                    } else if (k == 1) {
+                        c = 't';
+                    }
+                    break;
+                case 112:
+                    if (k == 4) {
+                        c = 't';
+                    } else if (k == 2) {
+                        c = 's';
+                    }
+                    break;
+                case 129:
+                    if (k == 4) {
+                        c = 'r';
+                    } else if (k == 2) {
+                        c = 'q';
+                    }
+                    break;
+                case 146:
+                    if (k == 4) {
+                        c = 'p';
+                    } else if (k == 2) {
+                        c = 'o';
+                    }
+                    break;
+                case 163:
+                    if (k == 4) {
+                        c = 'n';
+                    } else if (k == 2) {
+                        c = 'm';
+                    }
+                    break;
+            }
                     break;
             }
 
         }else if(c==' '){
             switch(convertCoorToInt(a,o)){
 
-                case 13:
-                    if (k == 1) {
+                case 12:
+                    if (k == 3) {
                         c = 'm';
-                    } else if (k == 2) {
+                    } else if (k == 1) {
                         c = 'n';
                     }
                     break;
-                case 27:
-                    if (k == 1) {
+                case 29:
+                    if (k == 3) {
                         c = 'o';
-                    } else if (k == 2) {
+                    } else if (k == 1) {
                         c = 'p';
                     }
                     break;
-                case 41:
-                    if (k == 1) {
+                case 46:
+                    if (k == 3) {
                         c = 'q';
-                    } else if (k == 2) {
+                    } else if (k == 1) {
                         c = 'r';
                     }
                     break;
-                case 55:
-                    if (k == 1) {
+                case 63:
+                    if (k == 3) {
                         c = 's';
-                    } else if (k == 2) {
+                    } else if (k == 1) {
                         c = 't';
                     }
                     break;
                 case 112:
-                    if (k == 3) {
+                    if (k == 4) {
                         c = 't';
-                    } else if (k == 4) {
+                    } else if (k == 2) {
                         c = 's';
                     }
                     break;
-                case 128:
-                    if (k == 3) {
+                case 129:
+                    if (k == 4) {
                         c = 'r';
-                    } else if (k == 4) {
+                    } else if (k == 2) {
                         c = 'q';
                     }
                     break;
-                case 145:
-                    if (k == 3) {
+                case 146:
+                    if (k == 4) {
                         c = 'p';
-                    } else if (k == 4) {
+                    } else if (k == 2) {
                         c = 'o';
                     }
                     break;
-                case 162:
-                    if (k == 3) {
+                case 163:
+                    if (k == 4) {
                         c = 'n';
-                    } else if (k == 4) {
+                    } else if (k == 2) {
                         c = 'm';
                     }
                     break;
@@ -222,7 +454,7 @@ public class Outils {
     }
 
     public static int convertCoorToInt(int a, int o) {
-        return (a * 16 + o);
+        return (a + (o*-16));
     }
 
     public static void convertChartoCoor(char c, Pions p) {

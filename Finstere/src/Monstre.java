@@ -20,6 +20,7 @@ public class Monstre extends Pions{
     private Plateau monPlateau;
     int nbPionsTues=0;
     private ArrayList<Cases> chemin=new ArrayList<>();
+    private Cases casePrecedente;
     
     // Constructeur
     public Monstre(int x, int y, int orientation,Jeu partie) {
@@ -41,7 +42,13 @@ public class Monstre extends Pions{
         this.chemin = chemin;
     }
     
-
+    public Cases getCasePrecedente(){
+        return casePrecedente;
+    }
+    
+    public void setCasePrecedente(Cases c){
+        this.casePrecedente=c;
+    }
     public int getOrientation() {
         return orientation;
     }
@@ -62,26 +69,30 @@ public class Monstre extends Pions{
     // méthodes
     
     public void deplacer(Cartes c){
+        casePrecedente=monPlateau.getCase(this.getX(), this.getY());
+        this.makeChemin(monPlateau.getCase(this.getX(), this.getY()));
+        monPlateau.getPlateau().remove(monPlateau.getCase(this.getX(), this.getY()));
+        System.out.println("coucou"+c.getNumeroCarte());
         if(c.getNumeroCarte()!=11&&c.getNumeroCarte()!=12){
             int nbCasesRestantes = c.getNumeroCarte();
             while(nbCasesRestantes!=0){
                 
                 
                    this.regarder(this.getOrientation(),monPlateau);
-                
+                System.out.println("("+this.getX()+";"+this.getY()+")");
 
                 switch(this.getOrientation()){
                     case 1:
-                            this.setX(this.getX()+1);
-                            break;
-                    case 2:
-                            this.setY(this.getY()-1);
-                            break;
-                    case 3:
                             this.setY(this.getY()+1);
                             break;
-                    case 4:
+                    case 2:
                             this.setX(this.getX()-1);
+                            break;
+                    case 3:
+                            this.setX(this.getX()+1);
+                            break;
+                    case 4:
+                            this.setY(this.getY()-1);
                             break;
                 }
                 this.verifierCase(this.getOrientation());
@@ -102,23 +113,33 @@ public class Monstre extends Pions{
                 }
                 switch(this.getOrientation()){
                     case 1:
-                            this.setX(this.getX()+1);
-                            break;
-                    case 2:
-                            this.setY(this.getY()-1);
-                            break;
-                    case 3:
                             this.setY(this.getY()+1);
                             break;
-                    case 4:
+                    case 2:
                             this.setX(this.getX()-1);
+                            break;
+                    case 3:
+                            this.setX(this.getX()+1);
+                            break;
+                    case 4:
+                            this.setY(this.getY()-1);
                             break;
                 }
                 this.verifierCase(this.getOrientation());
+                this.makeChemin(monPlateau.getCase(this.getX(), this.getY()));
                 nbCasesParcourues+=1;
             }
         }
         
+        System.out.println("Hello");
+        Cases c1=monPlateau.getCase(this.getX(), this.getY());
+        c1.setPioncase(this);
+        c1.setOccupee(true);
+        
+        monPlateau.ajouterCase(c1);
+        for(Cases c2: monPlateau.getPlateau()){
+            System.out.println(c2.getPioncase().getClass().getName()+": ("+c2.getAbscisse()+";"+c2.getOrdonnee()+") > ("+c2.getPioncase().getX()+";"+c2.getPioncase().getY()+")");
+        }
     }
     
     public boolean changementO(int o){
@@ -215,12 +236,15 @@ public class Monstre extends Pions{
     public void tuer(PionJoueur p){
         p.mourir(true);
     }
+    public Plateau getMonPlateau(){
+        return monPlateau;
+    }
     
     public void verifierCase(int o){
         if(monPlateau.getCase(this.abscisse,this.ordonnee).isOccupee()){
             switch(monPlateau.getCase(this.abscisse,this.ordonnee).getPioncase().getClass().getName()){
                 case "Pierre":
-                        monPlateau.getCase(this.abscisse,this.ordonnee).getPioncase().deplacer(o);
+                        ((Pierre)monPlateau.getCase(this.abscisse,this.ordonnee).getPioncase()).deplacer(o,monPlateau);
                     break;
                 case "Flaque":
                         monPlateau.getCase(this.abscisse,this.ordonnee).getPioncase().deplacerPion(this);
@@ -230,10 +254,15 @@ public class Monstre extends Pions{
                         this.tuer((PionJoueur)monPlateau.getCase(this.abscisse,this.ordonnee).getPioncase());
                     }
                     break;
-                default: this.seTeleporter(Outils.convertCoorToChar(this.abscisse,this.ordonnee,this.orientation));
-                    break;
+                //default: this.seTeleporter(Outils.convertCoorToChar(this.abscisse,this.ordonnee,this.orientation));
+                  //  break;
             }
+        }else if(!((this.getX() > -1 && this.getY() < 1 && this.getX() < 12 && this.getY() > -7) || (this.getX() < 16 && this.getY() > -11 && this.getX() > 3 && this.getY() < -3) || (this.getX() < 15 && this.getY() > -10 && this.getX() > 2 && this.getY() < -2) || (this.getX() < 14 && this.getY() > -9 && this.getX() > 1 && this.getY() < -1) || (this.getX() < 13 && this.getY() > -8 && this.getX() > 0 && this.getY() < 0))){
+            System.out.println("BIte2");
+            this.seTeleporter(Outils.convertCoorToChar(this.abscisse,this.ordonnee,this.orientation));
+            
         }
+        System.out.println("BIte");
     }
 
     @Override

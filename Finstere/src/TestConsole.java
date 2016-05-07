@@ -51,7 +51,6 @@ public class TestConsole {
  
             for (int i = 0; i < 16; i++) {
                 
-                
                 if (p.getCase(i,j).isOccupee() != false) {
                     switch (p.getCase(i, j).getPioncase().getClass().getName()) {
                         case "Pierre":
@@ -66,7 +65,7 @@ public class TestConsole {
                         case "PionJoueur":
                             PionJoueur pj=(PionJoueur)p.getCase(i,j).getPioncase();
                             pj.getNumActuel();
-                            Outils.afficherTexte("[ J"+pj.getNumjoueur()+"P"+pj.getNumActuel()+" ]");
+                            Outils.afficherTexte("["+pj.getNumActuel()+"J"+pj.getNumjoueur()+"]");
                             break;
                         default:
                             Outils.afficherTexte("[ B ]");
@@ -75,8 +74,10 @@ public class TestConsole {
                 } else {
                     if(!((i>=0&&j<=0&&i<=11&&j>=-6)||(i<=15&&j>=-10&&i>=4&&j<=-4)||(i<=14&&j>=-9&&i>=3&&j<=-3)||(i<=13&&j>=-8&&i>=2&&j<=-2)||(i<=12&&j>=-7&&i>=1&&j<=-1))){
                         Outils.afficherTexte("[XXX]");
+                    }else if(p.getCase(i, j).getPioncase() instanceof Flaque){
+                         Outils.afficherTexte("[ F ]");
                     }else{
-                         Outils.afficherTexte("[   ]");
+                        Outils.afficherTexte("[   ]");
                     }
                        
                     }
@@ -84,6 +85,7 @@ public class TestConsole {
             
             Outils.afficherTexte("\n");
         }
+        
     }
     
     public static void testTour(Jeu p,Menu m){

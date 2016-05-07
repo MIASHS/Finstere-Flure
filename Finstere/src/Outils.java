@@ -361,20 +361,20 @@ public class Outils {
                 break;
             case 's':
                 if(p.getX()==15&&p.getY()==-3){
-                    p.setX(0);
+                    p.setX(1);
                     p.setY(-7);
                 }else{
-                    p.setX(15);
+                    p.setX(14);
                     p.setY(-3);
                 }
                 break;
             case 't':
                 if(p.getX()==15&&p.getY()==-3){
                     p.setX(0);
-                    p.setY(-7);
+                    p.setY(-6);
                 }else{
                     p.setX(15);
-                    p.setY(-3);
+                    p.setY(-4);
                 }
                 break;
             case 'u':

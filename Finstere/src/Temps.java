@@ -39,8 +39,9 @@ public class Temps {
         
         while(debuterTour){
             while(g.getJ_list().get(0).getPionUtilisé()!= g.getJ_list().get(0).getPionTotal()||g.getJ_list().get(1).getPionUtilisé()!= g.getJ_list().get(1).getPionTotal()){
+                
                 for(int i=0; i < g.getJ_list().size(); i++){
-           
+                    TestConsole.testPlateau(g.getMonPlateau());
                     this.gestionTourPetit(g.getJ_list().get(i),g);
                     if(!g.getJ_list().get(i).isFinirTour()){
                         g.getJ_list().get(i).setPionUtilisé(g.getJ_list().get(i).getPionUtilisé()+1);
@@ -71,7 +72,8 @@ public class Temps {
             this.nbToursJoueur+=1;
             }
         while((!deplacement||!arret)&&this.nbToursJoueur!=j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())){
-            System.out.println("nbTourJoueur :"+this.nbToursJoueur+" et n ="+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
+            //TEST///////
+            //System.out.println("nbTourJoueur :"+this.nbToursJoueur+" et n ="+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
             
                 if(this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())&&this.nbToursJoueur>1){
                     Outils.afficherTexte("Souhaitez vous vous arrêter ici ?");
@@ -96,7 +98,7 @@ public class Temps {
                     if(b){
                         j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
                         int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
-                        System.out.println(k);
+
                         if(k<0){
                             this.nbToursJoueur+=(-1)*k+2;
                         }else if(k>0){
@@ -112,7 +114,7 @@ public class Temps {
                 }
             }else{
                 //Outils.afficherTexte((j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()))).toString());
-               p.getMonPlateau().getPlateau().remove(p.getMonPlateau().getCase(j.getTabPion().get(j.getPionUtilisé()).getX(),j.getTabPion().get(j.getPionUtilisé()).getY()));
+               //p.getMonPlateau().getPlateau().remove(p.getMonPlateau().getCase(j.getTabPion().get(j.getPionUtilisé()).getX(),j.getTabPion().get(j.getPionUtilisé()).getY()));
                 Outils.afficherTexte("Sur quelle cases souhaitez vous vous déplacer ?(Vous pouvez vous déplacer sur "+(j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())-this.nbToursJoueur)+" cases )\n");
                 Outils.afficherTexte("Abscisse ?");
 
@@ -131,7 +133,6 @@ public class Temps {
                 if(b){
                     j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
                     int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
-                    System.out.println(k);
                     if(k<0){
                         this.nbToursJoueur+=(-1)*k+2;
                     }else if(k>0){
@@ -140,13 +141,14 @@ public class Temps {
                         this.nbToursJoueur+=1;
                     }
                     deplacement=true;
-                     TestConsole.testPlateau(p.getMonPlateau());
+                     
                 }else{
                     Outils.afficherTexte("Déplacement impossible\n");
                 }
             }
             
         }
+        
     }
     
 

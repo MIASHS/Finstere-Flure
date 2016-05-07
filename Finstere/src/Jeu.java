@@ -58,17 +58,17 @@ public class Jeu {
         monPlateau.placerMonstre(this.m);
        Joueurs joueur1 = new Joueurs("Gab");
        joueur1.ajouterPion(new PionJoueur(1,1));       
-       joueur1.ajouterPion(new PionJoueur(4,1));
+       /*joueur1.ajouterPion(new PionJoueur(4,1));
        joueur1.ajouterPion(new PionJoueur(3,1));
-       joueur1.ajouterPion(new PionJoueur(2,1));
+       joueur1.ajouterPion(new PionJoueur(2,1));*/
        j_list.add(joueur1);
        
         Joueurs joueur2 = new Joueurs("Valère");
        
        joueur2.ajouterPion(new PionJoueur(6,2));
-       joueur2.ajouterPion(new PionJoueur(3,2));
+       /*joueur2.ajouterPion(new PionJoueur(3,2));
        joueur2.ajouterPion(new PionJoueur(4,2));
-       joueur2.ajouterPion(new PionJoueur(5,2));
+       joueur2.ajouterPion(new PionJoueur(5,2));*/
        
        j_list.add(joueur2);
        
@@ -94,6 +94,9 @@ public class Jeu {
                 c2 = plateauVide.getCase(X,Y-1);
                 c3 = plateauVide.getCase(X+1,Y-1);
         }
+        Flaque f= new Flaque(X,Y,i);
+        plateauVide.ajouterList(f);
+        plateauVide.placerObstacle();
         }else{
             c1 = plateauVide.getCase(X+1,Y);
             c2 = plateauVide.getCase(X+2,Y);
@@ -106,11 +109,13 @@ public class Jeu {
             c2 = plateauVide.getCase(X+2,Y);
             c3 = plateauVide.getCase(X+3,Y);
         }
+        Flaque f= new Flaque(X,Y,i);
+        plateauVide.ajouterList(f);
+        plateauVide.placerObstacle();
         }
         
         
-        Flaque f= new Flaque(X,Y,i);
-        plateauVide.ajouterList(f);
+        
     }
     
     public void placementBlocPierre(Plateau plateauVide){
@@ -118,7 +123,7 @@ public class Jeu {
         int placementX = ra.nextInt(15);
         int placementY = (-1)*ra.nextInt(11);
         Cases c = plateauVide.getCase(placementX,placementY);
-        while (c.isOccupee() || (placementX == 0 && placementY==-1) || (placementX == 1 && placementY==-1)|| (placementX == 0 && placementY==0) || (placementX == 1 && placementY==0)|| (placementX == 15 && placementY==-10)|| (placementX == 14 && placementY==-10)|| (placementX == 14 && placementY==-9)|| (placementX == 15 && placementY==-9)|| (placementX > 11 && placementY==0)|| (placementX > 12 && placementY==-1)|| (placementX > 13 && placementY==-2)|| (placementX > 14 && placementY==-3)|| (placementX == 0 && placementY<-6)|| (placementX == 1 && placementY<-7)|| (placementX == 2 && placementY<-8)|| (placementX == 3 && placementY==-9)){
+        while (c.isOccupee() || (placementX == 0 && placementY==-1) || (placementX == 1 && placementY==-1)|| (placementX == 0 && placementY==0) || (placementX == 1 && placementY==0)|| (placementX == 15 && placementY==-10)|| (placementX == 14 && placementY==-10)|| (placementX == 14 && placementY==-9)|| (placementX == 15 && placementY==-9)|| (placementX > 11 && placementY==0)|| (placementX > 12 && placementY==-1)|| (placementX > 13 && placementY==-2)|| (placementX > 14 && placementY==-3)|| (placementX == 0 && placementY<-6)|| (placementX == 1 && placementY<-7)|| (placementX == 2 && placementY<-8)|| (placementX == 3 && placementY<-9)){
                 placementY = (-1)*ra.nextInt(11);
                 placementX = ra.nextInt(15);
                 c = plateauVide.getCase(placementX,placementY);

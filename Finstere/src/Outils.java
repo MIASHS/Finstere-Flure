@@ -474,27 +474,35 @@ public class Outils {
         return Character.toUpperCase(lettre);
     }
 
-    public static char verification(String str, int choix) {
+     public static char conversionStringToCaractere(String str){
+         return str.toCharArray()[0];
+     }
+    
+     
+        public static char verification(String str, int choix){
+
         str = str.toUpperCase();
         Scanner sc = new Scanner(System.in);
         char[] lettres = str.toCharArray();
-        if (choix == 1) {
-            // tant que le joueur ne saisit pas une chaîne valide
-            while (!((lettres[0] == 'Y') || (lettres[0] == 'O') || (lettres[0] == 'N'))) {
-                System.out.println("\nLa saisie est erronée veuillez réessayer. \n Entrez une réponse (O/N):");
-                Outils.verification(sc.next(), 1);
-            }
-            return lettres[0];
 
-        } else {
-            //si les caractères entrés ne sont pas entre A et Z
-            while (lettres[0] < 'A' && lettres[0] > 'Z') {
-                System.out.println("\nLa saisie est erronée veuillez réessayer. \n Entrez votre choix:");
-                Outils.verification(sc.next(), 0);
-            }
-            return lettres[0];
+        if(choix==1) {
+                    // tant que le joueur ne saisit pas une chaîne valide
+                    while((((int)lettres[0]!=(int)'Y')&&((int)lettres[0]!=(int)'O')&&((int)lettres[0]!=(int)'N'))){
+                        System.out.println("\nLa saisie est erronée veuillez réessayer. \n Entrez une réponse (O/N):");
+                        lettres[0]=Outils.conversionCaractere(Outils.conversionStringToCaractere(sc.next()));
+                    }
+                    return lettres[0];
+                    
+        }else{
+                  //si les caractères entrés ne sont pas entre A et Z
+                  while(lettres[0]<'A' && lettres[0]>'Z'){
+                      System.out.println("\nLa saisie est erronée veuillez réessayer. \n Entrez votre choix:");    
+                      lettres[0]=Outils.verification(sc.next(),0);
+                  }
+                  return lettres[0];
+                  
+        }     
 
-        }
     }
 
     public static boolean conversionBoolean(char c) {

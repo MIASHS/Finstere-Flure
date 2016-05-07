@@ -65,7 +65,7 @@ public class TestConsole {
                         case "PionJoueur":
                             PionJoueur pj=(PionJoueur)p.getCase(i,j).getPioncase();
                             pj.getNumActuel();
-                            Outils.afficherTexte("["+pj.getNumActuel()+"J"+pj.getNumjoueur()+"]");
+                            Outils.afficherTexte("["+pj.getNum(pj.getNumActuel())+"J"+pj.getNumjoueur()+"]");
                             break;
                         default:
                             Outils.afficherTexte("[ B ]");

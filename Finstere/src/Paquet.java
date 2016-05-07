@@ -80,7 +80,6 @@ public class Paquet {
         this.setNumeroSerie(ra.nextInt(2000));
         for (int i = 0; i < 8; i++) {
             int k=1+ra.nextInt(8);
-            System.out.println("k :"+k);
             while((int) valeur.get(k) ==0){
                 k=1+ra.nextInt(8);
             }

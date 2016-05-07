@@ -67,62 +67,61 @@ public class Temps {
         boolean arret=false;// condition d'arret si le joueur veut s'arreter... hum où l'appliquée ?? 
         boolean deplacement=false; // indique si le déplacement a été effectue
         Scanner sc=new Scanner(System.in);
-        this.nbToursJoueur=0;
+        this.nbToursJoueur=0; // Indique le nombre de déplacement utilisé
         if(!j.getTabPion().get(j.getPionUtilisé()).isOnBoard()&&j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())!=1){
             this.nbToursJoueur+=1;
             }
-        while((!deplacement||!arret)&&this.nbToursJoueur!=j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())){
+        while((!deplacement||!arret)&&this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())){
             //TEST///////
             //System.out.println("nbTourJoueur :"+this.nbToursJoueur+" et n ="+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
-            
                 if(this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())&&this.nbToursJoueur>1){
                     Outils.afficherTexte("Souhaitez vous vous arrêter ici ?");
                     if(Outils.conversionBoolean(Outils.verification(sc.next(), 1))){
                         arret=true;
                     }else{
-                    p.getMonPlateau().getPlateau().remove(p.getMonPlateau().getCase(j.getTabPion().get(j.getPionUtilisé()).getX(),j.getTabPion().get(j.getPionUtilisé()).getY()));
-                    Outils.afficherTexte("Sur quelle cases souhaitez vous vous déplacer ?(Vous pouvez vous déplacer sur "+(j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())-this.nbToursJoueur)+" cases  )");
-                    Outils.afficherTexte("Abscisse ?");
-
-                    int a=sc.nextInt();
-                    Outils.afficherTexte("Ordonnée ?");
-                    int o=sc.nextInt();
-                    boolean b=false;
+                        Outils.afficherTexte("Sur quelle cases souhaitez vous vous déplacer ?(Vous pouvez vous déplacer sur "+(j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())-this.nbToursJoueur)+" cases  )");
+                        Outils.afficherTexte("Abscisse ?");
+                        int a=sc.nextInt();
+                        Outils.afficherTexte("Ordonnée ?");
+                        int o=sc.nextInt();
+                        boolean b=false;
+                        ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
+                        for(int i=0; i<c.size();i++){
+                            if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
+                                b=true;
+                            }
+                        }
+                        if(b){
                     
-                    ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
-                    for(int i=0; i<c.size();i++){
-                        if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
-                            b=true;
-                        }
-                    }
-                    if(b){
-                        j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
-                        int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
+                            j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
+                            ////TEST////
+                            /*System.out.println("Xcase ="+ (j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse())+" ; Xj ="+j.getTabPion().get(j.getPionUtilisé()).getX()+" ; Ycase ="+(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee())+" ; Yj ="+j.getTabPion().get(j.getPionUtilisé()).getY());
+                            System.out.println("Xcase - Xj ="+ (j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())+" ; Ycase - Yj ="+(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY()));
+                            System.out.println("Xcase - Xj - (Ycase - Yj) ="+((j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY())));*/
+                    int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
 
-                        if(k<0){
-                            this.nbToursJoueur+=(-1)*k+2;
-                        }else if(k>0){
-                            this.nbToursJoueur+=k+2;
+                            if(k<0){
+                                this.nbToursJoueur+=(-1)*k;
+                            }else if(k>0){
+                                this.nbToursJoueur+=k;
+                            }else{
+                                this.nbToursJoueur+=1;
+                            }
+                                deplacement=true;
+
                         }else{
-                            this.nbToursJoueur+=1;
+                            Outils.afficherTexte("Déplacement impossible\n");
                         }
-                            deplacement=true;
-                           
-                    }else{
-                        Outils.afficherTexte("Déplacement impossible\n");
                     }
-                }
             }else{
                 //Outils.afficherTexte((j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()))).toString());
                //p.getMonPlateau().getPlateau().remove(p.getMonPlateau().getCase(j.getTabPion().get(j.getPionUtilisé()).getX(),j.getTabPion().get(j.getPionUtilisé()).getY()));
                 Outils.afficherTexte("Sur quelle cases souhaitez vous vous déplacer ?(Vous pouvez vous déplacer sur "+(j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())-this.nbToursJoueur)+" cases )\n");
                 Outils.afficherTexte("Abscisse ?");
-
                 int a=sc.nextInt();
                 Outils.afficherTexte("Ordonnée ?");
                 int o=sc.nextInt();
                 boolean b=false;
-                
                 ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                 for(int i=0; i<c.size();i++){
                     if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
@@ -134,9 +133,9 @@ public class Temps {
                     j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
                     int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
                     if(k<0){
-                        this.nbToursJoueur+=(-1)*k+2;
+                        this.nbToursJoueur+=(-1)*k;
                     }else if(k>0){
-                        this.nbToursJoueur+=k+2;
+                        this.nbToursJoueur+=k;
                     }else{
                         this.nbToursJoueur+=1;
                     }
@@ -148,6 +147,7 @@ public class Temps {
             }
             
         }
+        
         
     }
     

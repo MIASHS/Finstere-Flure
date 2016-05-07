@@ -69,7 +69,7 @@ public class Paquet {
     private void init() {
         Random ra = new Random();
         Map valeur=new HashMap();
-        valeur.put(1, 5);
+        valeur.put(1, 5);//5 7 7 8 8 10
         valeur.put(2, 7);
         valeur.put(3, 7);
         valeur.put(4, 8);

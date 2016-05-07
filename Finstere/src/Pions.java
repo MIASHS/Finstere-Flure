@@ -61,9 +61,7 @@ public abstract class Pions implements Deplacements {
         return true;
     }
     
-    public boolean verifier(Cases c){
-        return false;
-    }
+    
             
     
 }

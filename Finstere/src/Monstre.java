@@ -69,6 +69,7 @@ public class Monstre extends Pions{
     // méthodes
     
     public void deplacer(Cartes c){
+        this.nbPionsTues=0;
         casePrecedente=monPlateau.getCase(this.getX(), this.getY());
         this.makeChemin(monPlateau.getCase(this.getX(), this.getY()));
         monPlateau.getPlateau().remove(monPlateau.getCase(this.getX(), this.getY()));
@@ -76,9 +77,9 @@ public class Monstre extends Pions{
             int nbCasesRestantes = c.getNumeroCarte();
             while(nbCasesRestantes!=0){
                 
-                
-                   this.regarder(this.getOrientation(),monPlateau);
-
+                for(int j=1;j<4;j++){
+                   this.regarder(j, monPlateau);
+                }
                 switch(this.getOrientation()){
                     case 1:
                             this.setY(this.getY()+1);
@@ -105,7 +106,7 @@ public class Monstre extends Pions{
                 i=2;
             }
             int nbCasesParcourues=0;
-            while(nbPionsTues!=i||nbCasesParcourues==20){
+            while(nbPionsTues!=i&&nbCasesParcourues<20){
                 for(int j=1;j<4;j++){
                    this.regarder(j, monPlateau);
                 }
@@ -229,9 +230,14 @@ public class Monstre extends Pions{
         return false;
     }
     public void seTeleporter(char c){
+        //En test
+        //System.out.println(c);
+        //System.out.println("coucou M:("+this.getX()+";"+this.getY()+")");
         Outils.convertChartoCoor(c,this);
+        //System.out.println("coucou M:("+this.getX()+";"+this.getY()+")");
     }
     public void tuer(PionJoueur p){
+        this.nbPionsTues+=1;
         p.mourir(true);
     }
     public Plateau getMonPlateau(){

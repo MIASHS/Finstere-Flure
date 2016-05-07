@@ -14,8 +14,8 @@ import java.util.Scanner;
 public class Outils {
     public static char convertCoorToChar(int a,int o,int k){
         char c=' ';
-        if(o==0){
-            switch(a){
+        if(a==0){
+            switch(o){
                 case 0:
                     c='*';
                     break;
@@ -40,8 +40,8 @@ public class Outils {
                 default:
                     break;
             }
-        }else if(o==15){
-            switch(a){
+        }else if(a==15){
+            switch(o){
                 case -4:
                     c='u';
                     break;
@@ -63,13 +63,12 @@ public class Outils {
                 case -10:
                     c='*';
                     break;
-                default:
+                default: System.out.println("dahut");
                     break;
         
             }
-        }
-        if(a==0&&c==' '){
-            switch(o){
+        }else if(o==0){
+            switch(a){
                 case 0:
                     c='a';
                     break;
@@ -106,12 +105,12 @@ public class Outils {
                 case 11:
                     c='l';
                     break;
-                default:
+                default: System.out.println("baisez");
                     break;
 
             }
-        }else if(a==10&&c==' '){
-            switch(o){
+        }else if(o==10){
+            switch(a){
                 case 4:
                     c='l';
                     break;
@@ -151,8 +150,7 @@ public class Outils {
                 default:
                     break;
             }
-        }
-        if(c==' '){
+        }else if(c==' '){
             switch(convertCoorToInt(a,o)){
                 case 13:
                     if(k==1){c='m';}else if(k==2){c='n';}

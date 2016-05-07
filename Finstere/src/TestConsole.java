@@ -88,6 +88,10 @@ public class TestConsole {
         
     }
     
+    
+    //////TEST
+    //System.out.println("Cp =("+this.casePrecedente.getAbscisse()+";"+this.casePrecedente.getOrdonnee()+") ; J =("+this.getX()+";"+this.getY()+")");
+    
     public static void testTour(Jeu p,Menu m){
          
         //On instancie un objet temps

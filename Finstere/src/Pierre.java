@@ -14,7 +14,7 @@ public class Pierre extends Obstacle {
         super(x, y);
     }
     public boolean verifier(Cases cas){
-        
+        if(cas.getPioncase()!=null){cas.getPioncase().getClass().getName();}
         if(((cas.getAbscisse()>-1&&cas.getOrdonnee()<1&&cas.getAbscisse()<12&&cas.getOrdonnee()>-7)||(cas.getAbscisse()<16&&cas.getOrdonnee()>-11&&cas.getAbscisse()>3&&cas.getOrdonnee()<-3)||(cas.getAbscisse()<15&&cas.getOrdonnee()>-10&&cas.getAbscisse()>2&&cas.getOrdonnee()<-2)||(cas.getAbscisse()<14&&cas.getOrdonnee()>-9&&cas.getAbscisse()>1&&cas.getOrdonnee()<-1)||(cas.getAbscisse()<13&&cas.getOrdonnee()>-8&&cas.getAbscisse()>0&&cas.getOrdonnee()<0))&&!(cas.getPioncase() instanceof Monstre)&&!(cas.getPioncase() instanceof PionJoueur)&&!(cas.getPioncase() instanceof Pierre)&&!(cas.getPioncase() instanceof Flaque)){
             return true;
             
@@ -28,8 +28,12 @@ public class Pierre extends Obstacle {
         switch(o){
             case 1:
                 if(this.verifier(p.getCase(this.getX(),this.getY()+1))){
-                    p.getCase(this.getX(),this.getY()).setOrdonnee(this.getY()+1);
+                    Cases c = p.getCase(this.getX(),this.getY());
+                    c.setOrdonnee(this.getY()+1);
                     this.setY(this.getY()+1);
+                    c.setPioncase(this);
+                    c.setOccupee(true);
+                    p.ajouterCase(c);
                     
                 }else{
                     if(!((p.getCase(this.getX(),this.getY()+1).getAbscisse()>-1&&p.getCase(this.getX(),this.getY()+1).getOrdonnee()<1&&p.getCase(this.getX(),this.getY()+1).getAbscisse()<12&&p.getCase(this.getX(),this.getY()+1).getOrdonnee()>-7)||(p.getCase(this.getX(),this.getY()+1).getAbscisse()<16&&p.getCase(this.getX(),this.getY()+1).getOrdonnee()>-11&&p.getCase(this.getX(),this.getY()+1).getAbscisse()>3&&p.getCase(this.getX(),this.getY()+1).getOrdonnee()<-3)||(p.getCase(this.getX(),this.getY()+1).getAbscisse()<15&&p.getCase(this.getX(),this.getY()+1).getOrdonnee()>-10&&p.getCase(this.getX(),this.getY()+1).getAbscisse()>2&&p.getCase(this.getX(),this.getY()+1).getOrdonnee()<-2)||(p.getCase(this.getX(),this.getY()+1).getAbscisse()<14&&p.getCase(this.getX(),this.getY()+1).getOrdonnee()>-9&&p.getCase(this.getX(),this.getY()+1).getAbscisse()>1&&p.getCase(this.getX(),this.getY()+1).getOrdonnee()<-1)||(p.getCase(this.getX(),this.getY()+1).getAbscisse()<13&&p.getCase(this.getX(),this.getY()+1).getOrdonnee()>-8&&p.getCase(this.getX(),this.getY()+1).getAbscisse()>0&&p.getCase(this.getX(),this.getY()+1).getOrdonnee()<0))){
@@ -51,8 +55,12 @@ public class Pierre extends Obstacle {
                 break;
             case 2:
                 if(this.verifier(p.getCase(this.getX()-1,this.getY()))){
-                    p.getCase(this.getX(),this.getY()).setAbscisse(this.getX()-1);
+                    Cases c = p.getCase(this.getX(),this.getY());
+                    c.setAbscisse(this.getX()-1);
                     this.setX(this.getX()-1);
+                    c.setPioncase(this);
+                    c.setOccupee(true);
+                    p.ajouterCase(c);
                     
                 }else{
                     if(!((p.getCase(this.getX()-1,this.getY()).getAbscisse()>-1&&p.getCase(this.getX()-1,this.getY()).getOrdonnee()<1&&p.getCase(this.getX()-1,this.getY()).getAbscisse()<12&&p.getCase(this.getX()-1,this.getY()).getOrdonnee()>-7)||(p.getCase(this.getX()-1,this.getY()).getAbscisse()<16&&p.getCase(this.getX()-1,this.getY()).getOrdonnee()>-11&&p.getCase(this.getX()-1,this.getY()).getAbscisse()>3&&p.getCase(this.getX()-1,this.getY()).getOrdonnee()<-3)||(p.getCase(this.getX()-1,this.getY()).getAbscisse()<15&&p.getCase(this.getX()-1,this.getY()).getOrdonnee()>-10&&p.getCase(this.getX()-1,this.getY()).getAbscisse()>2&&p.getCase(this.getX()-1,this.getY()).getOrdonnee()<-2)||(p.getCase(this.getX()-1,this.getY()).getAbscisse()<14&&p.getCase(this.getX()-1,this.getY()).getOrdonnee()>-9&&p.getCase(this.getX()-1,this.getY()).getAbscisse()>1&&p.getCase(this.getX()-1,this.getY()).getOrdonnee()<-1)||(p.getCase(this.getX()-1,this.getY()).getAbscisse()<13&&p.getCase(this.getX()-1,this.getY()).getOrdonnee()>-8&&p.getCase(this.getX()-1,this.getY()).getAbscisse()>0&&p.getCase(this.getX()-1,this.getY()).getOrdonnee()<0))){
@@ -75,9 +83,12 @@ public class Pierre extends Obstacle {
                 break;
             case 3:
                 if(this.verifier(p.getCase(this.getX()+1,this.getY()))){
-                    p.getCase(this.getX(),this.getY()).setAbscisse(this.getX()+1);
+                    Cases c = p.getCase(this.getX(),this.getY());
+                    c.setAbscisse(this.getX()+1);
                     this.setX(this.getX()+1);
-                    
+                    c.setPioncase(this);
+                    c.setOccupee(true);
+                    p.ajouterCase(c);
                 }else{
                     if(!((p.getCase(this.getX()+1,this.getY()).getAbscisse()>-1&&p.getCase(this.getX()+1,this.getY()).getOrdonnee()<1&&p.getCase(this.getX()+1,this.getY()).getAbscisse()<12&&p.getCase(this.getX()+1,this.getY()).getOrdonnee()>-7)||(p.getCase(this.getX()+1,this.getY()).getAbscisse()<16&&p.getCase(this.getX()+1,this.getY()).getOrdonnee()>-11&&p.getCase(this.getX()+1,this.getY()).getAbscisse()>3&&p.getCase(this.getX()+1,this.getY()).getOrdonnee()<-3)||(p.getCase(this.getX()+1,this.getY()).getAbscisse()<15&&p.getCase(this.getX()+1,this.getY()).getOrdonnee()>-10&&p.getCase(this.getX()+1,this.getY()).getAbscisse()>2&&p.getCase(this.getX()+1,this.getY()).getOrdonnee()<-2)||(p.getCase(this.getX()+1,this.getY()).getAbscisse()<14&&p.getCase(this.getX()+1,this.getY()).getOrdonnee()>-9&&p.getCase(this.getX()+1,this.getY()).getAbscisse()>1&&p.getCase(this.getX()+1,this.getY()).getOrdonnee()<-1)||(p.getCase(this.getX()+1,this.getY()).getAbscisse()<13&&p.getCase(this.getX()+1,this.getY()).getOrdonnee()>-8&&p.getCase(this.getX()+1,this.getY()).getAbscisse()>0&&p.getCase(this.getX()+1,this.getY()).getOrdonnee()<0))){
                         p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
@@ -100,9 +111,12 @@ public class Pierre extends Obstacle {
                 break;
             case 4:
                 if(this.verifier(p.getCase(this.getX(),this.getY()-1))){
-                    p.getCase(this.getX(),this.getY()).setOrdonnee(this.getY()-1);
+                    Cases c = p.getCase(this.getX(),this.getY());
+                    c.setOrdonnee(this.getY()-1);
                     this.setY(this.getY()-1);
-                    
+                    c.setPioncase(this);
+                    c.setOccupee(true);
+                    p.ajouterCase(c);
                 }else{
                     if(!((p.getCase(this.getX(),this.getY()-1).getAbscisse()>-1&&p.getCase(this.getX(),this.getY()-1).getOrdonnee()<1&&p.getCase(this.getX(),this.getY()-1).getAbscisse()<12&&p.getCase(this.getX(),this.getY()-1).getOrdonnee()>-7)||(p.getCase(this.getX(),this.getY()-1).getAbscisse()<16&&p.getCase(this.getX(),this.getY()-1).getOrdonnee()>-11&&p.getCase(this.getX(),this.getY()-1).getAbscisse()>3&&p.getCase(this.getX(),this.getY()-1).getOrdonnee()<-3)||(p.getCase(this.getX(),this.getY()-1).getAbscisse()<15&&p.getCase(this.getX(),this.getY()-1).getOrdonnee()>-10&&p.getCase(this.getX(),this.getY()-1).getAbscisse()>2&&p.getCase(this.getX(),this.getY()-1).getOrdonnee()<-2)||(p.getCase(this.getX(),this.getY()-1).getAbscisse()<14&&p.getCase(this.getX(),this.getY()-1).getOrdonnee()>-9&&p.getCase(this.getX(),this.getY()-1).getAbscisse()>1&&p.getCase(this.getX(),this.getY()-1).getOrdonnee()<-1)||(p.getCase(this.getX(),this.getY()-1).getAbscisse()<13&&p.getCase(this.getX(),this.getY()-1).getOrdonnee()>-8&&p.getCase(this.getX(),this.getY()-1).getAbscisse()>0&&p.getCase(this.getX(),this.getY()-1).getOrdonnee()<0))){
                         p.getPlateau().remove(p.getCase(this.getX(),this.getY()));

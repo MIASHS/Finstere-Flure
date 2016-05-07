@@ -248,14 +248,10 @@ public class Monstre extends Pions{
         if(monPlateau.getCase(this.abscisse,this.ordonnee).isOccupee()){
             switch(monPlateau.getCase(this.abscisse,this.ordonnee).getPioncase().getClass().getName()){
                 case "Pierre":
-                        
-                        for(Cases c2: monPlateau.getPlateau()){
-                            System.out.println(c2.getPioncase().getClass().getName()+": ("+c2.getAbscisse()+";"+c2.getOrdonnee()+") > ("+c2.getPioncase().getX()+";"+c2.getPioncase().getY()+")");
-                        }
                         Cases c = monPlateau.getCase(this.abscisse,this.ordonnee);
                         monPlateau.getPlateau().remove(c);
                         ((Pierre)c.getPioncase()).deplacer(o,monPlateau);
-                        TestConsole.testPlateau(monPlateau);
+
                     break;
                 case "Flaque":
                         monPlateau.getCase(this.abscisse,this.ordonnee).getPioncase().deplacerPion(this);

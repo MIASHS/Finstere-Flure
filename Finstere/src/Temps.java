@@ -37,7 +37,7 @@ public class Temps {
     public ArrayList<Cases> gestionTourGros(Monstre m,Jeu g){
         debuterTour=true;
         
-        TestConsole.testPlateau(g.getMonPlateau());/*
+        //TestConsole.testPlateau(g.getMonPlateau());
         while(debuterTour){
             while(g.getJ_list().get(0).getPionUtilisé()!= g.getJ_list().get(0).getPionTotal()||g.getJ_list().get(1).getPionUtilisé()!= g.getJ_list().get(1).getPionTotal()){
                 
@@ -57,11 +57,8 @@ public class Temps {
             }
             this.debuterTour= false;
             this.nbTours +=1;
-        }*/
-        m.deplacer(m.getListeCarte().donnerUneCarte());
-        for(Cases c2:g.getMonPlateau().getPlateau()){
-            System.out.println(c2.getPioncase().getClass().getName()+": ("+c2.getAbscisse()+";"+c2.getOrdonnee()+") > ("+c2.getPioncase().getX()+";"+c2.getPioncase().getY()+")");
         }
+        m.deplacer(m.getListeCarte().donnerUneCarte());
         return m.getChemin();
     }
     

@@ -69,12 +69,12 @@ public class Paquet {
     private void init() {
         Random ra = new Random();
         Map valeur=new HashMap();
-        valeur.put(1, 5);//5 7 7 8 8 10
-        valeur.put(2, 7);
-        valeur.put(3, 7);
-        valeur.put(4, 8);
-        valeur.put(5, 8);
-        valeur.put(6, 10);
+        valeur.put(1, 11);//5 7 7 8 8 10
+        valeur.put(2, 12);
+        valeur.put(3, 11);
+        valeur.put(4, 12);
+        valeur.put(5, 11);
+        valeur.put(6, 12);
         valeur.put(7, 11);
         valeur.put(8, 12);
         this.setNumeroSerie(ra.nextInt(2000));

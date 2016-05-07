@@ -46,10 +46,12 @@ public class Pierre extends Obstacle {
                             i++;
                         }
                         p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
-                        this.setY(this.getY()+(i));
-                        c.setPioncase(this);
-                        c.setOccupee(true);
-                        p.ajouterCase(c);
+                        if(((p.getCase(this.getX(),this.getY()+i).getAbscisse()>-1&&p.getCase(this.getX(),this.getY()+i).getOrdonnee()<1&&p.getCase(this.getX(),this.getY()+i).getAbscisse()<12&&p.getCase(this.getX(),this.getY()+i).getOrdonnee()>-7)||(p.getCase(this.getX(),this.getY()+i).getAbscisse()<16&&p.getCase(this.getX(),this.getY()+i).getOrdonnee()>-11&&p.getCase(this.getX(),this.getY()+i).getAbscisse()>3&&p.getCase(this.getX(),this.getY()+i).getOrdonnee()<-3)||(p.getCase(this.getX(),this.getY()+i).getAbscisse()<15&&p.getCase(this.getX(),this.getY()+i).getOrdonnee()>-10&&p.getCase(this.getX(),this.getY()+i).getAbscisse()>2&&p.getCase(this.getX(),this.getY()+i).getOrdonnee()<-2)||(p.getCase(this.getX(),this.getY()+i).getAbscisse()<14&&p.getCase(this.getX(),this.getY()+i).getOrdonnee()>-9&&p.getCase(this.getX(),this.getY()+i).getAbscisse()>1&&p.getCase(this.getX(),this.getY()+i).getOrdonnee()<-i)||(p.getCase(this.getX(),this.getY()+i).getAbscisse()<13&&p.getCase(this.getX(),this.getY()+i).getOrdonnee()>-8&&p.getCase(this.getX(),this.getY()+i).getAbscisse()>0&&p.getCase(this.getX(),this.getY()+i).getOrdonnee()<0))){
+                            this.setY(this.getY()+(i));
+                            c.setPioncase(this);
+                            c.setOccupee(true);
+                            p.ajouterCase(c);
+                        }
                     }
                 }
                 break;
@@ -73,10 +75,12 @@ public class Pierre extends Obstacle {
                             i++;
                         }
                         p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
-                        this.setX(this.getX()-(i));
-                        c.setPioncase(this);
-                        c.setOccupee(true);
-                        p.ajouterCase(c);
+                        if(((p.getCase(this.getX()-i,this.getY()).getAbscisse()>-1&&p.getCase(this.getX()-i,this.getY()).getOrdonnee()<1&&p.getCase(this.getX()-i,this.getY()).getAbscisse()<12&&p.getCase(this.getX()-i,this.getY()).getOrdonnee()>-7)||(p.getCase(this.getX()-i,this.getY()).getAbscisse()<16&&p.getCase(this.getX()-i,this.getY()).getOrdonnee()>-11&&p.getCase(this.getX()-i,this.getY()).getAbscisse()>3&&p.getCase(this.getX()-i,this.getY()).getOrdonnee()<-3)||(p.getCase(this.getX()-i,this.getY()).getAbscisse()<15&&p.getCase(this.getX()-i,this.getY()).getOrdonnee()>-10&&p.getCase(this.getX()-i,this.getY()).getAbscisse()>2&&p.getCase(this.getX()-i,this.getY()).getOrdonnee()<-2)||(p.getCase(this.getX()-i,this.getY()).getAbscisse()<14&&p.getCase(this.getX()-i,this.getY()).getOrdonnee()>-9&&p.getCase(this.getX()-i,this.getY()).getAbscisse()>1&&p.getCase(this.getX()-i,this.getY()).getOrdonnee()<-1)||(p.getCase(this.getX()-i,this.getY()).getAbscisse()<13&&p.getCase(this.getX()-i,this.getY()).getOrdonnee()>-8&&p.getCase(this.getX()-i,this.getY()).getAbscisse()>0&&p.getCase(this.getX()-i,this.getY()).getOrdonnee()<0))){
+                            this.setX(this.getX()-(i));
+                            c.setPioncase(this);
+                            c.setOccupee(true);
+                            p.ajouterCase(c);
+                        }
                     }
                 }
                 
@@ -95,15 +99,18 @@ public class Pierre extends Obstacle {
                     }else if((p.getCase(this.getX()+1,this.getY()).getPioncase() instanceof Flaque)||p.getCase(this.getX()+1,this.getY()).getPioncase() instanceof Pierre){
                         i=2;
                         Cases c = p.getCase(this.getX()+i,this.getY());
-                        while(!this.verifier(c)&&((this.getX()+i<16)||(this.getX()+i<12&&this.getY()==0)||(this.getX()+i<13&&this.getY()==-1)||(this.getX()+i<14&&this.getY()==-2)||(this.getX()+i<15&&this.getY()==-3))){
+                        while(!this.verifier(c)&&((this.getX()+i<16)&&(this.getX()+i<12&&this.getY()==0)&&(this.getX()+i<13&&this.getY()==-1)&&(this.getX()+i<14&&this.getY()==-2)&&(this.getX()+i<15&&this.getY()==-3))){
                             c.setAbscisse(this.getX()+i);
                             i++;
                         }
                         p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
-                        this.setX(this.getX()+(i));
-                        c.setPioncase(this);
-                        c.setOccupee(true);
-                        p.ajouterCase(c);
+                        if(((p.getCase(this.getX()+i,this.getY()).getAbscisse()>-1&&p.getCase(this.getX()+i,this.getY()).getOrdonnee()<1&&p.getCase(this.getX()+i,this.getY()).getAbscisse()<12&&p.getCase(this.getX()+i,this.getY()).getOrdonnee()>-7)||(p.getCase(this.getX()+i,this.getY()).getAbscisse()<16&&p.getCase(this.getX()+i,this.getY()).getOrdonnee()>-11&&p.getCase(this.getX()+i,this.getY()).getAbscisse()>3&&p.getCase(this.getX()+i,this.getY()).getOrdonnee()<-3)||(p.getCase(this.getX()+i,this.getY()).getAbscisse()<15&&p.getCase(this.getX()+i,this.getY()).getOrdonnee()>-10&&p.getCase(this.getX()+i,this.getY()).getAbscisse()>2&&p.getCase(this.getX()+i,this.getY()).getOrdonnee()<-2)||(p.getCase(this.getX()+i,this.getY()).getAbscisse()<14&&p.getCase(this.getX()+i,this.getY()).getOrdonnee()>-9&&p.getCase(this.getX()+i,this.getY()).getAbscisse()>1&&p.getCase(this.getX()+i,this.getY()).getOrdonnee()<-1)||(p.getCase(this.getX()+i,this.getY()).getAbscisse()<13&&p.getCase(this.getX()+i,this.getY()).getOrdonnee()>-8&&p.getCase(this.getX()+i,this.getY()).getAbscisse()>0&&p.getCase(this.getX()+i,this.getY()).getOrdonnee()<0))){
+                            this.setX(this.getX()+(i));
+                            c.setPioncase(this);
+                            c.setOccupee(true);
+                            p.ajouterCase(c);
+                        }
+                        
                     }
                     
                     
@@ -128,15 +135,17 @@ public class Pierre extends Obstacle {
                             i++;
                         }
                         p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
-                        this.setY(this.getY()-(i));
-                        c.setPioncase(this);
-                        c.setOccupee(true);
-                        p.ajouterCase(c);
-                    }
+                        if(!((p.getCase(this.getX(),this.getY()-i).getAbscisse()>-1&&p.getCase(this.getX(),this.getY()-i).getOrdonnee()<1&&p.getCase(this.getX(),this.getY()-i).getAbscisse()<12&&p.getCase(this.getX(),this.getY()-i).getOrdonnee()>-7)||(p.getCase(this.getX(),this.getY()-i).getAbscisse()<16&&p.getCase(this.getX(),this.getY()-i).getOrdonnee()>-11&&p.getCase(this.getX(),this.getY()-i).getAbscisse()>3&&p.getCase(this.getX(),this.getY()-i).getOrdonnee()<-3)||(p.getCase(this.getX(),this.getY()-i).getAbscisse()<15&&p.getCase(this.getX(),this.getY()-i).getOrdonnee()>-10&&p.getCase(this.getX(),this.getY()-i).getAbscisse()>2&&p.getCase(this.getX(),this.getY()-i).getOrdonnee()<-2)||(p.getCase(this.getX(),this.getY()-i).getAbscisse()<14&&p.getCase(this.getX(),this.getY()-i).getOrdonnee()>-9&&p.getCase(this.getX(),this.getY()-i).getAbscisse()>1&&p.getCase(this.getX(),this.getY()-i).getOrdonnee()<-i)||(p.getCase(this.getX(),this.getY()-i).getAbscisse()<13&&p.getCase(this.getX(),this.getY()-i).getOrdonnee()>-8&&p.getCase(this.getX(),this.getY()-i).getAbscisse()>0&&p.getCase(this.getX(),this.getY()-i).getOrdonnee()<0))){
+                            this.setY(this.getY()-(i));
+                            c.setPioncase(this);
+                            c.setOccupee(true);
+                            p.ajouterCase(c);
+                        }
                 }
                 break;
         
         }
         
+    }
     }
 }

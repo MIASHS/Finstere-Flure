@@ -72,14 +72,12 @@ public class Monstre extends Pions{
         casePrecedente=monPlateau.getCase(this.getX(), this.getY());
         this.makeChemin(monPlateau.getCase(this.getX(), this.getY()));
         monPlateau.getPlateau().remove(monPlateau.getCase(this.getX(), this.getY()));
-        System.out.println("coucou"+c.getNumeroCarte());
         if(c.getNumeroCarte()!=11&&c.getNumeroCarte()!=12){
             int nbCasesRestantes = c.getNumeroCarte();
             while(nbCasesRestantes!=0){
                 
                 
                    this.regarder(this.getOrientation(),monPlateau);
-                System.out.println("("+this.getX()+";"+this.getY()+")");
 
                 switch(this.getOrientation()){
                     case 1:
@@ -131,15 +129,15 @@ public class Monstre extends Pions{
             }
         }
         
-        System.out.println("Hello");
         Cases c1=monPlateau.getCase(this.getX(), this.getY());
         c1.setPioncase(this);
         c1.setOccupee(true);
         
         monPlateau.ajouterCase(c1);
-        for(Cases c2: monPlateau.getPlateau()){
+        ///TEST////
+        /*for(Cases c2: monPlateau.getPlateau()){
             System.out.println(c2.getPioncase().getClass().getName()+": ("+c2.getAbscisse()+";"+c2.getOrdonnee()+") > ("+c2.getPioncase().getX()+";"+c2.getPioncase().getY()+")");
-        }
+        }*/
     }
     
     public boolean changementO(int o){
@@ -258,11 +256,9 @@ public class Monstre extends Pions{
                   //  break;
             }
         }else if(!((this.getX() > -1 && this.getY() < 1 && this.getX() < 12 && this.getY() > -7) || (this.getX() < 16 && this.getY() > -11 && this.getX() > 3 && this.getY() < -3) || (this.getX() < 15 && this.getY() > -10 && this.getX() > 2 && this.getY() < -2) || (this.getX() < 14 && this.getY() > -9 && this.getX() > 1 && this.getY() < -1) || (this.getX() < 13 && this.getY() > -8 && this.getX() > 0 && this.getY() < 0))){
-            System.out.println("BIte2");
             this.seTeleporter(Outils.convertCoorToChar(this.abscisse,this.ordonnee,this.orientation));
             
         }
-        System.out.println("BIte");
     }
 
     @Override

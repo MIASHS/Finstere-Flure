@@ -19,7 +19,7 @@ public class TestConsole {
         m.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0,m.getPartieActuelle())));
        
         //Test du plateau de jeu
-        testPlateau(m.getPartieActuelle().getMonPlateau()); 
+        //testPlateau(m.getPartieActuelle().getMonPlateau()); 
        
         testTour(m.getPartieActuelle(),m);
         

@@ -123,8 +123,6 @@ public class Pierre extends Obstacle {
                 break;
         
         }
-        for(Cases c2: p.getPlateau()){
-            System.out.println(c2.getPioncase().getClass().getName()+": ("+c2.getAbscisse()+";"+c2.getOrdonnee()+") > ("+c2.getPioncase().getX()+";"+c2.getPioncase().getY()+")");
-        }
+        
     }
 }

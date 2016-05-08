@@ -75,13 +75,14 @@ public class Monstre extends Pions{
         casePrecedente=monPlateau.getCase(this.getX(), this.getY());
         this.makeChemin(monPlateau.getCase(this.getX(), this.getY()));
         monPlateau.getPlateau().remove(monPlateau.getCase(this.getX(), this.getY()));
+        //System.out.println("Nombre de Cases Restantes :"+c.getNumeroCarte());
         if(c.getNumeroCarte()!=11&&c.getNumeroCarte()!=12){
             int nbCasesRestantes = c.getNumeroCarte();
             while(nbCasesRestantes!=0){
                 
-                for(int j=1;j<4;j++){
-                   this.regarder(j, monPlateau);
-                }
+                
+                   this.regarder(this.getOrientation(), monPlateau);
+                
                 switch(this.getOrientation()){
                     case 1:
                             this.setY(this.getY()+1);
@@ -109,9 +110,9 @@ public class Monstre extends Pions{
             }
             int nbCasesParcourues=0;
             while(nbPionsTues!=i&&nbCasesParcourues<20){
-                for(int j=1;j<4;j++){
-                   this.regarder(j, monPlateau);
-                }
+                
+                   this.regarder(this.getOrientation(), monPlateau);
+                
                 switch(this.getOrientation()){
                     case 1:
                             this.setY(this.getY()+1);
@@ -144,87 +145,120 @@ public class Monstre extends Pions{
     }
     
     public boolean changementO(int o){
-        return false;
+        this.setOrientation(o);
+        //System.out.println("Ma bite en peinture");
+        //System.out.println("orientation :"+this.getOrientation());
+        return true;
     }
     public boolean regarder(int o,Plateau monPlateau){
-        int memoire=0;
+        int memoire=100;
         boolean trouve=false;
         boolean chg=false;
         switch(o){
-            case 1: 
-                    for(int i= this.ordonnee;i>-1;i--){
+            case 3: 
+                    int i= this.ordonnee;
+                    while((!(monPlateau.getCase(this.abscisse,i).getPioncase() instanceof Pierre))&& i<-1){
                         if(monPlateau.getCase(this.abscisse,i).isPionHere()&&!trouve){
-                            memoire = this.ordonnee - i;
+                            memoire =i -this.ordonnee;
                             trouve=true;
                         }
+                        i++;
+                    }
+                        
+                    
+                    trouve=false;
+                    i= this.ordonnee;
+                    while((!(monPlateau.getCase(this.abscisse,i).getPioncase() instanceof Pierre))&& i>-11){
+                        if(monPlateau.getCase(this.abscisse,i).isPionHere()&&!trouve){
+                            if(memoire - (-(i - this.ordonnee))<0){
+                                chg=this.changementO(1);
+                            }else if(memoire - (-(i - this.ordonnee))>0){
+                                chg=this.changementO(4);
+                            }
+                            trouve=true;
+                        }
+                        i--;
+                    }
+                    if(!chg&&memoire!=100){
+                        this.changementO(1);
+                    }
+                    break;
+            case 1:
+                    i= this.abscisse;
+                    while((!(monPlateau.getCase(i,this.ordonnee).getPioncase() instanceof Pierre))&& i>-1){
+                        if(monPlateau.getCase(i,this.ordonnee).isPionHere()&&!trouve){
+                            memoire =-(i - this.abscisse);
+                            trouve=true;
+                        }
+                        i--;
                     }
                     trouve=false;
-                    for(int i= this.ordonnee;i<11;i++){
-                        if(monPlateau.getCase(this.abscisse,i).isPionHere()&&!trouve){
-                            if(memoire - (i - this.ordonnee)<0){
+                    i= this.abscisse;
+                    while((!(monPlateau.getCase(i,this.ordonnee).getPioncase() instanceof Pierre))&& i<16){
+                        if(monPlateau.getCase(i,this.ordonnee).isPionHere()&&!trouve){
+                            if(memoire - (i - this.abscisse)<0){
                                 chg=this.changementO(2);
-                            }else if(memoire - (i - this.ordonnee)>0){
+                            }else if(memoire - (i - this.abscisse)>0){
                                 chg=this.changementO(3);
                             }
                             trouve=true;
                         }
+                        i++;
                     }
-                    break;
-            case 2:
-                    for(int i= this.abscisse;i>-1;i--){
-                        if(monPlateau.getCase(i,this.ordonnee).isPionHere()&&!trouve){
-                            memoire = this.abscisse - i;
-                            trouve=true;
-                        }
-                    }
-                    trouve=false;
-                    for(int i= this.abscisse;i<16;i++){
-                        if(monPlateau.getCase(i,this.ordonnee).isPionHere()&&!trouve){
-                            if(memoire - (i - this.abscisse)<0){
-                                chg=this.changementO(4);
-                            }else if(memoire - (i - this.abscisse)>0){
-                                chg=this.changementO(1);
-                            }
-                            trouve=true;
-                        }
-                    }
-                    break;
-            case 3:
-                    for(int i= this.abscisse;i<16;i++){
-                        if(monPlateau.getCase(i,this.ordonnee).isPionHere()&&!trouve){
-                            memoire = this.abscisse - i;
-                            trouve=true;
-                        }
-                    }
-                    trouve=false;
-                    for(int i= this.abscisse;i>-1;i--){
-                        if(monPlateau.getCase(i,this.ordonnee).isPionHere()&&!trouve){
-                            if(memoire - (i - this.abscisse)<0){
-                                chg=this.changementO(4);
-                            }else if(memoire - (i - this.abscisse)>0){
-                                chg=this.changementO(1);
-                            }
-                            trouve=true;
-                        }
+                    if(!chg&&memoire!=100){
+                        this.changementO(2);
                     }
                     break;
             case 4:
-                    for(int i= this.ordonnee;i<11;i++){
-                        if(monPlateau.getCase(this.abscisse,i).isPionHere()&&!trouve){
-                            memoire = this.ordonnee - i;
+                    i= this.abscisse;
+                    while((!(monPlateau.getCase(i,this.ordonnee).getPioncase() instanceof Pierre))&& i<16){
+                        if(monPlateau.getCase(i,this.ordonnee).isPionHere()&&!trouve){
+                            memoire = i - this.abscisse;
                             trouve=true;
                         }
+                        i++;
                     }
                     trouve=false;
-                    for(int i= this.ordonnee;i>-1;i--){
-                        if(monPlateau.getCase(this.abscisse,i).isPionHere()&&!trouve){
-                            if(memoire - (i - this.ordonnee)<0){
-                                chg=this.changementO(2);
-                            }else if(memoire - (i - this.ordonnee)>0){
+                    i= this.abscisse;
+                    while((!(monPlateau.getCase(i,this.ordonnee).getPioncase() instanceof Pierre))&& i>-1){
+                        if(monPlateau.getCase(i,this.ordonnee).isPionHere()&&!trouve){
+                            if(memoire - (-(i - this.abscisse))<0){
                                 chg=this.changementO(3);
+                            }else if(memoire - (-(i - this.abscisse))>0){
+                                chg=this.changementO(2);
                             }
                             trouve=true;
                         }
+                        i--;
+                    }
+                    if(!chg&&memoire!=100){
+                        this.changementO(3);
+                    }
+                    break;
+            case 2:
+                    i= this.ordonnee;
+                    while((!(monPlateau.getCase(this.abscisse,i).getPioncase() instanceof Pierre))&& i>-11){
+                        if(monPlateau.getCase(this.abscisse,i).isPionHere()&&!trouve){
+                            memoire = -(i - this.ordonnee);
+                            trouve=true;
+                        }
+                        i--;
+                    }
+                    trouve=false;
+                    i= this.ordonnee;
+                    while((!(monPlateau.getCase(this.abscisse,i).getPioncase() instanceof Pierre))&& i<-1){    
+                        if(monPlateau.getCase(this.abscisse,i).isPionHere()&&!trouve){
+                            if(memoire - (i - this.ordonnee)<0){
+                                chg=this.changementO(4);
+                            }else if(memoire - (i - this.ordonnee)>0){
+                                chg=this.changementO(1);
+                            }
+                            trouve=true;
+                        }
+                        i++;
+                    }
+                    if(!chg&&memoire!=100){
+                        this.changementO(4);
                     }
                     break;
         }
@@ -240,6 +274,8 @@ public class Monstre extends Pions{
     }
     public void tuer(PionJoueur p){
         this.nbPionsTues+=1;
+        p.setX(0);
+        p.setY(0);
         if(partieActuelle.getManche()==2){
             partieActuelle.getJ_list().get(p.getNumjoueur()).getTabPion().remove(p);
             partieActuelle.getJ_list().get(p.getNumjoueur()).setPionTotal(partieActuelle.getJ_list().get(p.getNumjoueur()).getPionTotal()-1);

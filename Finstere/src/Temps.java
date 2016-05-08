@@ -46,6 +46,7 @@ public class Temps {
                 for(int i=0; i < g.getJ_list().size(); i++){
                     TestConsole.testPlateau(g.getMonPlateau());
                     this.gestionTourPetit(g.getJ_list().get(i),g);
+                    g.getJ_list().get(i).getTabPion().get(g.getJ_list().get(i).getPionUtilisé()).setNumActuel();
                     if(!g.getJ_list().get(i).isFinirTour()){
                         g.getJ_list().get(i).setPionUtilisé(g.getJ_list().get(i).getPionUtilisé()+1);
                     }
@@ -87,13 +88,13 @@ public class Temps {
             }else if(j.getTabPion().get(j.getPionUtilisé()).isOnBoard()){
                 p.getMonPlateau().getPlateau().remove(p.getMonPlateau().getCase(j.getTabPion().get(j.getPionUtilisé()).getX(),j.getTabPion().get(j.getPionUtilisé()).getY()));
             }
-        
+                int numprecedent=j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel());
         while((!deplacement||!arret)&&this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())){
             //TEST///////
             //System.out.println("nbTourJoueur :"+this.nbToursJoueur+" et n ="+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                 //System.out.println("("+j.getTabPion().get(j.getPionUtilisé()).getX()+";"+j.getTabPion().get(j.getPionUtilisé()).getY()+")");
                 //TestConsole.testPlateau(p.getMonPlateau());
-                if(this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())&&this.nbToursJoueur>1){
+                if(deplacement&&numprecedent!=1){
                     Outils.afficherTexte("Souhaitez vous vous arrêter ici ?");
                     if(Outils.conversionBoolean(Outils.verification(sc.next(), 1))){
                         arret=true;
@@ -169,7 +170,6 @@ public class Temps {
       if(j.getTabPion().get(j.getPionUtilisé()).getX()==0 && j.getTabPion().get(j.getPionUtilisé()).getY()==0){
           j.setGagner(true);
       }
-      j.getTabPion().get(j.getPionUtilisé()).setNumActuel();
     }
     
 

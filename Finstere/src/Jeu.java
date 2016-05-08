@@ -26,6 +26,8 @@ public class Jeu {
    private Plateau monPlateau;
    // monstre
    private Monstre m;
+   //Temps du jeu
+   private Temps monTemps;
    //nombre de tours
    private int tour;
    //numero de manche
@@ -42,7 +44,7 @@ public class Jeu {
        this.pions_perdu = new ArrayList<>();
        this.blocsPierre = new ArrayList <>();
        this.flaque = new ArrayList <>();
-       
+       this.monTemps=new Temps(0,0,false,false);
        
    }
    
@@ -211,7 +213,7 @@ public class Jeu {
     }
     
     public int getManche(){
-        return monPlateau.getNumManche();
+        return this.monTemps.getNumManche();
     }
     
     public void setManche(int i){
@@ -226,6 +228,9 @@ public class Jeu {
             }
         }
         return b;
+    }
+    public Temps getTemps(){
+        return this.monTemps;
     }
 
     

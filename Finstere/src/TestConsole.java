@@ -102,14 +102,14 @@ public class TestConsole {
     public static void testTour(Jeu p,Menu m){
          
         //On instancie un objet temps
-        Temps t = new Temps(0,0,false,false);
+        
          
         ArrayList<Cases> cheminMonstre;  
-        t.debutGame();
+        p.getTemps().debutGame();
          //on appelle la méthode qui gère les tours
         Outils.afficherTexte("\nDébut du tour...\n");
         while(!p.isFini()){
-            cheminMonstre = t.gestionTourGros(p.getMonstre(),p);
+            cheminMonstre =p.getTemps().gestionTourGros(p.getMonstre(),p);
             //for(Cases c2 :cheminMonstre){
             //    System.out.println("Cas: ("+c2.getAbscisse()+";"+c2.getOrdonnee()+")");
             //}

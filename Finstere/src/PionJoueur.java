@@ -228,19 +228,23 @@ public class PionJoueur extends Pions {
                 case "Flaque":
                     if (this.casePrecedente.getAbscisse() - c.getAbscisse() == 0) {
                         if (this.casePrecedente.getOrdonnee() - c.getOrdonnee() < 0) {
-                            this.setY(this.getY() + 1);
-                            this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                            //this.setY(this.getY() + 1);
+                            //this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                            monPlateau.getCase(c.getAbscisse(), c.getOrdonnee()).getPioncase().deplacerPion(this);
                         } else {
-                            this.setY(this.getY() - 1);
-                            this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                            //this.setY(this.getY() - 1);
+                            //this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                            monPlateau.getCase(c.getAbscisse(), c.getOrdonnee()).getPioncase().deplacerPion(this);
                         }
 
                     } else if (this.casePrecedente.getAbscisse() - c.getAbscisse() < 0) {
-                        this.setX(this.getX() + 1);
-                        this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                        //this.setX(this.getX() + 1);
+                        //this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                        monPlateau.getCase(c.getAbscisse(), c.getOrdonnee()).getPioncase().deplacerPion(this);
                     } else {
-                        this.setX(this.getX() - 1);
-                        this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                        //this.setX(this.getX() - 1);
+                        //this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                        monPlateau.getCase(c.getAbscisse(), c.getOrdonnee()).getPioncase().deplacerPion(this);
                     }
                     break;
                 case "Pierre":

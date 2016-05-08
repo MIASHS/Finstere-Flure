@@ -288,7 +288,7 @@ public class Outils {
                     break;
 
             }
-        }else if(o==10){
+        }else if(o==-10){
             switch(a){
 
                 case 4:

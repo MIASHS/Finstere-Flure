@@ -73,6 +73,10 @@ public class Menu {
             case 'S':
                 this.menuNiveauUn(Outils.conversionCaractere(Outils.afficher(1, partieActuelle)));
                 break;
+            default:
+                    Outils.afficherTexte("pas encore implémenté !");
+                    this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0, partieActuelle)));
+                 break;
 
         }
     }
@@ -80,8 +84,12 @@ public class Menu {
     //C'est le menu disponible après le menu principal
     public void menuNiveauUn(char choix) {
         switch (choix) {
-            case 'S':  // A compléter : permet de Sélectionner un pion
-
+            
+            case 'D': // A compléter : permet de Sélectionner un pion
+                Outils.afficherTexte("pas encore implémenté !");
+                this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0, partieActuelle)));
+                    
+                break;
             case 'R':
                 this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0, partieActuelle)));
                 break;
@@ -103,6 +111,10 @@ public class Menu {
             case 'Q':
                 this.quitter();
                 break;
+            default:
+                    Outils.afficherTexte("pas encore implémenté !");
+                    this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0, partieActuelle)));
+                break;
         }
     }
     
@@ -122,6 +134,10 @@ public class Menu {
              case 'R':
                 this.menuNiveauUn(Outils.conversionCaractere(Outils.afficher(0, partieActuelle)));
                 break;
+             default:
+                    Outils.afficherTexte("pas encore implémenté !");
+                    this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0, partieActuelle)));
+                 break;
         }
     }
 }

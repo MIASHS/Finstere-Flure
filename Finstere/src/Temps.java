@@ -14,6 +14,7 @@ import java.util.Scanner;
  */
 public class Temps {
     private int nbTours; // indique le nombre de tour
+    private int numManche=1;
     private int nbToursJoueur; // indique ? ce serait bien de sans servir pour le nombre de coup joué par pions 
     private boolean debuterTour; // variable pour bloquer la bloquer de deplacement des pionjoueur
     private boolean finirTour; // variable pour sortir en temps que joueur de la petite boucle
@@ -67,6 +68,9 @@ public class Temps {
             j.setFinirTour(false);
         }
         m.deplacer(m.getListeCarte().donnerUneCarte());
+        if(m.getListeCarte().getNbCarte()==1){
+            this.numManche=2;
+        }
         return m.getChemin();
     }
     
@@ -203,6 +207,14 @@ public class Temps {
         this.finirTour = finirTour;
     }
     
+    public int getNumManche(){
+        return this.numManche;
+    }
+    
+    public void setNumManche(int m){
+        this.numManche=m;
+    
+    }
     
    
         

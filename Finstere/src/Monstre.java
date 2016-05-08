@@ -18,6 +18,7 @@ public class Monstre extends Pions{
     private boolean chgmtOrientation=false;
     private Paquet listeCarte = new Paquet();
     private Plateau monPlateau;
+    private Jeu partieActuelle;
     int nbPionsTues=0;
     private ArrayList<Cases> chemin=new ArrayList<>();
     private Cases casePrecedente;
@@ -28,6 +29,7 @@ public class Monstre extends Pions{
         this.setY(y);
         this.orientation = orientation;
         this.monPlateau=partie.getMonPlateau();
+        this.partieActuelle=partie;
     }
 
     public void makeChemin(Cases c){
@@ -238,6 +240,11 @@ public class Monstre extends Pions{
     }
     public void tuer(PionJoueur p){
         this.nbPionsTues+=1;
+        if(partieActuelle.getManche()==2){
+            partieActuelle.getJ_list().get(p.getNumjoueur()).getTabPion().remove(p);
+            partieActuelle.getJ_list().get(p.getNumjoueur()).setPionTotal(partieActuelle.getJ_list().get(p.getNumjoueur()).getPionTotal()-1);
+        }
+        
         p.mourir(true);
     }
     public Plateau getMonPlateau(){

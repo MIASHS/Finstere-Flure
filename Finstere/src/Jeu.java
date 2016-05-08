@@ -28,6 +28,8 @@ public class Jeu {
    private Monstre m;
    //nombre de tours
    private int tour;
+   //numero de manche
+   private int manche;
    // coups restant par joueur
    private int coupRestantJoueur;
    // pseudo du joueur en train de jouer
@@ -206,6 +208,14 @@ public class Jeu {
     
     public boolean isFini(){
         return but();
+    }
+    
+    public int getManche(){
+        return monPlateau.getNumManche();
+    }
+    
+    public void setManche(int i){
+        this.manche=i;
     }
     
     public boolean but(){

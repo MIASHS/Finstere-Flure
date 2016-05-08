@@ -135,7 +135,7 @@ public class Paquet {
     public Cartes donnerUneCarte() {
         Cartes c;
         if (this.getNbCarte() <= 0) {
-            System.out.println("Il n'y a plus de carte à distribuer");
+            //System.out.println("Il n'y a plus de carte à distribuer");
             for(Cartes c1:this.defausse){
                 this.pioche[7-(nbActuel-1)]=c1;
                 this.setNbCarte(this.getNbCarte() + 1);
@@ -151,9 +151,9 @@ public class Paquet {
             }
             //this.mettreCarteEnDessous(c);
             this.defausse[nbActuel]=c;
-            System.out.println(nbActuel);
+            //System.out.println(nbActuel);
             nbActuel+=1;
-            System.out.println(nbActuel);
+            //System.out.println(nbActuel);
             return c;
         }
     }

@@ -14,7 +14,7 @@ public class Outils {
 
     public static char convertCoorToChar(int a,int o,int k){
         char c=' ';
-        if(a==0){
+        if(a==-1){
             switch(o){
 
                 case 0:
@@ -100,7 +100,7 @@ public class Outils {
                     break;
             }
 
-        }else if(a==15){
+        }else if(a==16){
             switch(o){
 
                 case -4:
@@ -187,7 +187,7 @@ public class Outils {
 
             }
 
-        }else if(o==0){
+        }else if(o==1){
             switch(a){
 
                 case 0:
@@ -288,7 +288,7 @@ public class Outils {
                     break;
 
             }
-        }else if(o==-10){
+        }else if(o==-11){
             switch(a){
 
                 case 4:
@@ -709,7 +709,47 @@ public class Outils {
     }
 
     public static char conversionCaractere(char lettre) {
-        return Character.toUpperCase(lettre);
+        if((int)lettre>=(int)'A'&&(int)lettre<=(int)'Z'||(int)lettre>=(int)'a'&&(int)lettre<=(int)'z'){
+            return Character.toUpperCase(lettre);
+        }else{
+            return Character.toUpperCase('e');
+            
+        }
+        
+    }
+    
+    public static int convertToInt(String str){
+        Scanner sc= new Scanner(System.in);
+        int i=-1;
+        char[] lettres= str.toCharArray();
+        //System.out.println(lettres.length);
+        switch(lettres.length){
+            case 1: 
+                    if((int)lettres[0]>=(int)'0'&&(int)lettres[0]<=(int)'9'){
+                        i=Integer.parseInt(str);
+                    }else{
+                        i =  convertToInt(sc.next());
+                    }
+                break;
+            case 2:
+                if((((int)lettres[0]>=(int)'0'&&(int)lettres[0]<=(int)'9'&&(int)lettres[1]>=(int)'0'&&(int)lettres[1]<=(int)'9'))||((int)lettres[0]==(int)'-'&&(int)lettres[1]>=(int)'0'&&(int)lettres[1]<=(int)'9')){
+                        i=Integer.parseInt(str);
+                    }else{
+                        i =  convertToInt(sc.next());
+                    }
+                break;
+            case 3:
+                if(((int)lettres[0]==(int)'-'&&(int)lettres[1]>=(int)'0'&&(int)lettres[1]<=(int)'9'&&(int)lettres[2]>=(int)'0'&&(int)lettres[2]<=(int)'9')){
+                        i=Integer.parseInt(str);
+                    }else{
+                        i =  convertToInt(sc.next());
+                    }
+                break;
+            default:
+                  i =  convertToInt(sc.next());
+                break;
+        }
+        return i;
     }
 
      public static char conversionStringToCaractere(String str){
@@ -717,15 +757,14 @@ public class Outils {
      }
     
      
-        public static char verification(String str, int choix){
-
+        public static char verification(String str, int choix){   
         str = str.toUpperCase();
         Scanner sc = new Scanner(System.in);
         char[] lettres = str.toCharArray();
 
         if(choix==1) {
                     // tant que le joueur ne saisit pas une chaîne valide
-                    while((((int)lettres[0]!=(int)'Y')&&((int)lettres[0]!=(int)'O')&&((int)lettres[0]!=(int)'N'))){
+                    while((((int)conversionCaractere(lettres[0])!=(int)'Y')&&((int)conversionCaractere(lettres[0])!=(int)'O')&&((int)conversionCaractere(lettres[0])!=(int)'N'))){
                         System.out.println("\nLa saisie est erronée veuillez réessayer. \n Entrez une réponse (O/N):");
                         lettres[0]=Outils.conversionCaractere(Outils.conversionStringToCaractere(sc.next()));
                     }

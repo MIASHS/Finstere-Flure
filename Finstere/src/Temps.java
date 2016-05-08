@@ -88,6 +88,7 @@ public class Temps {
             //TEST///////
             //System.out.println("nbTourJoueur :"+this.nbToursJoueur+" et n ="+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                 //System.out.println("("+j.getTabPion().get(j.getPionUtilisé()).getX()+";"+j.getTabPion().get(j.getPionUtilisé()).getY()+")");
+                //TestConsole.testPlateau(p.getMonPlateau());
                 if(this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())&&this.nbToursJoueur>1){
                     Outils.afficherTexte("Souhaitez vous vous arrêter ici ?");
                     if(Outils.conversionBoolean(Outils.verification(sc.next(), 1))){
@@ -96,9 +97,9 @@ public class Temps {
                         System.out.println("["+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())+"J"+j.getTabPion().get(j.getPionUtilisé()).getNumjoueur()+"] Case actuelle ("+j.getTabPion().get(j.getPionUtilisé()).getX()+";"+j.getTabPion().get(j.getPionUtilisé()).getY()+")");
                         Outils.afficherTexte("Sur quelle cases souhaitez vous vous déplacer ?(Vous pouvez vous déplacer sur "+(j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())-this.nbToursJoueur)+" cases  )");
                         Outils.afficherTexte("Abscisse ?");
-                        int a=sc.nextInt();
+                        int a=Outils.convertToInt(sc.next());
                         Outils.afficherTexte("Ordonnée ?");
-                        int o=sc.nextInt();
+                        int o=Outils.convertToInt(sc.next());
                         boolean b=false;
                         ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                         for(int i=0; i<c.size();i++){
@@ -110,11 +111,8 @@ public class Temps {
                         if(b){
                     
                             j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
-                            ////TEST////
-                            /*System.out.println("Xcase ="+ (j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse())+" ; Xj ="+j.getTabPion().get(j.getPionUtilisé()).getX()+" ; Ycase ="+(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee())+" ; Yj ="+j.getTabPion().get(j.getPionUtilisé()).getY());
-                            System.out.println("Xcase - Xj ="+ (j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())+" ; Ycase - Yj ="+(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY()));
-                            System.out.println("Xcase - Xj - (Ycase - Yj) ="+((j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY())));*/
-                    int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
+                            
+                            int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
 
                             if(k<0){
                                 this.nbToursJoueur+=(-1)*k;
@@ -135,9 +133,9 @@ public class Temps {
                System.out.println("["+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())+"J"+j.getTabPion().get(j.getPionUtilisé()).getNumjoueur()+"] Case actuelle :("+j.getTabPion().get(j.getPionUtilisé()).getX()+";"+j.getTabPion().get(j.getPionUtilisé()).getY()+")");
                 Outils.afficherTexte("Sur quelle cases souhaitez vous vous déplacer ?(Vous pouvez vous déplacer sur "+(j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())-this.nbToursJoueur)+" cases )\n");
                 Outils.afficherTexte("Abscisse ?");
-                int a=sc.nextInt();
+                int a=Outils.convertToInt(sc.next());
                 Outils.afficherTexte("Ordonnée ?");
-                int o=sc.nextInt();
+                int o=Outils.convertToInt(sc.next());
                 boolean b=false;
                 ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                 for(int i=0; i<c.size();i++){

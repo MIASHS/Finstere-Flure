@@ -270,13 +270,13 @@ public class PionJoueur extends Pions {
                         if (((Pierre)c.getPioncase()).verifier(monPlateau.getCase(c.getPioncase().getX() + 1, c.getOrdonnee()))) {
                             ((Pierre)c.getPioncase()).deplacer(3, monPlateau);
                             this.setX(this.getX() + 1);
-                            //this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                            this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                         }
 
                     } else if (((Pierre)c.getPioncase()).verifier(monPlateau.getCase(c.getPioncase().getX() - 1, c.getOrdonnee()))) {
                         ((Pierre)c.getPioncase()).deplacer(2, monPlateau);
                         this.setX(this.getX() - 1);
-                        //this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                        this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                     }
                     break;
             }

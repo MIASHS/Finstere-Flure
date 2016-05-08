@@ -17,6 +17,7 @@ public class Pierre extends Obstacle {
         if(cas.getPioncase()!=null){cas.getPioncase().getClass().getName();}
         if(((cas.getAbscisse()>-1&&cas.getOrdonnee()<1&&cas.getAbscisse()<12&&cas.getOrdonnee()>-7)||(cas.getAbscisse()<16&&cas.getOrdonnee()>-11&&cas.getAbscisse()>3&&cas.getOrdonnee()<-3)||(cas.getAbscisse()<15&&cas.getOrdonnee()>-10&&cas.getAbscisse()>2&&cas.getOrdonnee()<-2)||(cas.getAbscisse()<14&&cas.getOrdonnee()>-9&&cas.getAbscisse()>1&&cas.getOrdonnee()<-1)||(cas.getAbscisse()<13&&cas.getOrdonnee()>-8&&cas.getAbscisse()>0&&cas.getOrdonnee()<0))&&!(cas.getPioncase() instanceof Monstre)&&!(cas.getPioncase() instanceof PionJoueur)&&!(cas.getPioncase() instanceof Pierre)&&!(cas.getPioncase() instanceof Flaque)){
             return true;
+                    
             
         }else{
             return false;
@@ -40,7 +41,7 @@ public class Pierre extends Obstacle {
                     }else if((p.getCase(this.getX(),this.getY()+1).getPioncase() instanceof Flaque)||p.getCase(this.getX()+1,this.getY()).getPioncase() instanceof Pierre){
                         i=2;
                         Cases c = p.getCase(this.getX(),this.getY()+i);
-                        while(!this.verifier(c)&&((this.getY()+i<1)||(this.getY()+i<-1&&this.getX()==12)||(this.getY()+i<-2&&this.getX()==13)||(this.getY()+i<-3&&this.getX()==14)||(this.getY()+i<-4&&this.getX()==15))){
+                        while(!this.verifier(c)){//&&((this.getY()+i<1)||(this.getY()+i<-1&&this.getX()==12)||(this.getY()+i<-2&&this.getX()==13)||(this.getY()+i<-3&&this.getX()==14)||(this.getY()+i<-4&&this.getX()==15))){
                             c.setOrdonnee(this.getY()+i);
                             i++;
                         }
@@ -69,7 +70,7 @@ public class Pierre extends Obstacle {
                     }else if((p.getCase(this.getX()-1,this.getY()).getPioncase() instanceof Flaque)||p.getCase(this.getX()+1,this.getY()).getPioncase() instanceof Pierre){
                         i=2;
                         Cases c = p.getCase(this.getX()-i,this.getY());
-                        while(!this.verifier(c)&&((this.getX()-i>-1)||(this.getX()-i>0&&this.getY()==-7)||(this.getX()-i>1&&this.getY()==-8)||(this.getX()-i>2&&this.getY()==-9)||(this.getX()-i>3&&this.getY()==-10))){
+                        while(!this.verifier(c)){//&&((this.getX()-i>-1)||(this.getX()-i>0&&this.getY()==-7)||(this.getX()-i>1&&this.getY()==-8)||(this.getX()-i>2&&this.getY()==-9)||(this.getX()-i>3&&this.getY()==-10))){
                             c.setAbscisse(this.getX()-i);
                             i++;
                         }
@@ -98,7 +99,7 @@ public class Pierre extends Obstacle {
                     }else if((p.getCase(this.getX()+1,this.getY()).getPioncase() instanceof Flaque)||p.getCase(this.getX()+1,this.getY()).getPioncase() instanceof Pierre){
                         i=2;
                         Cases c = p.getCase(this.getX()+i,this.getY());
-                        while(!this.verifier(c)&&((this.getX()+i<16)&&(this.getX()+i<12&&this.getY()==0)&&(this.getX()+i<13&&this.getY()==-1)&&(this.getX()+i<14&&this.getY()==-2)&&(this.getX()+i<15&&this.getY()==-3))){
+                        while(!this.verifier(c)){//&&((this.getX()+i<16)&&(this.getX()+i<12&&this.getY()==0)&&(this.getX()+i<13&&this.getY()==-1)&&(this.getX()+i<14&&this.getY()==-2)&&(this.getX()+i<15&&this.getY()==-3))){
                             c.setAbscisse(this.getX()+i);
                             i++;
                         }
@@ -129,7 +130,7 @@ public class Pierre extends Obstacle {
                     }else if((p.getCase(this.getX(),this.getY()-1).getPioncase() instanceof Flaque)||p.getCase(this.getX()+1,this.getY()).getPioncase() instanceof Pierre){
                         i=2;
                         Cases c = p.getCase(this.getX(),this.getY()-i);
-                        while(!this.verifier(c)&&((this.getY()+i>-11)||(this.getY()+i>-7&&this.getX()==0)||(this.getY()+i>-8&&this.getX()==1)||(this.getY()+i>-9&&this.getX()==2)||(this.getY()+i>-10&&this.getX()==3))){
+                        while(!this.verifier(c)){//&&((this.getY()+i>-11)||(this.getY()+i>-7&&this.getX()==0)||(this.getY()+i>-8&&this.getX()==1)||(this.getY()+i>-9&&this.getX()==2)||(this.getY()+i>-10&&this.getX()==3))){
                             c.setOrdonnee(this.getY()-i);
                             i++;
                         }

@@ -16,7 +16,6 @@ public abstract class Pions implements Deplacements {
     
     }
     public void deplacerPion(Pions p){// 1=haut 3=droite 4=bas 2=gauche
-        System.out.println("hello world");
         if(p instanceof Monstre){
             if (((Monstre)p).getCasePrecedente().getAbscisse() - ((Monstre)p).getX() == 0) {
                 if (((Monstre)p).getCasePrecedente().getOrdonnee() - ((Monstre)p).getY() < 0) {
@@ -31,18 +30,41 @@ public abstract class Pions implements Deplacements {
 
             } else {
                 if (((Monstre)p).getCasePrecedente().getAbscisse() - ((Monstre)p).getX() < 0) {
-                    ((Monstre)p).setX(((Monstre)p).getX() + 1);
+                    ((Monstre)p).setX(((Monstre)p).getX() - 1);
                     ((Monstre)p).setOrientation(3);
                     ((Monstre)p).verifierCase(((Monstre)p).getOrientation());
                 } else {
-                    ((Monstre)p).setX(((Monstre)p).getX() - 1);
+                    ((Monstre)p).setX(((Monstre)p).getX() + 1);
                     ((Monstre)p).setOrientation(2);
                     ((Monstre)p).verifierCase(((Monstre)p).getOrientation());
                 }
 
             }
+        }else if(p instanceof PionJoueur){
+            if (((PionJoueur)p).getCasePrecedente().getAbscisse() - ((PionJoueur)p).getX() == 0) {
+                if (((PionJoueur)p).getCasePrecedente().getOrdonnee() - ((PionJoueur)p).getY() < 0) {
+                    ((PionJoueur)p).setY(((PionJoueur)p).getY() + 1);
+                    ((PionJoueur)p).verifierCase(((PionJoueur)p).getMonPlateau(), ((Plateau)((PionJoueur)p).getMonPlateau()).getCase(((PionJoueur)p).getX(), ((PionJoueur)p).getY()));
+                } else {
+                    ((PionJoueur)p).setY(((PionJoueur)p).getY() - 1);
+                                        ((PionJoueur)p).verifierCase(((PionJoueur)p).getMonPlateau(), ((Plateau)((PionJoueur)p).getMonPlateau()).getCase(((PionJoueur)p).getX(), ((PionJoueur)p).getY()));
+                }
+
+            } else {
+                if (((PionJoueur)p).getCasePrecedente().getAbscisse() - ((PionJoueur)p).getX() < 0) {
+                    ((PionJoueur)p).setX(((PionJoueur)p).getX() - 1);
+                                        ((PionJoueur)p).verifierCase(((PionJoueur)p).getMonPlateau(), ((Plateau)((PionJoueur)p).getMonPlateau()).getCase(((PionJoueur)p).getX(), ((PionJoueur)p).getY()));
+                } else {
+                    ((PionJoueur)p).setX(((PionJoueur)p).getX() + 1);
+                                        ((PionJoueur)p).verifierCase(((PionJoueur)p).getMonPlateau(), ((Plateau)((PionJoueur)p).getMonPlateau()).getCase(((PionJoueur)p).getX(), ((PionJoueur)p).getY()));
+                }
+            }
         }
-        System.out.println("the world is too big mum");
+    }
+    
+    public int hashCode(){
+    
+        return ((this.getX()*17)+(this.getY()*13));
     }
     
     public int getX(){

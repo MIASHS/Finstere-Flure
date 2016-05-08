@@ -19,7 +19,7 @@ public class PionJoueur extends Pions {
     private boolean onBoard = false;
     private int[] tabNumDispo = new int[2];
     private int numActuel = 0;
-
+    private Plateau monPlateau;
     private int numjoueur;
     private HashSet<Cases> coupPossible = new HashSet<>();
     private Cases casePrecedente = null;
@@ -171,9 +171,17 @@ public class PionJoueur extends Pions {
     public void setCasePrecedente(Cases c) {
         this.casePrecedente = c;
     }
+    
+    public Plateau getMonPlateau(){
+    
+    return this.monPlateau;
+    }
 
     public void deplacer(Plateau monPlateau, Cases cas) {
         //On retire la case du tableau en plaçant le booleen occupe à faux
+        if(this.monPlateau==null){
+            this.monPlateau= monPlateau;
+        }
         if (!this.isOnBoard()) {
             this.setX(15);
             this.setY(-10);
@@ -186,8 +194,6 @@ public class PionJoueur extends Pions {
 
         if (!c.isFlaque()) {
             if(!(c.getAbscisse()==15&&c.getOrdonnee()==-10)){
-                c.setOccupee(false);
-                c.setPioncase(null);
                 monPlateau.getPlateau().remove(c);
             }
         } else {
@@ -202,9 +208,11 @@ public class PionJoueur extends Pions {
         //En fonction de la case choisie, on place la case choisie dans le tableau
         
         this.verifierCase(monPlateau, cas);
-        cas.setOccupee(true);
-        cas.setPioncase(this);
-        monPlateau.ajouterCase(cas);
+        
+        
+        
+            
+        
         this.coupPossible = new HashSet<>();
 
     }
@@ -213,7 +221,7 @@ public class PionJoueur extends Pions {
         // verifier la case precedente switch en fonction de l'orientation
         // 
         // verifier si la case ne contient pas déjà objet :
-        monPlateau.getPlateau().remove(c);
+        //monPlateau.getPlateau().remove(c);
         
         if ((c.getPioncase() instanceof Flaque) || (c.getPioncase() instanceof Pierre)) {
             switch (c.getPioncase().getClass().getName()) {
@@ -231,7 +239,7 @@ public class PionJoueur extends Pions {
                         this.setX(this.getX() + 1);
                         this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                     } else {
-                        this.setX(this.getX() + 1);
+                        this.setX(this.getX() - 1);
                         this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                     }
                     break;
@@ -271,6 +279,9 @@ public class PionJoueur extends Pions {
         } else {
             this.setX(c.getAbscisse());
             this.setY(c.getOrdonnee());
+            c.setOccupee(true);
+            c.setPioncase(this);
+            monPlateau.ajouterCase(c);
         }
         //      - type monstre, PionJoueur cases interdite
         //      - type obstacle switch en fonction du type

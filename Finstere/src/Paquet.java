@@ -14,7 +14,10 @@ import java.util.Random;
  * @author oneiroi
  */
 public class Paquet {
-     private Cartes[] sabot = new Cartes[8];
+     private Cartes[] pioche = new Cartes[8];
+     private Cartes[] defausse = new Cartes[8];
+     private int defausseNb=8;
+     private int nbActuel=0;
     private int nbCarte = 8;
     private int numeroSerie = 0;
     private boolean present = false;
@@ -47,12 +50,19 @@ public class Paquet {
         this.numeroSerie = a;
     }
 
-    private void setCarte(Cartes carte, int a) {
-        this.sabot[a] = carte;
+    private void setCartep(Cartes carte, int a) {
+        this.pioche[a] = carte;
     }
 
-    public Cartes getCarte(int a) {
-        return this.sabot[a];
+    public Cartes getCartep(int a) {
+        return this.pioche[a];
+    }
+    private void setCarted(Cartes carte, int a) {
+        this.defausse[a] = carte;
+    }
+
+    public Cartes getCarted(int a) {
+        return this.defausse[a];
     }
 
     /**
@@ -83,7 +93,7 @@ public class Paquet {
             while((int) valeur.get(k) ==0){
                 k=1+ra.nextInt(8);
             }
-            this.setCarte(new Cartes((int) valeur.get(k),this.getNumeroSerie()), i);
+            this.setCartep(new Cartes((int) valeur.get(k),this.getNumeroSerie()), i);
             valeur.put(k, 0);
         }
         
@@ -94,17 +104,17 @@ public class Paquet {
             for (int i = 0; i < n; i++) {
                 this.echanger();
             }
-            if((sabot[0].getNumeroCarte()==11)||(sabot[0].getNumeroCarte()==12)){
-                if((sabot[1].getNumeroCarte()!=11)&&(sabot[1].getNumeroCarte()!=12)){
+            if((pioche[0].getNumeroCarte()==11)||(pioche[0].getNumeroCarte()==12)){
+                if((pioche[1].getNumeroCarte()!=11)&&(pioche[1].getNumeroCarte()!=12)){
                     Cartes carteMemoire;
-                    carteMemoire = this.getCarte(0);
-                    this.setCarte(this.getCarte(1), 0);
-                    this.setCarte(carteMemoire, 1);
+                    carteMemoire = this.getCartep(0);
+                    this.setCartep(this.getCartep(1), 0);
+                    this.setCartep(carteMemoire, 1);
                 }else{
                     Cartes carteMemoire;
-                    carteMemoire = this.getCarte(0);
-                    this.setCarte(this.getCarte(2), 0);
-                    this.setCarte(carteMemoire, 2);
+                    carteMemoire = this.getCartep(0);
+                    this.setCartep(this.getCartep(2), 0);
+                    this.setCartep(carteMemoire, 2);
                 }
             }
         } else {
@@ -117,23 +127,33 @@ public class Paquet {
         int carte1 = ra.nextInt(8);
         int carte2 = ra.nextInt(8);
         Cartes carteMemoire;
-        carteMemoire = this.getCarte(carte1);
-        this.setCarte(this.getCarte(carte2), carte1);
-        this.setCarte(carteMemoire, carte2);
+        carteMemoire = this.getCartep(carte1);
+        this.setCartep(this.getCartep(carte2), carte1);
+        this.setCartep(carteMemoire, carte2);
     }
 
     public Cartes donnerUneCarte() {
         Cartes c;
         if (this.getNbCarte() <= 0) {
             System.out.println("Il n'y a plus de carte à distribuer");
-            return null;
+            for(Cartes c1:this.defausse){
+                this.pioche[7-(nbActuel-1)]=c1;
+                this.setNbCarte(this.getNbCarte() + 1);
+                nbActuel-=1;
+            }
+            return donnerUneCarte();
+            
         } else {
             this.setNbCarte(this.getNbCarte() - 1);
-            c = this.getCarte(0);
+            c = this.getCartep(0);
             for (int i = 1; i < this.getNbCarte(); i++) {
-                this.setCarte(this.getCarte(i), i - 1);
+                this.setCartep(this.getCartep(i), i - 1);
             }
             //this.mettreCarteEnDessous(c);
+            this.defausse[nbActuel]=c;
+            System.out.println(nbActuel);
+            nbActuel+=1;
+            System.out.println(nbActuel);
             return c;
         }
     }
@@ -142,12 +162,12 @@ public class Paquet {
 
         if (c.isNumeroJeu(this.getNumeroSerie())) {
             for (int i = 0; i <= this.getNbCarte(); i++) {
-                if (this.getCarte(i) == c) {
+                if (this.getCartep(i) == c) {
                     this.setPresent(true);
                 }
             }
             if (!this.getPresent()) {
-                this.setCarte(c, this.getNbCarte());
+                this.setCartep(c, this.getNbCarte());
                 this.setNbCarte(this.getNbCarte() + 1);
             }else{
                 this.setPresent(false);

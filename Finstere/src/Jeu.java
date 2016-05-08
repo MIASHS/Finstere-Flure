@@ -32,6 +32,8 @@ public class Jeu {
    private int coupRestantJoueur;
    // pseudo du joueur en train de jouer
    private String pseudoJoueurCourant;
+   // Permet de savoir si la partie est finie
+   private boolean fini=false;
    
    public Jeu(){
        this.j_list = new ArrayList<>();
@@ -58,17 +60,17 @@ public class Jeu {
         monPlateau.placerMonstre(this.m);
        Joueurs joueur1 = new Joueurs("Gab");
        joueur1.ajouterPion(new PionJoueur(1,1));       
-       joueur1.ajouterPion(new PionJoueur(4,1));
+       /*joueur1.ajouterPion(new PionJoueur(4,1));
        joueur1.ajouterPion(new PionJoueur(3,1));
-       joueur1.ajouterPion(new PionJoueur(2,1));
+       joueur1.ajouterPion(new PionJoueur(2,1));*/
        j_list.add(joueur1);
        
         Joueurs joueur2 = new Joueurs("Valère");
        
        joueur2.ajouterPion(new PionJoueur(6,2));
-       joueur2.ajouterPion(new PionJoueur(3,2));
+       /*joueur2.ajouterPion(new PionJoueur(3,2));
        joueur2.ajouterPion(new PionJoueur(4,2));
-       joueur2.ajouterPion(new PionJoueur(5,2));
+       joueur2.ajouterPion(new PionJoueur(5,2));*/
        
        j_list.add(joueur2);
        
@@ -200,6 +202,20 @@ public class Jeu {
 
     public void setPseudoJoueurCourant(String pseudoJoueurCourant) {
         this.pseudoJoueurCourant = pseudoJoueurCourant;
+    }
+    
+    public boolean isFini(){
+        return but();
+    }
+    
+    public boolean but(){
+        boolean b=false;
+        for(Joueurs j: this.j_list){
+            if(j.getPionTotal()==0 || j.isGagner()){
+                b=true;
+            }
+        }
+        return b;
     }
 
     

@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -95,14 +98,19 @@ public class TestConsole {
     public static void testTour(Jeu p,Menu m){
          
         //On instancie un objet temps
-         Temps t = new Temps(0,0,false,false);
+        Temps t = new Temps(0,0,false,false);
          
-         
-         t.debutGame();
-         
+        ArrayList<Cases> cheminMonstre;  
+        t.debutGame();
          //on appelle la méthode qui gère les tours
-         Outils.afficherTexte("\nDébut du tour...\n");
-         t.gestionTourGros(p.getMonstre(),p);
+        Outils.afficherTexte("\nDébut du tour...\n");
+        while(!p.isFini()){
+            cheminMonstre = t.gestionTourGros(p.getMonstre(),p);
+            //for(Cases c2 :cheminMonstre){
+            //    System.out.println("Cas: ("+c2.getAbscisse()+";"+c2.getOrdonnee()+")");
+            //}
+        }
+         
         testPlateau(m.getPartieActuelle().getMonPlateau());
         Outils.afficherTexte("test");
        

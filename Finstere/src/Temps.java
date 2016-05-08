@@ -36,11 +36,15 @@ public class Temps {
     // le chemin emprunté par le monstre est retourné
     public ArrayList<Cases> gestionTourGros(Monstre m,Jeu g){
         debuterTour=true;
-        
+        boolean b=false;
+        g.getJ_list().get(0).setPionUtilisé(0);
+        g.getJ_list().get(1).setPionUtilisé(0);
         //TestConsole.testPlateau(g.getMonPlateau());
         while(debuterTour){
-            while(g.getJ_list().get(0).getPionUtilisé()!= g.getJ_list().get(0).getPionTotal()||g.getJ_list().get(1).getPionUtilisé()!= g.getJ_list().get(1).getPionTotal()){
-                
+            System.out.println("coucou");
+            
+            while((g.getJ_list().get(0).getPionUtilisé()!= g.getJ_list().get(0).getPionTotal()||g.getJ_list().get(1).getPionUtilisé()!= g.getJ_list().get(1).getPionTotal())&&!b){
+                System.out.println("bite ");
                 for(int i=0; i < g.getJ_list().size(); i++){
                     TestConsole.testPlateau(g.getMonPlateau());
                     this.gestionTourPetit(g.getJ_list().get(i),g);
@@ -53,12 +57,16 @@ public class Temps {
                     }
                     this.nbToursJoueur +=1;
                 }
-        
+                for(Joueurs j: g.getJ_list()){
+                    if(j.isGagner()){
+                        b=true;
+                    }
+                }
             }
             this.debuterTour= false;
             this.nbTours +=1;
         }
-        m.deplacer(m.getListeCarte().donnerUneCarte());
+        //m.deplacer(m.getListeCarte().donnerUneCarte());
         return m.getChemin();
     }
     
@@ -68,14 +76,18 @@ public class Temps {
         boolean arret=false;// condition d'arret si le joueur veut s'arreter... hum où l'appliquée ?? 
         boolean deplacement=false; // indique si le déplacement a été effectue
         Scanner sc=new Scanner(System.in);
+        
         this.nbToursJoueur=0; // Indique le nombre de déplacement utilisé
         if(!j.getTabPion().get(j.getPionUtilisé()).isOnBoard()&&j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())!=1){
             this.nbToursJoueur+=1;
+            }else if(j.getTabPion().get(j.getPionUtilisé()).isOnBoard()){
+                p.getMonPlateau().getPlateau().remove(p.getMonPlateau().getCase(j.getTabPion().get(j.getPionUtilisé()).getX(),j.getTabPion().get(j.getPionUtilisé()).getY()));
             }
         
         while((!deplacement||!arret)&&this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())){
             //TEST///////
             //System.out.println("nbTourJoueur :"+this.nbToursJoueur+" et n ="+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
+                System.out.println("("+j.getTabPion().get(j.getPionUtilisé()).getX()+";"+j.getTabPion().get(j.getPionUtilisé()).getY()+")");
                 if(this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())&&this.nbToursJoueur>1){
                     Outils.afficherTexte("Souhaitez vous vous arrêter ici ?");
                     if(Outils.conversionBoolean(Outils.verification(sc.next(), 1))){
@@ -89,6 +101,7 @@ public class Temps {
                         boolean b=false;
                         ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                         for(int i=0; i<c.size();i++){
+                            System.out.println(i+" :("+c.get(i).getAbscisse()+":"+c.get(i).getOrdonnee()+")");
                             if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
                                 b=true;
                             }
@@ -126,6 +139,7 @@ public class Temps {
                 boolean b=false;
                 ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                 for(int i=0; i<c.size();i++){
+                    System.out.println(i+" :("+c.get(i).getAbscisse()+":"+c.get(i).getOrdonnee()+")");
                     if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
                         b=true;
                     }
@@ -150,7 +164,10 @@ public class Temps {
             
         }
         
-        
+      if(j.getTabPion().get(j.getPionUtilisé()).getX()==0 && j.getTabPion().get(j.getPionUtilisé()).getY()==0){
+          j.setGagner(true);
+      }
+      j.getTabPion().get(j.getPionUtilisé()).setNumActuel();
     }
     
 

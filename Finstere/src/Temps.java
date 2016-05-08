@@ -106,16 +106,14 @@ public class Temps {
                         int o=Outils.convertToInt(sc.next());
                         boolean b=false;
                         ArrayList<Cases> c=j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(p.getMonPlateau(), j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
-                        for(int i=0; i<c.size();i++){
+                        for(Cases c1: c){
                             //System.out.println(i+" :("+c.get(i).getAbscisse()+":"+c.get(i).getOrdonnee()+")");
-                            if(c.get(i).getAbscisse()==a&&c.get(i).getOrdonnee()==o){
+                            if(c1.getAbscisse()==a&&c1.getOrdonnee()==o){
                                 b=true;
                             }
                         }
                         if(b){
-                    
                             j.getTabPion().get(j.getPionUtilisé()).deplacer(p.getMonPlateau(),p.getMonPlateau().getCase(a, o));
-                            
                             int k=(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY());
 
                             if(k<0){

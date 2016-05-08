@@ -131,28 +131,24 @@ public class PionJoueur extends Pions {
                 listProvisoire.add(new Cases(this.getX() + i, this.getY() + j, false));
             }
         }
-
         for (int j = 1; j <= num; j++) {
             int numcopie = j - num;
-            for (int i = 0; i >= numcopie; i--) {
+            for (int i = 0; i >= numcopie-1; i--) {
                 listProvisoire.add(new Cases(this.getX() + i, this.getY() + j, false));
             }
         }
-
-        for (int j = 0; j >= -num; j--) {
+        for (int j = 0; j > -num; j--) {
             int numcopie = -(num + j);
             for (int i = -1; i >= numcopie; i--) {
                 listProvisoire.add(new Cases(this.getX() + i, this.getY() + j, false));
             }
         }
-
         for (int j = -1; j >= -num; j--) {
-            int numcopie = -(num + j);
-            for (int i = 0; i <= numcopie; i++) {
+            int numcopie = (num + j);
+            for (int i = 0; i <= numcopie;i++) {
                 listProvisoire.add(new Cases(this.getX() + i, this.getY() + j, false));
             }
         }
-
         while (!listProvisoire.isEmpty()) {
             if (((listProvisoire.get(0).getAbscisse() > -1 && listProvisoire.get(0).getOrdonnee() < 1 && listProvisoire.get(0).getAbscisse() < 12 && listProvisoire.get(0).getOrdonnee() > -7) || (listProvisoire.get(0).getAbscisse() < 16 && listProvisoire.get(0).getOrdonnee() > -11 && listProvisoire.get(0).getAbscisse() > 3 && listProvisoire.get(0).getOrdonnee() < -3) || (listProvisoire.get(0).getAbscisse() < 15 && listProvisoire.get(0).getOrdonnee() > -10 && listProvisoire.get(0).getAbscisse() > 2 && listProvisoire.get(0).getOrdonnee() < -2) || (listProvisoire.get(0).getAbscisse() < 14 && listProvisoire.get(0).getOrdonnee() > -9 && listProvisoire.get(0).getAbscisse() > 1 && listProvisoire.get(0).getOrdonnee() < -1) || (listProvisoire.get(0).getAbscisse() < 13 && listProvisoire.get(0).getOrdonnee() > -8 && listProvisoire.get(0).getAbscisse() > 0 && listProvisoire.get(0).getOrdonnee() < -0)) && !(monPlateau.getCase(listProvisoire.get(0).getAbscisse(), listProvisoire.get(0).getOrdonnee()).getPioncase() instanceof Monstre) && !(monPlateau.getCase(listProvisoire.get(0).getAbscisse(), listProvisoire.get(0).getOrdonnee()).getPioncase() instanceof PionJoueur)) {
                 //this.verifierCase(monPlateau, listProvisoire.get(0));
@@ -189,11 +185,8 @@ public class PionJoueur extends Pions {
             this.setY(-10);
             this.setOnBoard(true);
         }
-        
         Cases c = monPlateau.getCase(this.getX(), this.getY());
         casePrecedente = c;
-        
-
         if (!c.isFlaque()) {
             if(!(c.getAbscisse()==15&&c.getOrdonnee()==-10)){
                 monPlateau.getPlateau().remove(c);
@@ -201,14 +194,12 @@ public class PionJoueur extends Pions {
         } else {
             c.setPioncase(c.getFlaque());
         }
-
         //On estime les coups possibles depuis la position du joueur en 
         //fonction de num et des barrières du plateau de jeu
         //cf searchCoupPossible()
         //On sort la liste des coups possibles.
         //cf getCoupPossible()
         //En fonction de la case choisie, on place la case choisie dans le tableau
-        
         this.verifierCase(monPlateau, cas);
         
         
@@ -238,7 +229,6 @@ public class PionJoueur extends Pions {
                             //this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                             monPlateau.getCase(c.getAbscisse(), c.getOrdonnee()).getPioncase().deplacerPion(this);
                         }
-
                     } else if (this.casePrecedente.getAbscisse() - c.getAbscisse() < 0) {
                         //this.setX(this.getX() + 1);
                         //this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
@@ -256,29 +246,31 @@ public class PionJoueur extends Pions {
 
                             if (((Pierre)c.getPioncase()).verifier(monPlateau.getCase(c.getPioncase().getX(), c.getOrdonnee() + 1))) {
                                 
-                                ((Pierre)c.getPioncase()).deplacer(1, monPlateau);
-                                this.setY(this.getY() + 1);
-                                this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                                ((Pierre)c.getPioncase()).deplacer(1, monPlateau,this);
+                                this.setY(c.getOrdonnee());
+                                this.verifierCase(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                             }
 
                         } else if (((Pierre)c.getPioncase()).verifier(monPlateau.getCase(c.getPioncase().getX(), c.getOrdonnee() - 1))) {
                             
-                            ((Pierre)c.getPioncase()).deplacer(4, monPlateau);
-                            this.setY(this.getY() - 1);
-                            this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                            ((Pierre)c.getPioncase()).deplacer(4, monPlateau,this);
+                            this.setY(c.getOrdonnee());
+                            this.verifierCase(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                         }
 
                     } else if (this.casePrecedente.getAbscisse() - c.getAbscisse() < 0) {
                         if (((Pierre)c.getPioncase()).verifier(monPlateau.getCase(c.getPioncase().getX() + 1, c.getOrdonnee()))) {
-                            ((Pierre)c.getPioncase()).deplacer(3, monPlateau);
-                            this.setX(this.getX() + 1);
-                            this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                            ((Pierre)c.getPioncase()).deplacer(3, monPlateau,this);
+                            this.setX(c.getAbscisse());
+                            this.verifierCase(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                         }
 
                     } else if (((Pierre)c.getPioncase()).verifier(monPlateau.getCase(c.getPioncase().getX() - 1, c.getOrdonnee()))) {
-                        ((Pierre)c.getPioncase()).deplacer(2, monPlateau);
-                        this.setX(this.getX() - 1);
-                        this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
+                        ((Pierre)c.getPioncase()).deplacer(2, monPlateau,this);
+                        
+                        //monPlateau.getCase(abscisse, ordonnee).setAbscisse(abscisse-1);
+                        this.setX(c.getAbscisse());
+                        this.verifierCase(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                     }
                     break;
             }

@@ -257,7 +257,7 @@ public class Monstre extends Pions{
                 case "Pierre":
                         Cases c = monPlateau.getCase(this.abscisse,this.ordonnee);
                         monPlateau.getPlateau().remove(c);
-                        ((Pierre)c.getPioncase()).deplacer(o,monPlateau);
+                        ((Pierre)c.getPioncase()).deplacer(o,monPlateau,this);
 
                     break;
                 case "Flaque":

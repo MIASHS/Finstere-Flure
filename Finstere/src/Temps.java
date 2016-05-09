@@ -44,17 +44,25 @@ public class Temps {
         while(debuterTour){
             while((g.getJ_list().get(0).getPionUtilisé()!= g.getJ_list().get(0).getPionTotal()||g.getJ_list().get(1).getPionUtilisé()!= g.getJ_list().get(1).getPionTotal())&&!b){
                 for(int i=0; i < g.getJ_list().size(); i++){
-                    TestConsole.testPlateau(g.getMonPlateau());
-                    this.gestionTourPetit(g.getJ_list().get(i),g);
-                    g.getJ_list().get(i).getTabPion().get(g.getJ_list().get(i).getPionUtilisé()).setNumActuel();
-                    if(!g.getJ_list().get(i).isFinirTour()){
-                        g.getJ_list().get(i).setPionUtilisé(g.getJ_list().get(i).getPionUtilisé()+1);
-                    }
                     
-                    if(g.getJ_list().get(i).getPionUtilisé()== g.getJ_list().get(i).getPionTotal()){    
-                        g.getJ_list().get(i).setFinirTour(true);
+                    if(g.getJ_list().get(i) instanceof IA){
+                        Cases c =((IA)g.getJ_list().get(i)).choisirCoupIA(((IA)g.getJ_list().get(i)).CoupPossibleIA(g.getMonPlateau(), g.getJ_list().get(i)),g);
+                        g.getMonPlateau().ajouterCase(c);
+                        
+                    }else{
+                        TestConsole.testPlateau(g.getMonPlateau());
+                        this.gestionTourPetit(g.getJ_list().get(i),g);
+                        g.getJ_list().get(i).getTabPion().get(g.getJ_list().get(i).getPionUtilisé()).setNumActuel();
+                        if(!g.getJ_list().get(i).isFinirTour()){
+                            g.getJ_list().get(i).setPionUtilisé(g.getJ_list().get(i).getPionUtilisé()+1);
+                        }
+
+                        if(g.getJ_list().get(i).getPionUtilisé()== g.getJ_list().get(i).getPionTotal()){    
+                            g.getJ_list().get(i).setFinirTour(true);
+                        }
+                        this.nbToursJoueur +=1;
+                    
                     }
-                    this.nbToursJoueur +=1;
                 }
                 for(Joueurs j: g.getJ_list()){
                     if(j.isGagner()){
@@ -88,13 +96,14 @@ public class Temps {
             }else if(j.getTabPion().get(j.getPionUtilisé()).isOnBoard()){
                 p.getMonPlateau().getPlateau().remove(p.getMonPlateau().getCase(j.getTabPion().get(j.getPionUtilisé()).getX(),j.getTabPion().get(j.getPionUtilisé()).getY()));
             }
-                int numprecedent=j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel());
-        while((!deplacement||!arret)&&this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())){
-            //TEST///////
-            //System.out.println("nbTourJoueur :"+this.nbToursJoueur+" et n ="+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
+                
+        
+            while((!deplacement||!arret)&&this.nbToursJoueur<j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())){
+                //TEST///////
+                //System.out.println("nbTourJoueur :"+this.nbToursJoueur+" et n ="+j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
                 //System.out.println("("+j.getTabPion().get(j.getPionUtilisé()).getX()+";"+j.getTabPion().get(j.getPionUtilisé()).getY()+")");
                 //TestConsole.testPlateau(p.getMonPlateau());
-                if(deplacement&&numprecedent!=1){
+                if(deplacement&&j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel())!=1){
                     Outils.afficherTexte("Souhaitez vous vous arrêter ici ?");
                     if(Outils.conversionBoolean(Outils.verification(sc.next(), 1))){
                         arret=true;

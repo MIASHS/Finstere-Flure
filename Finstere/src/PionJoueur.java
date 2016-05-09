@@ -185,6 +185,8 @@ public class PionJoueur extends Pions {
             this.setY(-10);
             this.setOnBoard(true);
         }
+        System.out.println(this.getX());
+        System.out.println(this.getY());
         Cases c = monPlateau.getCase(this.getX(), this.getY());
         casePrecedente = c;
         if (!c.isFlaque()) {

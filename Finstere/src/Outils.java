@@ -797,7 +797,7 @@ public class Outils {
     }
 
     //Méthode qui affiche les différents menu et confirmations de choix.
-    public static char afficher(int niveau, Jeu partieActuelle) {
+    public static char afficher(int niveau) {
         Scanner sc = new Scanner(System.in);
         switch (niveau) {
             case 0:

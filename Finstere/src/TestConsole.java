@@ -17,16 +17,11 @@ public class TestConsole {
     //Test initialisation du jeu
     public static void testInit() {      
         Menu m = new Menu();
-        
         //Premier menu
-        m.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0,m.getPartieActuelle())));
-       
+        m.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0)));
         //Test du plateau de jeu
         //testPlateau(m.getPartieActuelle().getMonPlateau()); 
-       
-        testTour(m.getPartieActuelle(),m);
-        
-        
+        testTour(m.getPartieActuelle());
     }
 
     public static void testPlateau(Plateau p) {
@@ -99,7 +94,7 @@ public class TestConsole {
     System.out.println("Xcase - Xj ="+ (j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())+" ; Ycase - Yj ="+(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY()));
     System.out.println("Xcase - Xj - (Ycase - Yj) ="+((j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY())));*/
     
-    public static void testTour(Jeu p,Menu m){
+    public static void testTour(Jeu p){
          
         //On instancie un objet temps
         
@@ -117,7 +112,7 @@ public class TestConsole {
             System.out.print("]\n");
         }
          
-        testPlateau(m.getPartieActuelle().getMonPlateau());
+        testPlateau(p.getMonPlateau());
         Outils.afficherTexte("test");
        
     }

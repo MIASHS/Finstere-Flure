@@ -72,6 +72,7 @@ public class Monstre extends Pions{
     
     public void deplacer(Cartes c){
         this.nbPionsTues=0;
+        this.chemin=new ArrayList<>();
         casePrecedente=monPlateau.getCase(this.getX(), this.getY());
         this.makeChemin(monPlateau.getCase(this.getX(), this.getY()));
         monPlateau.getPlateau().remove(monPlateau.getCase(this.getX(), this.getY()));

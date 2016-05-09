@@ -101,6 +101,7 @@ public class PionJoueur extends Pions {
     //Méthode permettant de faire mourir un pion d'un joueur
     public void mourir(boolean b) {
         monPlateau.getPlateau().remove(monPlateau.getCase(this.abscisse, this.ordonnee));
+        this.numActuel=0;
         this.setOnBoard(!b);
         this.setMort(b);
     }

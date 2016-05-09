@@ -185,8 +185,8 @@ public class PionJoueur extends Pions {
             this.setY(-10);
             this.setOnBoard(true);
         }
-        System.out.println(this.getX());
-        System.out.println(this.getY());
+        //System.out.println(this.getX());
+        //System.out.println(this.getY());
         Cases c = monPlateau.getCase(this.getX(), this.getY());
         casePrecedente = c;
         if (!c.isFlaque()) {
@@ -203,8 +203,6 @@ public class PionJoueur extends Pions {
         //cf getCoupPossible()
         //En fonction de la case choisie, on place la case choisie dans le tableau
         this.verifierCase(monPlateau, cas);
-        
-        
         
             
         

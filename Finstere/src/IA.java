@@ -22,11 +22,11 @@ public class IA extends Joueurs {
  
     public ArrayList<Cases> CoupPossibleIA(Plateau monPlateau, Joueurs j ){
         //monPlateau.getPlateau().remove(monPlateau.getCase(j.getTabPion().get(j.getPionUtilisé()).getX(),j.getTabPion().get(j.getPionUtilisé()).getY()));
-        if(!j.getTabPion().get(j.getPionUtilisé()).isOnBoard()){
-            j.getTabPion().get(j.getPionUtilisé()).setX(15);
-            j.getTabPion().get(j.getPionUtilisé()).setY(-10);
-            j.getTabPion().get(j.getPionUtilisé()).setOnBoard(true);
-        }
+        //if(!j.getTabPion().get(j.getPionUtilisé()).isOnBoard()){
+        //    j.getTabPion().get(j.getPionUtilisé()).setX(15);
+        //    j.getTabPion().get(j.getPionUtilisé()).setY(-10);
+        //    j.getTabPion().get(j.getPionUtilisé()).setOnBoard(true);
+        //}
         return j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(monPlateau, j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
     }
     

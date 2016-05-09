@@ -95,7 +95,7 @@ public class Menu {
                 break;
 
             case 'H':   // méthode à appeller pour afficher les scores
-                Outils.afficherTexte("pas encore implémenté !");
+                BDD.highScores();
                 this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0, partieActuelle)));
                 break;
                 
@@ -121,12 +121,12 @@ public class Menu {
     public void menuNiveauDeux(char choix) {
         switch (choix) {
             
-            case 'A':   // méthode à appeller pour afficher les scores
+            case 'A':   
                 Outils.afficherTexte("Configuration IA pas encore implémenté ! `\n");
                 this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0, partieActuelle)));
                 break;
                 
-            case 'I':   // méthode à appeller pour afficher les scores
+            case 'I':   
                 Outils.afficherTexte("Configuration Interface  pas encore implémenté ! `\n");
                 this.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0, partieActuelle)));
                 break;

@@ -6,16 +6,25 @@
 
 /**
  *
- * @author Gabriel
+ * @author Gabriel, Valère, Sébastien
  */
+/*
+        Cette classe permet de créer et gérer les cases du plateau individuellement
+*/
 public class Cases {
+    //Attribut
+    //coordonnée de la cases
     private int abscisse ;
     private int ordonnee;
+    //Permet de savoir si la casse est occupée par un autre pion ou non.
     boolean occupee=false;
+    //Permet de savoir si le pion sur la case est un objet Flaque ou non.
     boolean cflaque=false;
+    //Si le pion sur la case est un objet Flaque il est conservé ici.
     Flaque laFlaque=null;
+    //Le pion de la case est stocké ici si elle est occupée. 
     Pions pioncase=null;
-
+    //Constructor
     public Cases(int abscisse, int ordonnee, boolean occupee, Pions pioncase) {
         this.abscisse = abscisse;
         this.ordonnee = ordonnee;
@@ -35,7 +44,7 @@ public class Cases {
         this.ordonnee = ordonnee;
         this.occupee = occupee;
     }
-    
+    //getter setter
     public int getAbscisse() {
         return abscisse;
     }
@@ -60,9 +69,13 @@ public class Cases {
     public void setPioncase(Pions pioncase) {
         this.pioncase = pioncase;
     }
-    // à corriger
+    
     public boolean isPionHere(){
-        if(this.pioncase instanceof PionJoueur){return true;}else{return false;}
+        if(this.pioncase instanceof PionJoueur){
+            return true;
+        }else{
+            return false;
+        }
     }
     
     public boolean isFlaque(){

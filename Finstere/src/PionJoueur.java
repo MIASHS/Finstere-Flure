@@ -287,8 +287,5 @@ public class PionJoueur extends Pions {
         //          - deplacer PionJoueur ou obstacle
     }
 
-    @Override
-    public void deplacer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 }

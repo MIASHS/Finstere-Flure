@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 /**
  *
- * @author oneiroi
+ * @author Gabriel, Valère, Sébastien
  */
 public class BDD {
     // Permet l'accès et la connection à la BDD 
@@ -26,8 +26,8 @@ public class BDD {
     public static void finPartie(String gagnant) throws SQLException {
         /* Connexion à la base de données */
         String url = "jdbc:mysql://localhost:3306/finstere";
-        String utilisateur = "brogniar3u";
-        String motDePasse = "32216849@";
+        String utilisateur = "anonymous";
+        String motDePasse = "anonymous";
         Connection connexion = null;
         try {
             // connexion à la base
@@ -87,8 +87,8 @@ public class BDD {
 
         /* Connexion à la base de données */
         String url = "jdbc:mysql://localhost:3306/finstere";
-        String utilisateur = "brogniar3u";
-        String motDePasse = "32216849@";
+        String utilisateur = "anonymous";
+        String motDePasse = "anonymous";
         Connection connexion = null;
         try {
             connexion = (Connection) DriverManager.getConnection(url, utilisateur, motDePasse);

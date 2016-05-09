@@ -14,10 +14,7 @@ public class Obstacle extends Pions  {
         this.ordonnee=y;
     }
 
-    @Override
-    public void deplacer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
     
 }

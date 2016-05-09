@@ -9,24 +9,22 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Gaby
+ * @author Gabriel, Valère, Sébastien
  */
-public class IA extends Joueurs {
-    
-    private Jeu game;
 
+/*
+        Cette classe permet de gérer l'IA du joueur du.
+*/
+public class IA extends Joueurs {
+    //Attributs 
+    private Jeu game;
+    //Constructors 
     public IA(Jeu g, String pseudo) {
        super(pseudo);
        game = g ;
     }
- 
+    //Methods
     public ArrayList<Cases> CoupPossibleIA(Plateau monPlateau, Joueurs j ){
-        //monPlateau.getPlateau().remove(monPlateau.getCase(j.getTabPion().get(j.getPionUtilisé()).getX(),j.getTabPion().get(j.getPionUtilisé()).getY()));
-        //if(!j.getTabPion().get(j.getPionUtilisé()).isOnBoard()){
-        //    j.getTabPion().get(j.getPionUtilisé()).setX(15);
-        //    j.getTabPion().get(j.getPionUtilisé()).setY(-10);
-        //    j.getTabPion().get(j.getPionUtilisé()).setOnBoard(true);
-        //}
         return j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(monPlateau, j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
     }
     

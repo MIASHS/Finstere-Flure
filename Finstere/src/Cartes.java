@@ -6,8 +6,15 @@
 
 /**
  *
- * @author oneiroi
+ * @author Valère, Gabriel, Sébastien
  */
+
+/*
+        Cette classe permet la création et l'utilisation de carte individuellement
+        Les Cartes sont ce qui indique aux monstres que faire.
+        Il n'y a rien d'autre à savoir cette classe, elle a été récupérée du TD8
+        du cours de Java et adapter pour l'occasion.
+*/
 public class Cartes {
     //Attributs
 
@@ -45,9 +52,9 @@ public class Cartes {
         
         switch (valeurTuile) {
             case 11:
-                return "X" ;
+                return "X" ; // le monstre doit tuer un pion
             case 12:
-                return "XX" ;
+                return "XX" ; // le monstre doit tuer deux pions.
         }
         return null;
     }

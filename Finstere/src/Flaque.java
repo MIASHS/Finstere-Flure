@@ -6,13 +6,17 @@
 
 /**
  *
- * @author Gabriel
+ * @author Gabriel, Sébastien, Valère 
  */
+
+/*
+    Cette classe permet de créer et gérer les pions Flaque inviduellement.
+*/
 public class Flaque extends Obstacle {
-    
-    private int type;
-    private boolean premiereC=true;
-    
+    //attribut
+    private int type; // Tache hémoglobine carré ou allongé
+    private boolean premiereC=true; // Si la flaque correspond à la flaque de référence ou non  
+    //Constructors
     public Flaque(int x, int y, int i) {
         super(x, y);
         type= i;
@@ -22,9 +26,9 @@ public class Flaque extends Obstacle {
         type= i;
         premiereC=pC;
     }
-    
+    //Getter Setter
     public void modifmorpho(int i){
-    
+        this.type=i;
     }
     
     public int getType(){

@@ -6,8 +6,12 @@
 
 /**
  *
- * @author oneiroi
+ * @author Sébastien, Gabriel, Valère
  */
+
+/*
+        Cette classe permet de gérer les interactions en réseaux 
+*/
 public class Connection {
 
     void close() {

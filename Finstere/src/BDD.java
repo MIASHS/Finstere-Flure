@@ -39,18 +39,33 @@ public class BDD {
             Calendar cal = Calendar.getInstance();
             //On récupère la date et l'heure du moment 
             java.sql.Timestamp timestamp = new Timestamp(cal.getTime().getTime());
+            
+            
+            ResultSet verif = statement.executeQuery("SELECT numPartie, nomGagnant, date FROM score WHERE nomGagnant ='"+gagnant+"';");
+     
+            String sql ="";
+            // Si le pseudo existe déja
+            if(verif.first()){
+                 sql = "UPDATE score SET 'score' = 1 WHERE nomGagnant ='"+gagnant+"')";  // on met à jour le score
+            }
+            else{
+                 sql = "INSERT INTO score(nomGagnant,date,score) " + "VALUES ('"+gagnant+"','" + timestamp + "','1')";  // on crée la ligne dans la table score
+            }
+            
+            
+            System.out.println(sql);
 
             //La requete
-            String sql = "INSERT INTO score(nomGagnant,date,score) " + "VALUES ('"+gagnant+"','" + timestamp + "','0')";  // avec score
+          
            // String sql = "INSERT INTO score(nomGagnant,date) " + "VALUES ('" + gagnant + "','" + timestamp + "')";
-             
+          
             //On prépare la requête
             PreparedStatement ps = connexion.prepareStatement(sql,
                     Statement.RETURN_GENERATED_KEYS);
-
+ 
             // On éxécute la requête
             ps.execute();
-
+  
             //On récupère la clé générée
             ResultSet rs = ps.getGeneratedKeys();
             int generatedKey = 0;

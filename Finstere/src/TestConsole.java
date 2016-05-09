@@ -19,13 +19,11 @@ public class TestConsole {
         Menu m = new Menu();
 
         //Premier menu
-        m.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0, m.getPartieActuelle())));
-
+        m.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0)));
         //Test du plateau de jeu
         //testPlateau(m.getPartieActuelle().getMonPlateau()); 
-        //testTour(m.getPartieActuelle(), m);
-        testFin(m.getPartieActuelle());
-
+        testTour(m.getPartieActuelle());
+        //testFin(m.getPartieActuelle()); // Teste l'insertion dans la BDD de fin de partie
     }
 
     public static void testPlateau(Plateau p) {
@@ -93,27 +91,31 @@ public class TestConsole {
     //System.out.println("Cp =("+this.casePrecedente.getAbscisse()+";"+this.casePrecedente.getOrdonnee()+") ; J =("+this.getX()+";"+this.getY()+")");
     ///TEST////
     /*System.out.println("Xcase ="+ (j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse())+" ; Xj ="+j.getTabPion().get(j.getPionUtilisé()).getX()+" ; Ycase ="+(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee())+" ; Yj ="+j.getTabPion().get(j.getPionUtilisé()).getY());
-     System.out.println("Xcase - Xj ="+ (j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())+" ; Ycase - Yj ="+(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY()));
-     System.out.println("Xcase - Xj - (Ycase - Yj) ="+((j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY())));*/
-    public static void testTour(Jeu p, Menu m) throws SQLException {
+
+    System.out.println("Xcase - Xj ="+ (j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())+" ; Ycase - Yj ="+(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY()));
+    System.out.println("Xcase - Xj - (Ycase - Yj) ="+((j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY())));*/
+    
+    public static void testTour(Jeu p){
+         
 
         //On instancie un objet temps
         ArrayList<Cases> cheminMonstre;
         p.getTemps().debutGame();
         //on appelle la méthode qui gère les tours
         Outils.afficherTexte("\nDébut du tour...\n");
-        while (!p.isFini()) {
-            cheminMonstre = p.getTemps().gestionTourGros(p.getMonstre(), p);
-            System.out.print("[");
-            for (Cases c2 : cheminMonstre) {
-                System.out.print("Cas: (" + c2.getAbscisse() + ";" + c2.getOrdonnee() + "), ");
-            }
-            System.out.print("]\n");
-        }
 
-        testPlateau(m.getPartieActuelle().getMonPlateau());
+        while(!p.isFini()){
+            cheminMonstre =p.getTemps().gestionTourGros(p.getMonstre(),p);
+            //System.out.print("[");
+            //for(Cases c2 :cheminMonstre){
+            //    System.out.print("Cas: ("+c2.getAbscisse()+";"+c2.getOrdonnee()+"), ");
+            //}
+            //System.out.print("]\n");
+        }
+         
+        testPlateau(p.getMonPlateau());
+
         Outils.afficherTexte("test");
-        testFin(p);
 
     }
 

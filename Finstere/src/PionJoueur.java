@@ -101,6 +101,7 @@ public class PionJoueur extends Pions {
     //Méthode permettant de faire mourir un pion d'un joueur
     public void mourir(boolean b) {
         monPlateau.getPlateau().remove(monPlateau.getCase(this.abscisse, this.ordonnee));
+        this.numActuel=0;
         this.setOnBoard(!b);
         this.setMort(b);
     }
@@ -185,6 +186,8 @@ public class PionJoueur extends Pions {
             this.setY(-10);
             this.setOnBoard(true);
         }
+        //System.out.println(this.getX());
+        //System.out.println(this.getY());
         Cases c = monPlateau.getCase(this.getX(), this.getY());
         casePrecedente = c;
         if (!c.isFlaque()) {
@@ -201,8 +204,6 @@ public class PionJoueur extends Pions {
         //cf getCoupPossible()
         //En fonction de la case choisie, on place la case choisie dans le tableau
         this.verifierCase(monPlateau, cas);
-        
-        
         
             
         

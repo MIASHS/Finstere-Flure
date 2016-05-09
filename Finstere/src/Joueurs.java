@@ -42,8 +42,7 @@ public class Joueurs {
 
     public void ajouterPion(PionJoueur p){
         this.tabPion.add(p);
-    }
-    
+    }    
    // ***** GETTERS & SETTERS   ***** /*
 
     public String getPseudo() {

@@ -71,7 +71,7 @@ public class Pierre extends Obstacle {
                                 }
                                 break;
                             case "Flaque":
-                                //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 this.setY(this.getY()+(1));
                                 ((Flaque)c1.getPioncase()).deplacerPion(this);
                                 //if(((c1.getAbscisse()>-1&&c1.getOrdonnee()<1&&c1.getAbscisse()<12&&c1.getOrdonnee()>-7)||(c1.getAbscisse()<16&&c1.getOrdonnee()>-11&&c1.getAbscisse()>3&&c1.getOrdonnee()<-3)||(c1.getAbscisse()<15&&c1.getOrdonnee()>-10&&c1.getAbscisse()>2&&c1.getOrdonnee()<-2)||(c1.getAbscisse()<14&&c1.getOrdonnee()>-9&&c1.getAbscisse()>1&&c1.getOrdonnee()<-1)||(c1.getAbscisse()<13&&c1.getOrdonnee()>-8&&c1.getAbscisse()>0&&c1.getOrdonnee()<0))){
@@ -148,7 +148,7 @@ public class Pierre extends Obstacle {
                                 }
                                 break;
                             case "Flaque":
-                                //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 this.setX(this.getX()-(1));
                                 ((Flaque)c1.getPioncase()).deplacerPion(this);
                                 //if(((c1.getAbscisse()>-1&&c1.getOrdonnee()<1&&c1.getAbscisse()<12&&c1.getOrdonnee()>-7)||(c1.getAbscisse()<16&&c1.getOrdonnee()>-11&&c1.getAbscisse()>3&&c1.getOrdonnee()<-3)||(c1.getAbscisse()<15&&c1.getOrdonnee()>-10&&c1.getAbscisse()>2&&c1.getOrdonnee()<-2)||(c1.getAbscisse()<14&&c1.getOrdonnee()>-9&&c1.getAbscisse()>1&&c1.getOrdonnee()<-1)||(c1.getAbscisse()<13&&c1.getOrdonnee()>-8&&c1.getAbscisse()>0&&c1.getOrdonnee()<0))){
@@ -216,7 +216,7 @@ public class Pierre extends Obstacle {
                                 }
                                 break;
                             case "Flaque":
-                                //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 this.setX(this.getX()+(1));
                                 ((Flaque)c1.getPioncase()).deplacerPion(this);
                                 //if(((c1.getAbscisse()>-1&&c1.getOrdonnee()<1&&c1.getAbscisse()<12&&c1.getOrdonnee()>-7)||(c1.getAbscisse()<16&&c1.getOrdonnee()>-11&&c1.getAbscisse()>3&&c1.getOrdonnee()<-3)||(c1.getAbscisse()<15&&c1.getOrdonnee()>-10&&c1.getAbscisse()>2&&c1.getOrdonnee()<-2)||(c1.getAbscisse()<14&&c1.getOrdonnee()>-9&&c1.getAbscisse()>1&&c1.getOrdonnee()<-1)||(c1.getAbscisse()<13&&c1.getOrdonnee()>-8&&c1.getAbscisse()>0&&c1.getOrdonnee()<0))){
@@ -271,7 +271,7 @@ public class Pierre extends Obstacle {
                                 break;
                             case "Flaque":
                                 
-                                //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 this.setY(this.getY()-(1));
                                 ((Flaque)c1.getPioncase()).deplacerPion(this);
                                 break;
@@ -291,12 +291,12 @@ public class Pierre extends Obstacle {
                             //c.setOccupee(true);
                           //  p.ajouterCase(c);
                         //}
+                    }
                 }
                 break;
-                      
-        
-            }
-        
+            
+            default:
+                break;
         }
     }
     

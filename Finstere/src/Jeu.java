@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -38,14 +39,16 @@ public class Jeu {
    private String pseudoJoueurCourant;
    // Permet de savoir si la partie est finie
    private boolean fini=false;
+   // menu du jeu
+   private Menu monMenu;
    
-   public Jeu(){
+   public Jeu(Menu m){
        this.j_list = new ArrayList<>();
        this.pions_perdu = new ArrayList<>();
        this.blocsPierre = new ArrayList <>();
        this.flaque = new ArrayList <>();
        this.monTemps=new Temps(0,0,false,false);
-       
+       this.monMenu=m;
    }
    
    public void init(Plateau plateauVide) {
@@ -62,14 +65,30 @@ public class Jeu {
         monPlateau.placerObstacle();
         m= new Monstre(0,0,3,this);
         monPlateau.placerMonstre(this.m);
-       Joueurs joueur1 = new Joueurs("Gab");
+        Scanner sc=new Scanner(System.in);
+        Outils.afficherTexte("Veuillez entrer le nom du joueur 1:");
+        String pseudo= sc.nextLine(); 
+        
+        Joueurs joueur1 = new Joueurs(pseudo);
+       
+       
        joueur1.ajouterPion(new PionJoueur(1,1));       
        joueur1.ajouterPion(new PionJoueur(4,1));
        joueur1.ajouterPion(new PionJoueur(3,1));
        joueur1.ajouterPion(new PionJoueur(2,1));
        j_list.add(joueur1);
        
-        Joueurs joueur2 = new Joueurs("Valère");
+       Joueurs joueur2;
+       
+       if(this.monMenu.getIAJoueur()){
+           joueur2 = this.monMenu.getJoueur2();
+       }else{
+           
+           Outils.afficherTexte("Veuillez entrer le nom du joueur 2:");
+           pseudo= sc.nextLine(); 
+           joueur2 = new Joueurs(pseudo);
+       }
+       
        
        joueur2.ajouterPion(new PionJoueur(6,2));
        joueur2.ajouterPion(new PionJoueur(3,2));

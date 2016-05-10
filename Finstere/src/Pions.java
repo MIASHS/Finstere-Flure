@@ -6,7 +6,7 @@
 
 /**
  *
- * @author Gabriel
+ * @author Gabriel,Sébastien, Valère
  */
 public abstract class Pions implements Deplacements {
     protected int abscisse ; // 
@@ -41,7 +41,7 @@ public abstract class Pions implements Deplacements {
 
             }
         }else if(p instanceof PionJoueur){
-            //System.out.println(" 1  = Case Precedente: ("+((PionJoueur)p).getCasePrecedente().getAbscisse()+";"+((PionJoueur)p).getCasePrecedente().getOrdonnee()+") Case Actuel: ("+this.getX()+";"+this.getY()+")");
+            
             if (((PionJoueur)p).getCasePrecedente().getAbscisse() - this.getX() == 0) {
                 if (((PionJoueur)p).getCasePrecedente().getOrdonnee() - this.getY() < 0) {
                     ((PionJoueur)p).setCasePrecedente(((Plateau)((PionJoueur)p).getMonPlateau()).getCase(((PionJoueur)p).getX(), ((PionJoueur)p).getY()));
@@ -64,28 +64,19 @@ public abstract class Pions implements Deplacements {
                                         ((PionJoueur)p).verifierCase(((PionJoueur)p).getMonPlateau(), ((Plateau)((PionJoueur)p).getMonPlateau()).getCase(((PionJoueur)p).getX(), ((PionJoueur)p).getY()));
                 }
             }
-            //System.out.println(" 2  = Case Precedente: ("+((PionJoueur)p).getCasePrecedente().getAbscisse()+";"+((PionJoueur)p).getCasePrecedente().getOrdonnee()+") Case Actuel: ("+((PionJoueur)p).getX()+";"+((PionJoueur)p).getY()+")");
         }else if(p instanceof Pierre){
             if (((Pierre)p).getX() - this.getX() == 0) {
                 if (((Pierre)p).getX() - this.getY() < 0) {
-                    //((Pierre)p).setCasePrecedente(((Plateau)((Pierre)p).getMonPlateau()).getCase(((Pierre)p).getX(), ((Pierre)p).getY()));
-                    //((Pierre)p).setY(((Pierre)p).getY() + 1);
-                    ((Pierre)p).deplacer(1,((Pierre)p).getMonPlateau(),this);//verifierCase(((Pierre)p).getMonPlateau(), ((Plateau)((Pierre)p).getMonPlateau()).getCase(((Pierre)p).getX(), ((Pierre)p).getY()));
+                    ((Pierre)p).deplacer(1,((Pierre)p).getMonPlateau(),this);
                 } else {
-                    //((Pierre)p).setCasePrecedente(((Plateau)((Pierre)p).getMonPlateau()).getCase(((Pierre)p).getX(), ((Pierre)p).getY()));
-                    //((Pierre)p).setY(((Pierre)p).getY() - 1);
-                    ((Pierre)p).deplacer(4,((Pierre)p).getMonPlateau(),this);//.verifierCase(((Pierre)p).getMonPlateau(), ((Plateau)((Pierre)p).getMonPlateau()).getCase(((Pierre)p).getX(), ((Pierre)p).getY()));
+                    ((Pierre)p).deplacer(4,((Pierre)p).getMonPlateau(),this);
                 }
 
             } else {
                 if (((Pierre)p).getX() - this.getX() < 0) {
-                    //((Pierre)p).setCasePrecedente(((Plateau)((Pierre)p).getMonPlateau()).getCase(((Pierre)p).getX(), ((Pierre)p).getY()));
-                    //((Pierre)p).setX(((Pierre)p).getX() + 1);
-                    ((Pierre)p).deplacer(3, ((Pierre) p).getMonPlateau(), this);//.verifierCase(((Pierre)p).getMonPlateau(), ((Plateau)((Pierre)p).getMonPlateau()).getCase(((Pierre)p).getX(), ((Pierre)p).getY()));
+                    ((Pierre)p).deplacer(3, ((Pierre) p).getMonPlateau(), this);
                 } else {
-                    //((Pierre)p).setCasePrecedente(((Plateau)((Pierre)p).getMonPlateau()).getCase(((Pierre)p).getX(), ((Pierre)p).getY()));
-                    //((Pierre)p).setX(((Pierre)p).getX() - 1);
-                    ((Pierre)p).deplacer(2, ((Pierre) p).getMonPlateau(), this);//.verifierCase(((Pierre)p).getMonPlateau(), ((Plateau)((Pierre)p).getMonPlateau()).getCase(((Pierre)p).getX(), ((Pierre)p).getY()));
+                    ((Pierre)p).deplacer(2, ((Pierre) p).getMonPlateau(), this);
                 }
             }
         }

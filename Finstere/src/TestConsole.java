@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 /**
  *
- * @author Seb
+ * @author Sébastien, Gabriel, Valère
  */
 public class TestConsole {
 
@@ -106,11 +106,6 @@ public class TestConsole {
 
         while(!p.isFini()){
             cheminMonstre =p.getTemps().gestionTourGros(p.getMonstre(),p);
-            //System.out.print("[");
-            //for(Cases c2 :cheminMonstre){
-            //    System.out.print("Cas: ("+c2.getAbscisse()+";"+c2.getOrdonnee()+"), ");
-            //}
-            //System.out.print("]\n");
         }
          
         testPlateau(p.getMonPlateau());

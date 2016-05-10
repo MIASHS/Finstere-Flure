@@ -9,18 +9,27 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Gabriel
+ * @author Gabriel, Sébastien, Valère
  */
+/*
+        Cette classe permet la création et la gestion d'un joueur individuellement
+*/
 public class Joueurs {
+    //Attribut
+    //nom du joueur
     private String pseudo ;
-
+    //les pions qu'il possède
     private ArrayList<PionJoueur> tabPion=new ArrayList<>()  ;
+    //s'il a gagné ou non
     private boolean gagner=false ;
+    // le nombre de pion qu'il possède
     private int pionTotal=4;
+    // le numéro du pion utilisé et le nombre de pion utilisé dans le tour
     private int pionUtilisé=0;
+    // savoir si il a fini le tour ou non 
     private boolean finirTour=false;
 
-
+    // Constructors
     public Joueurs(String pseudo, ArrayList<PionJoueur> tabPion, boolean gagner, int pionTotal, int pionUtilisé) {
         this.pseudo = pseudo;
         this.tabPion = tabPion;
@@ -31,7 +40,9 @@ public class Joueurs {
     public Joueurs(String pseudo){
         this.pseudo = pseudo;
     }
-    
+   
+   // ***** GETTERS & SETTERS   ***** /*
+ 
     public boolean isFinirTour(){
         return finirTour;
     } 
@@ -43,8 +54,7 @@ public class Joueurs {
     public void ajouterPion(PionJoueur p){
         this.tabPion.add(p);
     }    
-   // ***** GETTERS & SETTERS   ***** /*
-
+    
     public String getPseudo() {
         return pseudo;
     }

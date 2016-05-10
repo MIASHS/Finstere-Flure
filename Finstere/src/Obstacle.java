@@ -6,8 +6,12 @@
 
 /**
  *
- * @author Gabriel
+ * @author Gabriel, Sébastien, Valère
  */
+
+/*
+        Cette classe est la mère de tous les obstacles
+*/
 public class Obstacle extends Pions  {
     public Obstacle(int x,int y){
         this.abscisse=x;

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 
 /*
-        Cette classe permet de gérer l'IA du joueur du.
+        Cette classe permet de gérer l'IA du joueur deux.
 */
 public class IA extends Joueurs {
     //Attributs 
@@ -24,10 +24,11 @@ public class IA extends Joueurs {
        game = g ;
     }
     //Methods
+    //Va faire la liste des successeurs depuis la position du pion actuel grâce à la classe PionJoueur
     public ArrayList<Cases> CoupPossibleIA(Plateau monPlateau, Joueurs j ){
         return j.getTabPion().get(j.getPionUtilisé()).searchCoupPossible(monPlateau, j.getTabPion().get(j.getPionUtilisé()).getNum(j.getTabPion().get(j.getPionUtilisé()).getNumActuel()));
     }
-    
+    // on cherche les successeurs le coup le plus proche possible de la case (0;0)
     public Cases choisirCoupIA(ArrayList<Cases> cp,Jeu g){
         Cases cf=new Cases(0,0,false);
         int memoire=100;

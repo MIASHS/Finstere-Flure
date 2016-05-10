@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Gabriel
+ * @author Gabriel, Sébastien, Valère
  */
 public class Main {
 

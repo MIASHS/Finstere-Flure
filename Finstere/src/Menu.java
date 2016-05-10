@@ -10,13 +10,17 @@ import java.util.Scanner;
  */
 /**
  *
- * @author oneiroi
+ * @author Sébastien, Gabriel, Valère
  */
-public class Menu {
 
+/*
+        Cette classe permet de naviguer dans les menus et de modifier certain paramètre
+*/
+public class Menu {
+    //Constructor
     public Menu() {
     }
-
+    //Getter Setter
     public Jeu getPartieActuelle() {
         return partieActuelle;
     }
@@ -40,12 +44,12 @@ public class Menu {
     public IA getJoueur2() {
         return this.joueur2;
     }
-
+    // Attributs
     private Jeu partieActuelle; //Variable memoire pour conserver   le jeu 
     private Menu menuActuel; //Variable memoire pour conserver le menu  
     private Scanner sc = new Scanner(System.in);
-    private boolean iajoueur = false;
-    private IA joueur2;
+    private boolean iajoueur = false; // savoir si on choisi la configuration avec IA ou non
+    private IA joueur2; // L'ia est stockée le temps de la navigation dans les menus
 
     /**
      * ************Fonctions du menu de démarrage*******************

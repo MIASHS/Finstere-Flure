@@ -11,9 +11,14 @@ import java.util.Map;
 
 /**
  *
- * @author Gabriel
+ * @author Gabriel, Sébastien, Valère
  */
+
+/*
+        Cette classe permet de créer et gérer le monstre dans ses déplacements
+*/
 public class Monstre extends Pions{
+    //Attributs
     private int orientation; // 1=haut 3=droite 4=bas 2=gauche
     private boolean chgmtOrientation=false;
     private Paquet listeCarte = new Paquet();
@@ -31,7 +36,7 @@ public class Monstre extends Pions{
         this.monPlateau=partie.getMonPlateau();
         this.partieActuelle=partie;
     }
-
+    //Getter Setter
     public void makeChemin(Cases c){
         chemin.add(c);
     }
@@ -76,7 +81,6 @@ public class Monstre extends Pions{
         casePrecedente=monPlateau.getCase(this.getX(), this.getY());
         this.makeChemin(monPlateau.getCase(this.getX(), this.getY()));
         monPlateau.getPlateau().remove(monPlateau.getCase(this.getX(), this.getY()));
-        //System.out.println("Nombre de Cases Restantes :"+c.getNumeroCarte());
         if(c.getNumeroCarte()!=11&&c.getNumeroCarte()!=12){
             int nbCasesRestantes = c.getNumeroCarte();
             while(nbCasesRestantes!=0){
@@ -139,16 +143,10 @@ public class Monstre extends Pions{
         c1.setOccupee(true);
         
         monPlateau.ajouterCase(c1);
-        ///TEST////
-        //for(Cases c2: monPlateau.getPlateau()){
-        //    System.out.println(c2.getPioncase().getClass().getName()+": ("+c2.getAbscisse()+";"+c2.getOrdonnee()+") > ("+c2.getPioncase().getX()+";"+c2.getPioncase().getY()+")");
-        //}
     }
     
     public boolean changementO(int o){
         this.setOrientation(o);
-        //System.out.println("Ma bite en peinture");
-        //System.out.println("orientation :"+this.getOrientation());
         return true;
     }
     public boolean regarder(int o,Plateau monPlateau){
@@ -267,12 +265,9 @@ public class Monstre extends Pions{
         return false;
     }
     public void seTeleporter(char c){
-        //En test
-        //System.out.println(c);
-        //System.out.println("coucou M:("+this.getX()+";"+this.getY()+")");
         Outils.convertChartoCoor(c,this);
-        //System.out.println("coucou M:("+this.getX()+";"+this.getY()+")");
     }
+    
     public void tuer(PionJoueur p){
         this.nbPionsTues+=1;
         p.setX(0);
@@ -305,8 +300,8 @@ public class Monstre extends Pions{
                         this.tuer((PionJoueur)monPlateau.getCase(this.abscisse,this.ordonnee).getPioncase());
                     }
                     break;
-                //default: this.seTeleporter(Outils.convertCoorToChar(this.abscisse,this.ordonnee,this.orientation));
-                  //  break;
+                default: //this.seTeleporter(Outils.convertCoorToChar(this.abscisse,this.ordonnee,this.orientation));
+                   break;
             }
         }else if(!((this.getX() > -1 && this.getY() < 1 && this.getX() < 12 && this.getY() > -7) || (this.getX() < 16 && this.getY() > -11 && this.getX() > 3 && this.getY() < -3) || (this.getX() < 15 && this.getY() > -10 && this.getX() > 2 && this.getY() < -2) || (this.getX() < 14 && this.getY() > -9 && this.getX() > 1 && this.getY() < -1) || (this.getX() < 13 && this.getY() > -8 && this.getX() > 0 && this.getY() < 0))){
             this.seTeleporter(Outils.convertCoorToChar(this.abscisse,this.ordonnee,this.orientation));

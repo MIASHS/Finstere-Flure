@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Gabriel
+ * @author Gabriel, Sébastien, Valère
  */
 public class Plateau {
     
@@ -20,16 +20,12 @@ public class Plateau {
     public Plateau(){
         monPlateau=new ArrayList<>();
         tabPionsAPlacer=new ArrayList<>();
-        //this.init(partie);
     }
     
     public void ajouterList(Pions p){
         tabPionsAPlacer.add(p);
     }
     
-    /*public void init(Jeu partie){
-        
-    }*/
     
     public ArrayList<Cases> getPlateau(){
         return monPlateau;

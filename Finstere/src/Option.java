@@ -6,7 +6,8 @@
 
 /**
  *
- * @author oneiroi
+ * @author Gabriel, Sébastien, Valère
+ * 
  */
 public class Option {
     // Choisir les options de jeux type 1 ou 2 joueur(IA) 

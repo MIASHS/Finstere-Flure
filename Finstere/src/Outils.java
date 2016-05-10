@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 /**
  *
- * @author oneiroi
+ * @author Gabriel, Sébastien, Valère 
  */
 public class Outils {
 

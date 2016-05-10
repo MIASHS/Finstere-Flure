@@ -9,7 +9,7 @@ import java.util.HashSet;
  */
 /**
  *
- * @author Seb
+ * @author Sébastien, Gabriel, Valère
  */
 public class PionJoueur extends Pions {
 
@@ -152,7 +152,6 @@ public class PionJoueur extends Pions {
         }
         while (!listProvisoire.isEmpty()) {
             if (((listProvisoire.get(0).getAbscisse() > -1 && listProvisoire.get(0).getOrdonnee() < 1 && listProvisoire.get(0).getAbscisse() < 12 && listProvisoire.get(0).getOrdonnee() > -7) || (listProvisoire.get(0).getAbscisse() < 16 && listProvisoire.get(0).getOrdonnee() > -11 && listProvisoire.get(0).getAbscisse() > 3 && listProvisoire.get(0).getOrdonnee() < -3) || (listProvisoire.get(0).getAbscisse() < 15 && listProvisoire.get(0).getOrdonnee() > -10 && listProvisoire.get(0).getAbscisse() > 2 && listProvisoire.get(0).getOrdonnee() < -2) || (listProvisoire.get(0).getAbscisse() < 14 && listProvisoire.get(0).getOrdonnee() > -9 && listProvisoire.get(0).getAbscisse() > 1 && listProvisoire.get(0).getOrdonnee() < -1) || (listProvisoire.get(0).getAbscisse() < 13 && listProvisoire.get(0).getOrdonnee() > -8 && listProvisoire.get(0).getAbscisse() > 0 && listProvisoire.get(0).getOrdonnee() < -0)) && !(monPlateau.getCase(listProvisoire.get(0).getAbscisse(), listProvisoire.get(0).getOrdonnee()).getPioncase() instanceof Monstre) && !(monPlateau.getCase(listProvisoire.get(0).getAbscisse(), listProvisoire.get(0).getOrdonnee()).getPioncase() instanceof PionJoueur)) {
-                //this.verifierCase(monPlateau, listProvisoire.get(0));
                 coupPossible.add(listProvisoire.get(0));
 
             }
@@ -186,8 +185,7 @@ public class PionJoueur extends Pions {
             this.setY(-10);
             this.setOnBoard(true);
         }
-        //System.out.println(this.getX());
-        //System.out.println(this.getY());
+        
         Cases c = monPlateau.getCase(this.getX(), this.getY());
         casePrecedente = c;
         if (!c.isFlaque()) {
@@ -222,21 +220,13 @@ public class PionJoueur extends Pions {
                 case "Flaque":
                     if (this.casePrecedente.getAbscisse() - c.getAbscisse() == 0) {
                         if (this.casePrecedente.getOrdonnee() - c.getOrdonnee() < 0) {
-                            //this.setY(this.getY() + 1);
-                            //this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                             monPlateau.getCase(c.getAbscisse(), c.getOrdonnee()).getPioncase().deplacerPion(this);
                         } else {
-                            //this.setY(this.getY() - 1);
-                            //this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                             monPlateau.getCase(c.getAbscisse(), c.getOrdonnee()).getPioncase().deplacerPion(this);
                         }
                     } else if (this.casePrecedente.getAbscisse() - c.getAbscisse() < 0) {
-                        //this.setX(this.getX() + 1);
-                        //this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                         monPlateau.getCase(c.getAbscisse(), c.getOrdonnee()).getPioncase().deplacerPion(this);
                     } else {
-                        //this.setX(this.getX() - 1);
-                        //this.deplacer(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                         monPlateau.getCase(c.getAbscisse(), c.getOrdonnee()).getPioncase().deplacerPion(this);
                     }
                     break;
@@ -269,7 +259,6 @@ public class PionJoueur extends Pions {
                     } else if (((Pierre)c.getPioncase()).verifier(monPlateau.getCase(c.getPioncase().getX() - 1, c.getOrdonnee()))) {
                         ((Pierre)c.getPioncase()).deplacer(2, monPlateau,this);
                         
-                        //monPlateau.getCase(abscisse, ordonnee).setAbscisse(abscisse-1);
                         this.setX(c.getAbscisse());
                         this.verifierCase(monPlateau, monPlateau.getCase(this.getX(), this.getY()));
                     }

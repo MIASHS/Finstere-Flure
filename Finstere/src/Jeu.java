@@ -11,10 +11,13 @@ import java.util.Scanner;
 
 /**
  *
- * @author Gabriel
+ * @author Gabriel, Sébastien, Valère 
  */
+/*
+    Cette classe sert à initialiser la partie et à stocker ses différents éléments.
+*/
 public class Jeu {
-   
+   //Attributs
    // liste de joueurs 
    private ArrayList<Joueurs> j_list;
    // liste de pions perdu
@@ -41,7 +44,7 @@ public class Jeu {
    private boolean fini=false;
    // menu du jeu
    private Menu monMenu;
-   
+   //Constructor
    public Jeu(Menu m){
        this.j_list = new ArrayList<>();
        this.pions_perdu = new ArrayList<>();
@@ -50,28 +53,34 @@ public class Jeu {
        this.monTemps=new Temps(0,0,false,false);
        this.monMenu=m;
    }
-   
+   //Methods
+   //méthode d'initialisation de la partie 
    public void init(Plateau plateauVide) {
-       // mise en place des bloques de pierres 
+       // mise en place des blocs de pierres dans une liste provisoire
        monPlateau=plateauVide;
         for(int i = 0; i < 10; i++ ){
             this.placementBlocPierre(monPlateau);
        }
+        //placement des blocs sur le plaques
         monPlateau.placerObstacle();
+        // mise en place des flaques d'hémoglobines
         for(int i = 0; i < 2; i++ ){
             this.placementFlaque(monPlateau,i);
         }
         
         monPlateau.placerObstacle();
+        // création est placement tu monstres
         m= new Monstre(0,0,3,this);
         monPlateau.placerMonstre(this.m);
+        
+        //Création des joueurs
         Scanner sc=new Scanner(System.in);
         Outils.afficherTexte("Veuillez entrer le nom du joueur 1:");
         String pseudo= sc.nextLine(); 
         
         Joueurs joueur1 = new Joueurs(pseudo);
        
-       
+       //Ajout des pions
        joueur1.ajouterPion(new PionJoueur(1,1));       
        joueur1.ajouterPion(new PionJoueur(4,1));
        joueur1.ajouterPion(new PionJoueur(3,1));
@@ -79,7 +88,7 @@ public class Jeu {
        j_list.add(joueur1);
        
        Joueurs joueur2;
-       
+       // Condition pour prise en compte de l'IA
        if(this.monMenu.getIAJoueur()){
            joueur2 = this.monMenu.getJoueur2();
        }else{
@@ -89,7 +98,7 @@ public class Jeu {
            joueur2 = new Joueurs(pseudo);
        }
        
-       
+       //Ajout des pions
        joueur2.ajouterPion(new PionJoueur(6,2));
        joueur2.ajouterPion(new PionJoueur(3,2));
        joueur2.ajouterPion(new PionJoueur(4,2));
@@ -98,7 +107,8 @@ public class Jeu {
        j_list.add(joueur2);
        
    }
-   
+   // Placement provisoire d'une flaque de sang
+   // i correspond au type de flaque (carré ou allongée)
     public void placementFlaque(Plateau plateauVide,int i){
         Random ra = new Random();
         int X = ra.nextInt(15);
@@ -111,6 +121,7 @@ public class Jeu {
             c1 = plateauVide.getCase(X+1,Y);
             c2 = plateauVide.getCase(X,Y-1);
             c3 = plateauVide.getCase(X+1,Y-1);
+            // on regarde si les cases ne sont pas déjà occupées et si la case choisi et bien dans le plateau
         while (c.isOccupee()||c1.isOccupee()||c2.isOccupee()||c3.isOccupee() || (X > 8 && Y==0) || (X > 9 && Y==-1) || (X > 10 && Y==-2)|| (X > 11 && Y==-3)|| (X > 12 && Y>=-4) || (X == 0 && Y==0) || (X==3 && Y<-8) || (X == 0 && Y<-5) || (X == 1 && Y<-6) || (X == 2 && Y<-7) || (X>3 &&Y<-8) ){
                 Y = (-1)*ra.nextInt(11);
                 X = ra.nextInt(15);
@@ -126,6 +137,7 @@ public class Jeu {
             c1 = plateauVide.getCase(X+1,Y);
             c2 = plateauVide.getCase(X+2,Y);
             c3 = plateauVide.getCase(X+3,Y);
+            // on regarde si les cases ne sont pas déjà occupées et si la case choisi et bien dans le plateau
         while (c.isOccupee() || c1.isOccupee()||c2.isOccupee()||c3.isOccupee() || ( Y==-10) || (Y==-9)|| (X == 0 && Y==0) || (X > 8 && Y==0)|| (X > 9 && Y==-1)|| (X > 10 && Y==-2)|| (X > 11 && Y==-3)|| (X >12)|| (X == 0 && Y<-6)|| (X == 1 && Y<-7)|| (X == 2 && Y<-8)){
                 Y = (-1)*ra.nextInt(11);
                 X = ra.nextInt(15);
@@ -142,12 +154,13 @@ public class Jeu {
         
         
     }
-    
+    // Placement provisoire d'un bloc de Pierre
     public void placementBlocPierre(Plateau plateauVide){
         Random ra = new Random();
         int placementX = ra.nextInt(15);
         int placementY = (-1)*ra.nextInt(11);
         Cases c = plateauVide.getCase(placementX,placementY);
+        // on regarde si la case n'est pas déjà occupée et si la case choisi et bien dans le plateau
         while (c.isOccupee() || (placementX == 0 && placementY==-1) || (placementX == 1 && placementY==-1)|| (placementX == 0 && placementY==0) || (placementX == 1 && placementY==0)|| (placementX == 15 && placementY==-10)|| (placementX == 14 && placementY==-10)|| (placementX == 14 && placementY==-9)|| (placementX == 15 && placementY==-9)|| (placementX > 11 && placementY==0)|| (placementX > 12 && placementY==-1)|| (placementX > 13 && placementY==-2)|| (placementX > 14 && placementY==-3)|| (placementX == 0 && placementY<-6)|| (placementX == 1 && placementY<-7)|| (placementX == 2 && placementY<-8)|| (placementX == 3 && placementY<-9)){
                 placementY = (-1)*ra.nextInt(11);
                 placementX = ra.nextInt(15);
@@ -159,7 +172,7 @@ public class Jeu {
        
        
     }
-
+    //Getter Setter
     public Monstre getMonstre(){
         return this.m;
     }

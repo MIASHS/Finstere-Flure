@@ -24,6 +24,7 @@ public class TestConsole {
 
         //Premier menu
         m.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0)));
+        testTour(m.getPartieActuelle());
         testFin(m.getPartieActuelle()); // Teste l'insertion dans la BDD de fin de partie
     }
     // Affichage du plateau 
@@ -94,15 +95,20 @@ public class TestConsole {
          
 
         //On instancie un objet temps
-        ArrayList<Cases> cheminMonstre;
+        ArrayList<Cases> cheminMonstre=new ArrayList<>();
         p.getTemps().debutGame();
         //on appelle la méthode qui gère les tours
         Outils.afficherTexte("\nDébut du tour...\n");
 
         while(!p.isFini()){
             cheminMonstre =p.getTemps().gestionTourGros(p.getMonstre(),p);
+            Outils.afficherTexte("[");
+         for(Cases c:cheminMonstre){
+             Outils.afficherTexte("("+c.getAbscisse()+";"+c.getOrdonnee()+"), ");
+         }
+         Outils.afficherTexte("]\n");
         }
-         
+        
         testPlateau(p.getMonPlateau());
 
         Outils.afficherTexte("test");

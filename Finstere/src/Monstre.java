@@ -270,6 +270,7 @@ public class Monstre extends Pions{
     
     public void tuer(PionJoueur p){
         this.nbPionsTues+=1;
+        monPlateau.getPlateau().remove(monPlateau.getCase(this.abscisse, this.ordonnee));;
         p.setX(0);
         p.setY(0);
         if(partieActuelle.getManche()==2){

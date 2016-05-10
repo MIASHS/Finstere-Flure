@@ -469,7 +469,7 @@ public abstract class Outils {
     public static void convertChartoCoor(char c, Pions p) {
         switch (c) {
             case '*':
-                if (p.getX() == 0 && p.getY() == 0) {
+                if (p.getX() == 0 && p.getY() == 1) {
                     p.setX(15);
                     p.setY(-10);
                 } else {
@@ -478,7 +478,7 @@ public abstract class Outils {
                 }
                 break;
             case 'a':
-                if (p.getX() == 0 && p.getY() == 0) {
+                if (p.getX() == 0 && p.getY() == 1) {
                     p.setX(15);
                     p.setY(-10);
                 } else {
@@ -487,7 +487,7 @@ public abstract class Outils {
                 }
                 break;
             case 'b':
-                if (p.getX() == 1 && p.getY() == 0) {
+                if (p.getX() == 1 && p.getY() == 1) {
                     p.setX(14);
                     p.setY(-10);
                 } else {
@@ -496,7 +496,7 @@ public abstract class Outils {
                 }
                 break;
             case 'c':
-                if (p.getX() == 2 && p.getY() == 0) {
+                if (p.getX() == 2 && p.getY() == 1) {
                     p.setX(13);
                     p.setY(-10);
                 } else {
@@ -505,7 +505,7 @@ public abstract class Outils {
                 }
                 break;
             case 'd':
-                if (p.getX() == 3 && p.getY() == 0) {
+                if (p.getX() == 3 && p.getY() == 1) {
                     p.setX(12);
                     p.setY(-10);
                 } else {
@@ -514,7 +514,7 @@ public abstract class Outils {
                 }
                 break;
             case 'e':
-                if (p.getX() == 4 && p.getY() == 0) {
+                if (p.getX() == 4 && p.getY() == 1) {
                     p.setX(11);
                     p.setY(-10);
                 } else {
@@ -523,7 +523,7 @@ public abstract class Outils {
                 }
                 break;
             case 'f':
-                if (p.getX() == 5 && p.getY() == 0) {
+                if (p.getX() == 5 && p.getY() == 1) {
                     p.setX(10);
                     p.setY(-10);
                 } else {
@@ -532,7 +532,7 @@ public abstract class Outils {
                 }
                 break;
             case 'g':
-                if (p.getX() == 6 && p.getY() == 0) {
+                if (p.getX() == 6 && p.getY() == 1) {
                     p.setX(9);
                     p.setY(-10);
                 } else {
@@ -541,7 +541,7 @@ public abstract class Outils {
                 }
                 break;
             case 'h':
-                if (p.getX() == 7 && p.getY() == 0) {
+                if (p.getX() == 7 && p.getY() == 1) {
                     p.setX(8);
                     p.setY(-10);
                 } else {
@@ -550,7 +550,7 @@ public abstract class Outils {
                 }
                 break;
             case 'i':
-                if (p.getX() == 8 && p.getY() == 0) {
+                if (p.getX() == 8 && p.getY() == 1) {
                     p.setX(7);
                     p.setY(-10);
                 } else {
@@ -559,7 +559,7 @@ public abstract class Outils {
                 }
                 break;
             case 'j':
-                if (p.getX() == 9 && p.getY() == 0) {
+                if (p.getX() == 9 && p.getY() == 1) {
                     p.setX(6);
                     p.setY(-10);
                 } else {
@@ -568,7 +568,7 @@ public abstract class Outils {
                 }
                 break;
             case 'k':
-                if (p.getX() == 10 && p.getY() == 0) {
+                if (p.getX() == 10 && p.getY() == 1) {
                     p.setX(5);
                     p.setY(-10);
                 } else {
@@ -658,7 +658,7 @@ public abstract class Outils {
                 }
                 break;
             case 'u':
-                if (p.getX() == 15 && p.getY() == -4) {
+                if (p.getX() == 16 && p.getY() == -4) {
                     p.setX(0);
                     p.setY(-6);
                 } else {
@@ -667,7 +667,7 @@ public abstract class Outils {
                 }
                 break;
             case 'v':
-                if (p.getX() == 15 && p.getY() == -5) {
+                if (p.getX() == 16 && p.getY() == -5) {
                     p.setX(0);
                     p.setY(-5);
                 } else {
@@ -676,7 +676,7 @@ public abstract class Outils {
                 }
                 break;
             case 'w':
-                if (p.getX() == 15 && p.getY() == -6) {
+                if (p.getX() == 16 && p.getY() == -6) {
                     p.setX(0);
                     p.setY(-4);
                 } else {
@@ -685,7 +685,7 @@ public abstract class Outils {
                 }
                 break;
             case 'x':
-                if (p.getX() == 15 && p.getY() == -7) {
+                if (p.getX() == 16 && p.getY() == -7) {
                     p.setX(0);
                     p.setY(-3);
                 } else {
@@ -694,7 +694,7 @@ public abstract class Outils {
                 }
                 break;
             case 'y':
-                if (p.getX() == 15 && p.getY() == -8) {
+                if (p.getX() == 16 && p.getY() == -8) {
                     p.setX(0);
                     p.setY(-2);
                 } else {
@@ -703,7 +703,7 @@ public abstract class Outils {
                 }
                 break;
             case 'z':
-                if (p.getX() == 15 && p.getY() == -9) {
+                if (p.getX() == 16 && p.getY() == -9) {
                     p.setX(0);
                     p.setY(-1);
                 } else {

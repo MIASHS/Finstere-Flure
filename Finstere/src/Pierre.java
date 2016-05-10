@@ -13,6 +13,7 @@
         Cette classe permet de créer et de gérer les Pierre individuellement et 
         même leur déplacements.
 */
+
 public class Pierre extends Obstacle {
     //attributs
     // Conserve le plateau pour y avoir plus facilement assez
@@ -65,8 +66,8 @@ public class Pierre extends Obstacle {
                             case "Pierre":
                                 if(pion instanceof Monstre){
                                     
-                                    ((Pierre)c1.getPioncase()).deplacer(o, p, this);
-                                    p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                    ((Pierre)c1.getPioncase()).deplacer(o, p, pion);
+                                    //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 }
                                 break;
                             case "Flaque":
@@ -78,7 +79,7 @@ public class Pierre extends Obstacle {
                                 
                                 if(pion instanceof Monstre){
                                     ((PionJoueur)c1.getPioncase()).deplacer(p, p.getCase(this.getX()+1,this.getY()));
-                                    p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                    //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 }
                                 
                                 break;
@@ -86,6 +87,10 @@ public class Pierre extends Obstacle {
                                 break;
                            
                         }
+                        this.setY(c1.getOrdonnee());
+                        c1.setPioncase(this);
+                        c1.setOccupee(true);
+                        p.ajouterCase(c1);
                     }
                 }
                 break;
@@ -109,12 +114,12 @@ public class Pierre extends Obstacle {
                             case "Pierre":
                                 if(pion instanceof Monstre){
                                     
-                                    ((Pierre)c1.getPioncase()).deplacer(o, p, this);
-                                    p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                    ((Pierre)c1.getPioncase()).deplacer(o, p, pion);
+                                    //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 }
                                 break;
                             case "Flaque":
-                                p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 this.setX(this.getX()-(1));
                                 ((Flaque)c1.getPioncase()).deplacerPion(this);
                                 break;
@@ -122,7 +127,7 @@ public class Pierre extends Obstacle {
                                 
                                 if(pion instanceof Monstre){
                                     ((PionJoueur)c1.getPioncase()).deplacer(p, p.getCase(this.getX()-1,this.getY()));
-                                    p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                    //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 }
                                 
                                 break;
@@ -130,6 +135,10 @@ public class Pierre extends Obstacle {
                                 break;
                            
                         }
+                        this.setX(c1.getAbscisse());
+                        c1.setPioncase(this);
+                        c1.setOccupee(true);
+                        p.ajouterCase(c1);
                     }
                 }
                 
@@ -152,12 +161,12 @@ public class Pierre extends Obstacle {
                             case "Pierre":
                                 if(pion instanceof Monstre){
                                     
-                                    ((Pierre)c1.getPioncase()).deplacer(o, p, this);
-                                    p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                    ((Pierre)c1.getPioncase()).deplacer(o, p, pion);
+                                    //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 }
                                 break;
                             case "Flaque":
-                                p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 this.setX(this.getX()+(1));
                                 ((Flaque)c1.getPioncase()).deplacerPion(this);
                                 break;
@@ -165,13 +174,17 @@ public class Pierre extends Obstacle {
                                 
                                 if(pion instanceof Monstre){
                                     ((PionJoueur)c1.getPioncase()).deplacer(p, p.getCase(this.getX()+1,this.getY()));
-                                    p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                    //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 }
                                 
                                 break;
                             default:
                                 break;
-                        }   
+                        }
+                        this.setX(c1.getAbscisse());
+                    c1.setPioncase(this);
+                    c1.setOccupee(true);
+                    p.ajouterCase(c1);
                     }
                 }
                 break;
@@ -192,25 +205,29 @@ public class Pierre extends Obstacle {
                                 break;
                             case "Pierre":
                                 if(pion instanceof Monstre){
-                                    ((Pierre)c1.getPioncase()).deplacer(o, p, this);
-                                    p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                    ((Pierre)c1.getPioncase()).deplacer(o, p, pion);
+                                    //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 }
                                 break;
                             case "Flaque":
                                 
-                                p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 this.setY(this.getY()-(1));
                                 ((Flaque)c1.getPioncase()).deplacerPion(this);
                                 break;
                             case "PionJoueur":
                                 if(pion instanceof Monstre){
                                     ((PionJoueur)c1.getPioncase()).deplacer(p, p.getCase(this.getX(),this.getY()-1));
-                                    p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+                                    //p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
                                 }
                                 break;
                             default:
                                 break;
                         }
+                        this.setY(c1.getOrdonnee());
+                    c1.setPioncase(this);
+                    c1.setOccupee(true);
+                    p.ajouterCase(c1);
                     }
                 }
                 break;

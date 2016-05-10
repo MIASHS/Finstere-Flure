@@ -22,8 +22,8 @@ public class TestConsole {
         m.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0)));
         //Test du plateau de jeu
         //testPlateau(m.getPartieActuelle().getMonPlateau()); 
-        testTour(m.getPartieActuelle());
-        //testFin(m.getPartieActuelle()); // Teste l'insertion dans la BDD de fin de partie
+        //testTour(m.getPartieActuelle());
+        testFin(m.getPartieActuelle()); // Teste l'insertion dans la BDD de fin de partie
     }
 
     public static void testPlateau(Plateau p) {

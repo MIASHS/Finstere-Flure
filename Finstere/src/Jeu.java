@@ -75,8 +75,12 @@ public class Jeu {
         
         //Création des joueurs
         Scanner sc=new Scanner(System.in);
-        Outils.afficherTexte("Veuillez entrer le nom du joueur 1:");
-        String pseudo= sc.nextLine(); 
+        String pseudo="";
+        while(pseudo==""||pseudo=="\n"){
+            Outils.afficherTexte("Veuillez entrer le nom du joueur 1:");
+            pseudo= sc.nextLine(); 
+        }
+        pseudo = pseudo.toUpperCase();
         
         Joueurs joueur1 = new Joueurs(pseudo);
        
@@ -92,9 +96,13 @@ public class Jeu {
        if(this.monMenu.getIAJoueur()){
            joueur2 = this.monMenu.getJoueur2();
        }else{
+           pseudo="";
+           while(pseudo==""||pseudo=="\n"){
+               Outils.afficherTexte("Veuillez entrer le nom du joueur 2:");
+               pseudo= sc.nextLine(); 
+           }
+           pseudo = pseudo.toUpperCase();
            
-           Outils.afficherTexte("Veuillez entrer le nom du joueur 2:");
-           pseudo= sc.nextLine(); 
            joueur2 = new Joueurs(pseudo);
        }
        

@@ -148,7 +148,7 @@ public class Menu {
                         Outils.afficherTexte("Soit, choisissez votre niveau de difficulté ?(1,2,3)");
                         switch (Outils.convertToInt(sc.next())) {
                             case 1:
-                                joueur2 = new IA(partieActuelle, "joueur2(IA)");
+                                joueur2 = new IA(partieActuelle, "JOUEURIA");
                                 this.iajoueur = true;
                                 choixIAFait = true;
                                 Outils.afficherTexte("Tu as raison enfant, la facilité est une sorte de sagesse");

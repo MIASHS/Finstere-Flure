@@ -23,7 +23,7 @@ public class Joueurs {
     //s'il a gagné ou non
     private boolean gagner=false ;
     // le nombre de pion qu'il possède
-    private int pionTotal=1;
+    private int pionTotal=4;
     // le numéro du pion utilisé et le nombre de pion utilisé dans le tour
     private int pionUtilisé=0;
     // savoir si il a fini le tour ou non 

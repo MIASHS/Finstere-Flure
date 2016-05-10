@@ -8,31 +8,44 @@
  *
  * @author Gabriel, Sébastien, Valère
  */
+
+/*
+        Cette classe permet de créer et de gérer les Pierre individuellement et 
+        même leur déplacements.
+*/
 public class Pierre extends Obstacle {
+    //attributs
+    // Conserve le plateau pour y avoir plus facilement assez
     private Plateau monPlateau;
+    // Conserve la case précédente lors des déplacements
     private Cases casePrecedente;
+    //Constructor
     public Pierre(int x, int y) {
         super(x, y);
     }
+    //Methods
+    //Vérifier que la case soit dans le plateau et non occupé.
     public boolean verifier(Cases cas){
-        if(cas.getPioncase()!=null){System.out.println(cas.getPioncase().getClass().getName());}
         if(((cas.getAbscisse()>-1&&cas.getOrdonnee()<1&&cas.getAbscisse()<12&&cas.getOrdonnee()>-7)||(cas.getAbscisse()<16&&cas.getOrdonnee()>-11&&cas.getAbscisse()>3&&cas.getOrdonnee()<-3)||(cas.getAbscisse()<15&&cas.getOrdonnee()>-10&&cas.getAbscisse()>2&&cas.getOrdonnee()<-2)||(cas.getAbscisse()<14&&cas.getOrdonnee()>-9&&cas.getAbscisse()>1&&cas.getOrdonnee()<-1)||(cas.getAbscisse()<13&&cas.getOrdonnee()>-8&&cas.getAbscisse()>0&&cas.getOrdonnee()<0))&&!(cas.getPioncase() instanceof Monstre)&&!(cas.getPioncase() instanceof PionJoueur)&&!(cas.getPioncase() instanceof Pierre)&&!(cas.getPioncase() instanceof Flaque)){
             return true;
-                    
-            
         }else{
             return false;
         }
         
     }
+    //Déplace la pierre sur le plateau 
     public void deplacer(int o,Plateau p,Pions pion){
         this.casePrecedente=p.getCase(this.getX(), this.getY());
+        // si premier déplacement, on stocke le plateau.
         if(monPlateau==null){
             monPlateau=p;
         }
+        
         Cases c1;
         int i=0;
+        // on supprime la case du plateau pour éviter les doublon 
         p.getPlateau().remove(p.getCase(this.getX(),this.getY()));
+        // on déplace la pierre en fonction de l'orientation
         switch(o){
             case 1:
                 c1 =p.getCase(this.getX(),this.getY()+1);
@@ -206,6 +219,9 @@ public class Pierre extends Obstacle {
                 break;
         }
     }
+    
+    
+    //Getter Setter
     
     public Plateau getMonPlateau(){
         return this.monPlateau;

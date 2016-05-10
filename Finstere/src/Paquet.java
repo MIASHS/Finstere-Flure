@@ -13,13 +13,28 @@ import java.util.Random;
  *
  * @author Gabriel, Sébastien, Valère 
  */
+
+/*
+    Cette classe permet la création et la gestion d'un conteneur de Carte.
+    Cette classe a été reprise du TD 8 et adaptée pour ce projet.
+
+*/
 public class Paquet {
+    // Attributs
+    
+    // Paquet de cartes par défaut du jeu
      private Cartes[] pioche = new Cartes[8];
+     // Paquet de cartes mémoire du jeu
      private Cartes[] defausse = new Cartes[8];
+     // nombre de carte de la défausse
      private int defausseNb=8;
+     // nombre de carte actuellement dans la défausse
      private int nbActuel=0;
+     // nombre de carte de la pioche
     private int nbCarte = 8;
+    //numero de serie unique pour reconnaitre le jeu et eviter la triche.
     private int numeroSerie = 0;
+    // si la carte est présente dans le paquet ou non
     private boolean present = false;
 
     /**
@@ -65,17 +80,20 @@ public class Paquet {
         return this.defausse[a];
     }
 
+    //Constructor
+    public Paquet() {
+        this.init();
+        this.melanger(1000);
+    }
+
+    
     /**
      * **************
      */
     /**
      * **Méthode***
      */
-    public Paquet() {
-        this.init();
-        this.melanger(1000);
-    }
-
+    //Créer les cartes utilisées par le monstres  
     private void init() {
         Random ra = new Random();
         Map valeur=new HashMap();
@@ -98,7 +116,7 @@ public class Paquet {
         }
         
     }
-
+    // mélange de tas de carte de la pioche. 
     public void melanger(int n) {
         if (n > 0) {
             for (int i = 0; i < n; i++) {
@@ -121,7 +139,7 @@ public class Paquet {
             System.out.println("Erreur dans l'appel de la méthode melanger()");
         }
     }
-
+    // principe de base du mélange des cartes
     private void echanger() {
         Random ra = new Random();
         int carte1 = ra.nextInt(8);
@@ -131,7 +149,9 @@ public class Paquet {
         this.setCartep(this.getCartep(carte2), carte1);
         this.setCartep(carteMemoire, carte2);
     }
-
+    //Donne une carte de la pioche et la met dans la défausse
+    //Lorsqu'il n'y a plus de carte à donner on remet les cartes de défausse dans
+    // la pioche. 
     public Cartes donnerUneCarte() {
         Cartes c;
         if (this.getNbCarte() <= 0) {
@@ -141,6 +161,8 @@ public class Paquet {
                 this.setNbCarte(this.getNbCarte() + 1);
                 nbActuel-=1;
             }
+            this.melanger(1000);
+            
             return donnerUneCarte();
             
         } else {
@@ -157,7 +179,7 @@ public class Paquet {
             return c;
         }
     }
-
+    //inutile ici
     public void mettreCarteEnDessous(Cartes c) {
 
         if (c.isNumeroJeu(this.getNumeroSerie())) {

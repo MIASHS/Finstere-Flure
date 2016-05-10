@@ -10,8 +10,17 @@ import java.util.Scanner;
  *
  * @author Gabriel, Sébastien, Valère 
  */
-public class Outils {
 
+/*
+        Cette classe contient l'ensemble des outils de conversation de vérification 
+        et d'affichage du projet.
+        Abstract car elle n'a pas a instancier d'objet toutes les méthodes sont en 
+        static et sont donc des fonctions.
+        Cette classe a été reprise du précédente projet et adaptée pour ce projet.
+*/
+public abstract class Outils {
+    //functions 
+    // sert à la téléportation du monstre pour savoir sur quelle lettre se trouve t il
     public static char convertCoorToChar(int a,int o,int k){
         char c=' ';
         if(a==-1){
@@ -452,11 +461,11 @@ public class Outils {
         }
         return c;
     }
-
+    // sert à obtenir l'indice de la case en fonction des coordonnées 
     public static int convertCoorToInt(int a, int o) {
         return (a + (o*-16));
     }
-
+    // sert à la téléportation du monstre pour savoir sur quelle case va t il aller
     public static void convertChartoCoor(char c, Pions p) {
         switch (c) {
             case '*':
@@ -707,7 +716,7 @@ public class Outils {
 
         }
     }
-
+    //Sert à convertir une lettre en majuscule  
     public static char conversionCaractere(char lettre) {
         if((int)lettre>=(int)'A'&&(int)lettre<=(int)'Z'||(int)lettre>=(int)'a'&&(int)lettre<=(int)'z'){
             return Character.toUpperCase(lettre);
@@ -717,12 +726,11 @@ public class Outils {
         }
         
     }
-    
+    //Sert à obtenir un int à partir d'une chaine 
     public static int convertToInt(String str){
         Scanner sc= new Scanner(System.in);
         int i=-1;
         char[] lettres= str.toCharArray();
-        //System.out.println(lettres.length);
         switch(lettres.length){
             case 1: 
                     if((int)lettres[0]>=(int)'0'&&(int)lettres[0]<=(int)'9'){
@@ -751,12 +759,12 @@ public class Outils {
         }
         return i;
     }
-
+    //Sert à obtenir le premier caractère d'une chaine
      public static char conversionStringToCaractere(String str){
          return str.toCharArray()[0];
      }
     
-     
+     //Vérifie que la lettre taper est bien une des réponses attendues
         public static char verification(String str, int choix){   
         str = str.toUpperCase();
         Scanner sc = new Scanner(System.in);
@@ -781,7 +789,7 @@ public class Outils {
         }     
 
     }
-
+        // Sert à obtenir un booléen à partir du caractère mis en paramètre 
     public static boolean conversionBoolean(char c) {
 
         if (conversionCaractere(c) == 'Y' || conversionCaractere(c) == 'O') {
@@ -796,7 +804,7 @@ public class Outils {
         }
     }
 
-    //Méthode qui affiche les différents menu et confirmations de choix.
+    //Elle affiche les différents menu et confirmations de choix.
     public static char afficher(int niveau) {
         Scanner sc = new Scanner(System.in);
         switch (niveau) {
@@ -820,7 +828,7 @@ public class Outils {
         }
         return 'e';
     }
-
+    // Affiche le texte dans la console 
     public static void afficherTexte(String s) {
         System.out.print("" + s + "");
     }

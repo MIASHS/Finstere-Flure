@@ -8,13 +8,23 @@
  *
  * @author Gabriel,Sébastien, Valère
  */
+
+/*
+    Cette classe est la classe mère de tous les pions.
+    Classe abstract seuls les enfants peuvent instancier des objets 
+*/
 public abstract class Pions implements Deplacements {
-    protected int abscisse ; // 
-    protected int ordonnee; //
+    //Attribut 
     
+    protected int abscisse ; // abscisse du pion 
+    protected int ordonnee; // ordonnee du pion
+    
+   //Methods
+    // implémenter dans les classes enfant // redéfinition
     public void deplacer(int o){
     
     }
+    // permet à un pion de ce déplacer sur une case
     public void deplacerPion(Pions p){// 1=haut 3=droite 4=bas 2=gauche
         if(p instanceof Monstre){
             if (((Monstre)p).getCasePrecedente().getAbscisse() - ((Monstre)p).getX() == 0) {
@@ -81,7 +91,7 @@ public abstract class Pions implements Deplacements {
             }
         }
     }
-    
+    // Getter Setter
     public int hashCode(){
     
         return ((this.getX()*17)+(this.getY()*13));

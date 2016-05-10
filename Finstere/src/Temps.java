@@ -12,13 +12,19 @@ import java.util.Scanner;
  *
  * @author Sébastien, Gabriel, Valère
  */
+
+/*
+    Cette classe permet des gérer le temps dans le jeu càd les tours et les manches
+*/
 public class Temps {
+    //Attributs
+    
     private int nbTours; // indique le nombre de tour
-    private int numManche=1;
-    private int nbToursJoueur; // indique ? ce serait bien de sans servir pour le nombre de coup joué par pions 
+    private int numManche=1; // indique le numéro de la manche
+    private int nbToursJoueur; // indique le nombre de coup joué par pions 
     private boolean debuterTour; // variable pour bloquer la bloquer de deplacement des pionjoueur
     private boolean finirTour; // variable pour sortir en temps que joueur de la petite boucle
-
+    //Constructor
     public Temps(int nbTours, int nbToursJoueur, boolean debuterTour, boolean finirTour) {
         this.nbTours = nbTours;
         this.nbToursJoueur = nbToursJoueur;
@@ -26,6 +32,8 @@ public class Temps {
         this.finirTour = finirTour;
     }
     
+    
+    //Methods
     // méthode de debut de jeu, initialisation non nécessaire
     public void debutGame(){
         this.nbTours = 0;
@@ -174,7 +182,7 @@ public class Temps {
       }
     }
     
-
+    //Getter Setter
     public int getNbTours() {
         return nbTours;
     }

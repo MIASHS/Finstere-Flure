@@ -11,25 +11,34 @@ import java.util.HashSet;
  *
  * @author Sébastien, Gabriel, Valère
  */
+
+/*
+    Cette classe permet de créer et de gérer les PionJoueur individuellement et 
+    même leur déplacements. 
+*/
 public class PionJoueur extends Pions {
 
     //Attributs
-    private boolean mort = false; //booléen indiquant si un pion d'un joueur est mort
+    //booléen indiquant si un pion d'un joueur est mort
+    private boolean mort = false; 
+    //booléen indiquant si un pion d'un joueur est utilisé
     private boolean utilise = false;
+    //booléen indiquant si un pion d'un joueur est sur un plateau
     private boolean onBoard = false;
+    //tableau des numéros disponible
     private int[] tabNumDispo = new int[2];
+    //index du tableau
     private int numActuel = 0;
+    //Permet de stocker le Plateau
     private Plateau monPlateau;
+    //Conserve le numéro du joueur auquel le pion appartient
     private int numjoueur;
+    //Conserve l'ensemble des coups possibles suite à la recherche des successeurs
     private HashSet<Cases> coupPossible = new HashSet<>();
+    //Conserve la case précédente 
     private Cases casePrecedente = null;
 
-    public PionJoueur(int coupFace, int n) {
-        numjoueur = n;
-        tabNumDispo[0] = coupFace;
-        tabNumDispo[1] = 7 - coupFace;
-    }
-
+    //Getters Setters
     public void setNumActuel() {
         if (numActuel == 0) {
             numActuel += 1;
@@ -37,8 +46,7 @@ public class PionJoueur extends Pions {
             numActuel = 0;
         }
     }
-
-    //Getters Setters
+    
     public boolean isMort() {
         return mort;
     }
@@ -88,8 +96,38 @@ public class PionJoueur extends Pions {
     public void setNumjoueur(int numjoueur) {
         this.numjoueur = numjoueur;
     }
+     
+    // savoir si le pion est sur la plateau ou non
+    public boolean isOnBoard() {
+        return onBoard;
+    }
+
+    public void setOnBoard(boolean b) {
+        this.onBoard = b;
+    }
+    
+    public Cases getCasePrecedente() {
+        return this.casePrecedente;
+    }
+
+    public void setCasePrecedente(Cases c) {
+        this.casePrecedente = c;
+    }
+    
+    public Plateau getMonPlateau(){
+    
+    return this.monPlateau;
+    }
+
 
     //Constructeur
+    
+    public PionJoueur(int coupFace, int n) {
+        numjoueur = n;
+        tabNumDispo[0] = coupFace;
+        tabNumDispo[1] = 7 - coupFace;
+    }
+    
     public PionJoueur(boolean mort, boolean utilise, int[] tabNumDispo, int numActuelle) {
         this.mort = mort;
         this.utilise = utilise;
@@ -106,16 +144,7 @@ public class PionJoueur extends Pions {
         this.setMort(b);
     }
     // num = numéro actuel sur le pion joueur 
-
-    // savoir si le pion est sur la plateau ou non
-    public boolean isOnBoard() {
-        return onBoard;
-    }
-
-    public void setOnBoard(boolean b) {
-        this.onBoard = b;
-    }
-
+    // Recherche la liste des coups possible en fonction de la position du pion sur le plateau
     public ArrayList<Cases> searchCoupPossible(Plateau monPlateau, int num) {
         ArrayList<Cases> listProvisoire = new ArrayList<>();
         if (!this.isOnBoard()) {
@@ -150,31 +179,19 @@ public class PionJoueur extends Pions {
                 listProvisoire.add(new Cases(this.getX() + i, this.getY() + j, false));
             }
         }
+        // vérification si le coup est réalisable
         while (!listProvisoire.isEmpty()) {
             if (((listProvisoire.get(0).getAbscisse() > -1 && listProvisoire.get(0).getOrdonnee() < 1 && listProvisoire.get(0).getAbscisse() < 12 && listProvisoire.get(0).getOrdonnee() > -7) || (listProvisoire.get(0).getAbscisse() < 16 && listProvisoire.get(0).getOrdonnee() > -11 && listProvisoire.get(0).getAbscisse() > 3 && listProvisoire.get(0).getOrdonnee() < -3) || (listProvisoire.get(0).getAbscisse() < 15 && listProvisoire.get(0).getOrdonnee() > -10 && listProvisoire.get(0).getAbscisse() > 2 && listProvisoire.get(0).getOrdonnee() < -2) || (listProvisoire.get(0).getAbscisse() < 14 && listProvisoire.get(0).getOrdonnee() > -9 && listProvisoire.get(0).getAbscisse() > 1 && listProvisoire.get(0).getOrdonnee() < -1) || (listProvisoire.get(0).getAbscisse() < 13 && listProvisoire.get(0).getOrdonnee() > -8 && listProvisoire.get(0).getAbscisse() > 0 && listProvisoire.get(0).getOrdonnee() < -0)) && !(monPlateau.getCase(listProvisoire.get(0).getAbscisse(), listProvisoire.get(0).getOrdonnee()).getPioncase() instanceof Monstre) && !(monPlateau.getCase(listProvisoire.get(0).getAbscisse(), listProvisoire.get(0).getOrdonnee()).getPioncase() instanceof PionJoueur)) {
                 coupPossible.add(listProvisoire.get(0));
 
             }
             listProvisoire.remove(0);
-        }
+        }   
         ArrayList<Cases> listFinal = new ArrayList<>();
         listFinal.addAll(coupPossible);
         return listFinal;
     }
-
-    public Cases getCasePrecedente() {
-        return this.casePrecedente;
-    }
-
-    public void setCasePrecedente(Cases c) {
-        this.casePrecedente = c;
-    }
-    
-    public Plateau getMonPlateau(){
-    
-    return this.monPlateau;
-    }
-
+    // On déplace le pion sur la case mise en paramètre
     public void deplacer(Plateau monPlateau, Cases cas) {
         //On retire la case du tableau en plaçant le booleen occupe à faux
         if(this.monPlateau==null){

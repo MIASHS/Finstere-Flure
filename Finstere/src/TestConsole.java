@@ -12,6 +12,10 @@ import java.util.ArrayList;
  *
  * @author Sébastien, Gabriel, Valère
  */
+
+/*
+    Sert à faire fonctionner le jeu !
+*/
 public class TestConsole {
 
     //Test initialisation du jeu
@@ -20,12 +24,9 @@ public class TestConsole {
 
         //Premier menu
         m.menuNiveauZero(Outils.conversionCaractere(Outils.afficher(0)));
-        //Test du plateau de jeu
-        //testPlateau(m.getPartieActuelle().getMonPlateau()); 
-        //testTour(m.getPartieActuelle());
         testFin(m.getPartieActuelle()); // Teste l'insertion dans la BDD de fin de partie
     }
-
+    // Affichage du plateau 
     public static void testPlateau(Plateau p) {
         Outils.afficherTexte("   ");
         for (int k = 0; k < 16; k++) {
@@ -87,14 +88,8 @@ public class TestConsole {
 
     }
 
-    //////TEST
-    //System.out.println("Cp =("+this.casePrecedente.getAbscisse()+";"+this.casePrecedente.getOrdonnee()+") ; J =("+this.getX()+";"+this.getY()+")");
-    ///TEST////
-    /*System.out.println("Xcase ="+ (j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse())+" ; Xj ="+j.getTabPion().get(j.getPionUtilisé()).getX()+" ; Ycase ="+(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee())+" ; Yj ="+j.getTabPion().get(j.getPionUtilisé()).getY());
-
-    System.out.println("Xcase - Xj ="+ (j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())+" ; Ycase - Yj ="+(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY()));
-    System.out.println("Xcase - Xj - (Ycase - Yj) ="+((j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY())));*/
     
+    // permet de faire tourner le jeu
     public static void testTour(Jeu p){
          
 
@@ -113,7 +108,7 @@ public class TestConsole {
         Outils.afficherTexte("test");
 
     }
-
+    //Permet de mettre à jour la base de donnée
     public static void testFin(Jeu p) throws SQLException {
 
         boolean gagnant = false;
@@ -129,3 +124,13 @@ public class TestConsole {
         }
     }
 }
+
+
+//////TEST
+    //System.out.println("Cp =("+this.casePrecedente.getAbscisse()+";"+this.casePrecedente.getOrdonnee()+") ; J =("+this.getX()+";"+this.getY()+")");
+    ///TEST////
+    /*System.out.println("Xcase ="+ (j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse())+" ; Xj ="+j.getTabPion().get(j.getPionUtilisé()).getX()+" ; Ycase ="+(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee())+" ; Yj ="+j.getTabPion().get(j.getPionUtilisé()).getY());
+
+    System.out.println("Xcase - Xj ="+ (j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())+" ; Ycase - Yj ="+(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY()));
+    System.out.println("Xcase - Xj - (Ycase - Yj) ="+((j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getAbscisse()-j.getTabPion().get(j.getPionUtilisé()).getX())-(j.getTabPion().get(j.getPionUtilisé()).getCasePrecedente().getOrdonnee()-j.getTabPion().get(j.getPionUtilisé()).getY())));*/
+    
